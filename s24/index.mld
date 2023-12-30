@@ -7,25 +7,11 @@ In this course, we take up the "programming language" as an {i object of formal 
 This course is {i not} about how to program, though the principles we cover are generally useful for designing and reasoning about programs.
 
 The first part of this course is on functional programming in {{: https://ocaml.org/ }OCaml}.
-This part includes topics like:
-
-- strong typing
-- data abstraction
-- higher-order functions
-- combinators
-- polymorphism
-
+This part includes topics like strong typing, data abstraction, higher-order functions, combinators, and polymorphism.
 It is during this part we learn to {i think} functionally, to view programs not (necessarily) as sequences of commands manipulating some global state, but as compositions of (pure) functions which decompose and reorient data.
 
 In the second part of the course we {i implement} an interpreter for a simple (but ultimately quite powerful) programming language.
-This part includes topics like:
-
-- parsing
-- syntax and semantics
-- variable scope and binding
-- storage management
-- infinite data types
-
+This part includes topics like: parsing, syntax and semantics, variable scope and binding, storage management, and infinite data types.
 After this part, you will have {i your own implementation} of a programming language for which you can write and run programs (pretty neat).
 
 {2 Prerequisites}
