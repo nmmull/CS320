@@ -1,0 +1,109 @@
+{0 CAS CS 320: Concepts of Programming Languages}
+
+{1 What is this course?}
+
+CAS CS 320 is a course {i about} programming languages, particularly the {b design} and {b implementation} of programming languages.
+In this course, we take up the "programming language" as an {i object of formal study}.
+This course is {i not} about how to program, though the principles we cover are generally useful for designing and reasoning about programs.
+
+The first part of this course is on functional programming in {{: https://ocaml.org/ }OCaml}.
+This part includes topics like:
+
+- strong typing
+- data abstraction
+- higher-order functions
+- combinators
+- polymorphism
+
+It is during this part we learn to {i think} functionally, to view programs not (necessarily) as sequences of commands manipulating some global state, but as compositions of (pure) functions which decompose and reorient data.
+
+In the second part of the course we {i implement} an interpreter for a simple (but ultimately quite powerful) programming language.
+This part includes topics like:
+
+- parsing
+- syntax and semantics
+- variable scope and binding
+- storage management
+- infinite data types
+
+After this part, you will have {i your own implementation} of a programming language for which you can write and run programs (pretty neat).
+
+{2 Prerequisites}
+
+- CAS CS 111 & 112: Introduction to Computer Science
+- CAS CS 131: Combinatoric Structures
+- CAS CS 210: Computer Systems
+
+Generally speaking, you will get the most out of this course (and will have the best time of it) if you complete the 200 level courses required for the degree of computer science beforehand.
+Above all, experience with a high-level programming language (like Python or Java) is essential.
+
+{2 Requisites}
+
+The workload for this course will consist of assignments, a project, and a final exam.
+See the syllabus for more details.
+Your final grade in this course will be determined by the following breakdown:
+
+- 20% Written assignments (4 assignments, 5% each)
+- 20% Programming assignments (4 assignments, 5% each)
+- 30% Programming project (3 parts, 10% each)
+- 30% Final exam
+
+{1 Important Links}
+
+- Piazza
+- Gradescope
+- Office hours calendar
+- OCaml
+- Syllabus
+- Full schedule
+
+{1 Schedule}
+
+{t
+  | Week | Date | Topic | Notes |
+  | :--: | :--: | :---- | :---- |
+  | 1  | 1/18 | What is this course? | |
+  | 2  | 1/23 | Introduction to OCaml | |
+  |    | 1/25 | Types and functions | |
+  | 3  | 1/30 | IO, Union Types | |
+  |    | 2/1  | Inductive types (I) | |
+  | 4  | 2/6  | Inductive types (II) | |
+  |    | 2/8  | Combinators | |
+  | 5  | 2/13 | Data types | |
+  |    | 2/15 | Polymorphism | |
+  | 6  | 2/20 | TBD | |
+  |    | 2/22 | TBD | |
+  | 7  | 2/27 | TBD | |
+  |    | 2/29 | Introduction to formal grammars | |
+  | 8  | 3/5  | Ambiguity | |
+  |    | 3/7  | Precedence, extended BNFs, regular expressions | |
+  |    |      | {b Spring Recess } | |
+  | 9  | 3/19 | Parsing (I) | |
+  |    | 3/21 | Parsing (II) | |
+  | 10 | 3/26 | Formal semantics | |
+  |    | 3/28 | Judgments and rules | |
+  | 11 | 4/2  | Variables (I) | |
+  |    | 4/4  | Variables (II) | |
+  | 12 | 4/9  | Subprograms (I) | |
+  |    | 4/11 | Subprograms (II) | |
+  | 13 | 4/16 | Subprograms (III) | |
+  |    | 4/18 | Introduction to infinite data types | |
+  | 14 | 4/23 | Streams (I) | |
+  |    | 4/25 | Streams (II) | |
+  | 15 | 4/30 | Final exam review session | |
+}
+
+{1 Course Staff}
+
+{b Instructors:}
+
+- Assaf Kfoury
+- Nathan Mull
+
+{b Teaching Fellows/Assistants:} TBD
+
+{b Course Assistants:} TBD
+
+{1 Log}
+
+- {b 12/29} Site is up
