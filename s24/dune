@@ -3,4 +3,4 @@
 
 (documentation
   (package Spring-2024)
-  (mld_files index))
+  (mld_files index topics))
