@@ -27,6 +27,3 @@ page-update: git-check-uncommited page-build
 		git push origin gh-pages; \
 	fi
 	git checkout -
-
-open: build-website
-	open _build/default/_doc/_html/index.html
