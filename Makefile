@@ -11,13 +11,13 @@ git-check-uncommited:
 .PHONY: docs-update
 docs-update: git-check-uncommited docs-build
 	git checkout gh-pages
-	rm -rf ./cs320-course-page
-	cp -r ./_build/default/_doc/_html/ ./cs320-course-page
-	if git diff-index --quiet HEAD -- ./cs320-course-page; then \
+	rm -rf ./landing
+	cp -r ./_build/default/_doc/_html/ ./landing
+	if git diff-index --quiet HEAD -- ./landing; then \
 		echo "No changes."; \
 	else \
-		git add ./cs320-course-page; \
-		git commit -m "Update docs."; \
+		git add ./landing; \
+		git commit -m "Update page"; \
 		git push origin gh-pages; \
 	fi
 	git checkout -
