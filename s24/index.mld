@@ -110,15 +110,10 @@ See the syllabus for this course for more logistical details regarding the cours
 
 {2:course_intro What is this course?}
 
-This is a very simple summary of what is covered in this lecture.
-It's not meant to be exhaustive, just make more clear what it is that we are supposed to cover.
-What are the learning objectives.
-
 {b Required reading:} OCaml Programming (OCP) 1.1-1.3: Better programming through OCaml
 
-{b Learning objectives}
-
 {2:ocaml_intro Beginning OCaml}
+
 {3:ocaml_intro_i I:  Expressions}
 
 {3:ocaml_intro_ii II: Functions}

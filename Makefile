@@ -1,15 +1,21 @@
-.PHONY: docs-build
-docs-build:
-	git checkout main
-	dune build @doc
-	git checkout -
+# based on the Makefile for OCaml package Streaming
 
 .PHONY: git-check-uncommited
 git-check-uncommited:
 	@git diff-index --quiet HEAD -- || (echo "Error: uncommited changes"; exit 1)
 
-.PHONY: docs-update
-docs-update: git-check-uncommited docs-build
+.PHONY: page-build
+page-build: git-check-uncommited
+	git checkout main
+	dune build @doc
+	git checkout -
+
+.PHONY: page-test
+page-test: page-build
+	open _build/default/_doc/_html/index.html
+
+.PHONY: page-update
+page-update: git-check-uncommited page-build
 	git checkout gh-pages
 	rm -rf ./landing
 	cp -r ./_build/default/_doc/_html/ ./landing
@@ -21,9 +27,6 @@ docs-update: git-check-uncommited docs-build
 		git push origin gh-pages; \
 	fi
 	git checkout -
-
-build-website:
-	dune build @doc
 
 open: build-website
 	open _build/default/_doc/_html/index.html
