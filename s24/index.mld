@@ -7,11 +7,11 @@ In this course, we take up the "programming language" as an {i object of formal 
 This course is {i not} about how to program, though the principles we cover are generally useful for designing and reasoning about programs.
 
 The first part of this course is on functional programming in {{: https://ocaml.org/ }OCaml}, based on {i CS 3110: Data Structures and Functional Programming} at Cornell University and its associated {{: https://cs3110.github.io/textbook/cover.html }textbook} (referred to as OCP below).
-Its topics include strong typing, data abstraction, higher-order functions, combinators, and polymorphism.
+Its topics include inductive types, data abstraction, higher-order functions, combinators, and polymorphism.
 It is during this part that we learn to {i think} functionally, to view programs not (necessarily) as sequences of commands manipulating some global state, but as compositions of (pure) functions which decompose and reorient data.
 
 In the second part of the course we {i implement} an interpreter for a simple (but ultimately quite powerful) programming language.
-The part includes topics like include parsing, syntax and semantics, variable scope and binding, storage management, and infinite data types.
+The topics covered include parsing, syntax and semantics, variable scope and binding, storage management, and infinite data types.
 After this part, you will have {i your own implementation} of a programming language for which you can write and run programs (pretty neat).
 
 {2 Prerequisites}
@@ -26,7 +26,7 @@ Above all, experience with a high-level programming language (like Python or Jav
 {2 Requisites}
 
 The workload for this course consists of assignments, a project, and a final exam.
-Your final grade in this course will be determined by the following breakdown:
+Your final grade in the course will be determined by the following breakdown:
 
 - 20% Written assignments (4 assignments, 5% each)
 - 20% Programming assignments (4 assignments, 5% each)

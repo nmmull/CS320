@@ -3,7 +3,8 @@ page-build:
 	make -C .. page-build
 
 .PHONY: page-test
-page-test: page-build
+page-test:
+	make -C .. page-test
 	open ../_build/default/_doc/_html/Spring-2024/index.html
 
 .PHONY: page-update

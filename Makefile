@@ -11,7 +11,8 @@ page-build: git-check-uncommited
 	git checkout -
 
 .PHONY: page-test
-page-test: page-build
+page-test:
+	dune build @doc
 	open _build/default/_doc/_html/index.html
 
 .PHONY: page-update
