@@ -51,9 +51,9 @@ See the syllabus for this course for more logistical details regarding the cours
 
 {1 Important Links}
 
-- Piazza
-- Gradescope
-- Office hours calendar
+- {{: https://piazza.com/class/lrgw7v279iu7lo/ }Piazza}
+- {{: https://www.gradescope.com/courses/711798 }Gradescope}
+- {{: https://calendar.google.com/calendar/embed?src=c_baf8ab53722af14883326cf3b5dca8c8ea83d7fd84fa14bc1a20f059a28089f6%40group.calendar.google.com&ctz=America%2FNew_York} Office hours calendar}
 - {!section-course_info}
 - {{: https://ocaml.org/ }OCaml}
 - {{: https://code.visualstudio.com } VS Code}
