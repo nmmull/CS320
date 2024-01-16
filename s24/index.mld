@@ -48,7 +48,7 @@ See the syllabus for this course for more logistical details regarding the cours
 - Piazza
 - Gradescope
 - Office hours calendar
-- OCaml
+- {{: https://ocaml.org/ }OCaml}
 - Syllabus
 
 {1 Schedule}
@@ -326,7 +326,7 @@ We will also touch on the benefits of the functional paradigm.
 {b Required reading:} OCaml Programming (OCP) {{: https://cs3110.github.io/textbook/chapters/intro/intro.html}1.1-1.3: Better programming through OCaml}
 
 {b Additional information:}
-- Homework 0 is released
+- Homework 0 is released. It's {b not graded} but it's important that you complete it so that you're set up to submit the later assignments.
 
 {2:ocaml_intro Beginning OCaml}
 
