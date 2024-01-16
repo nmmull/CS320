@@ -33,13 +33,19 @@ Your final grade in the course will be determined by the following breakdown:
 - 20% Midterm exam
 - 30% Final exam
 
-{2 Course Staff}
+{2 Minutiae}
 
 {b Instructors:} Assaf Kfoury and Nathan Mull
 
 {b Teaching Fellows:} Zachery Casey and Qiancheng (Robin) Fu
 
 {b Course Assistants:} Jason Wang and Sebastian Wu
+
+{b Lecture Times:} Tuesday and Thursdays, 3:30PM-4:45PM
+
+{b Lecture Location:} Stone Science Auditorium (STO) B-50
+
+{b Lab Times/Locations:} See the {{: https://www.bu.edu/academics/cas/courses/cas-cs-320/ }registrar page}
 
 See the syllabus for this course for more logistical details regarding the course.
 
@@ -48,10 +54,12 @@ See the syllabus for this course for more logistical details regarding the cours
 - Piazza
 - Gradescope
 - Office hours calendar
+- {!section-course_info}
 - {{: https://ocaml.org/ }OCaml}
-- Syllabus
+- {{: https://code.visualstudio.com } VS Code}
 
-{1 Schedule}
+
+{1:schedule Schedule}
 
 {table
   {tr
@@ -318,15 +326,14 @@ See the syllabus for this course for more logistical details regarding the cours
 
 {2:course_intro What is this course?}
 
-We discuss the expectations of the course, and give a rough outline of the topics that will be covered.
+{b Overview:} We discuss the expectations of the course, and give a rough outline of the topics that will be covered.
 We will also touch on the benefits of the functional paradigm.
 
 {b Keywords:} course structure, course policy, OCaml, functional programming
 
 {b Required reading:} OCaml Programming (OCP) {{: https://cs3110.github.io/textbook/chapters/intro/intro.html}1.1-1.3: Better programming through OCaml}
 
-{b Additional information:}
-- Homework 0 is released. It's {b not graded} but it's important that you complete it so that you're set up to submit the later assignments.
+{b Additional information:} Homework 0 is released. {i It's not graded} but it's important that you complete it so that you're set up to submit the later assignments.
 
 {2:ocaml_intro Beginning OCaml}
 
@@ -399,6 +406,59 @@ We will also touch on the benefits of the functional paradigm.
 {3:adv_topic I: Infinite Data Types}
 
 {2:final Final Exam Review}
+
+{1:course_info Course Information}
+
+{2 Lectures}
+
+Lectures are held twice a week, and the two instructors of the course will trade-off teaching one of the two lectures each week.
+
+{2 Labs}
+
+Labs will be held weekly by our TFs and TAs.
+More detail on the nature of these labs to come.
+
+{2 Communication}
+
+Announcements and discussions will happen on Piazza.
+If you are unfamiliar with Piazza, see their {{: https://support.piazza.com/support/solutions/48000185443 }support page} for information and tutorials.
+Some policies regarding the use of Piazza:
+- {i Don’t ask homework questions directly.} Formulate a question which will aid your understanding, and could potentially help others as well.
+- {i Don’t give homework solutions directly.} The answer-provider is just as culpable as the answer-receiver in cases of academic misconduct.
+- {i Piazza is as useful as it is active.} We will try to answer questions on Piazza in a timely manner, but don’t hesitate to answer questions yourself.
+
+You will also be expected to periodically check this webpage for updates.
+
+{2 Material}
+
+The first part of the course depends on the textbook {{: https://cs3110.github.io/textbook/cover.html}OCaml Programming: Correct + Efficient + Beautiful}.
+
+All other course material will be made available on the courses GitHub repository (more information on this shortly).
+If you are unfamiliar with git and GitHub, see the GitHub {{: https://docs.github.com/en/get-started }documentation} for information and tutorials.
+We will also cover some basics in labs.
+
+{2 Assignments}
+
+There will be 8 graded assignments throughout the semester.
+They are made available on Thursdays and are due {b the following Thursday by 11:59PM} (see the {!section-schedule} above).
+Roughly half are written assignments and half are programming assignments.
+
+
+Assignments will be submitted via Gradescope.
+If you are unfamiliar with Gradescope, see their {{: https://www.gradescope.com/get_started }Get Started} page for more information.
+{b We will drop your lowest two assignment grades} so only 6 assignments will count towards your final grade in the course.
+This means {b we will not accept late homework assignments, under any circumstances.}
+
+{2 Final Project}
+
+Part of your final grade in the course will be determined by your completion of a final project.
+The project has three parts which makes up the final three-weeks-worth of assignments.
+More information about the nature of this project will be made available in the second-half of the course.
+
+{2 Policies and Guidelines}
+
+Please read carefully through my general BU {{: https://nmmull.github.io/policies.html}Course Policies} page.
+We take all matters of student mental health and safety, inclusion, and academic misconduct extremely seriously.
 
 {1 Log}
 
