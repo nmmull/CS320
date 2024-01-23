@@ -82,7 +82,7 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 1/24}
-    {td Week 2 Lab}
+    {td Week 2 Lab: Set-Up Help}
     {td}
     {td}
   }
@@ -339,6 +339,22 @@ We will also touch on the benefits of the functional paradigm.
 
 {3:ocaml_intro_i I:  Expressions}
 
+{b Overview:}
+We look at a couple ways of interacting with OCaml via UTop.
+We discuss expressions in OCaml, particularly if-expressions and let-expressions, and begin looking more careful at evaluation.
+
+{b Keywords:} UTop, values, expressions, evaluation, types, syntax, dynamic semantics, static semantics, if-expressions, let-expressions, let-defintions
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html }2.1: The OCaml Toplevel}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html }2.2.(1-2): Compiling OCaml Programs}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html }2.3: Expressions}
+
+{b Additional information:}
+- Homework 0 is due on Thursday by 11:59PM
+- The office hours calendar has been updated with locations
+- Attend lab this week if you need help setting up your programming environment
+
 {3:ocaml_intro_ii II: Functions}
 
 {3:ocaml_intro_iii III: Unions, products}
@@ -367,7 +383,7 @@ We will also touch on the benefits of the functional paradigm.
 
 {3:grammar_i I: Introduction}
 
-{3:grammar_ii II: Ambiguity, precedence}
+{3:grammar_ii II: Precedence}
 
 {3:grammar_iii III: Extended BNFs, regular expressions}
 
