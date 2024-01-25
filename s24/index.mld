@@ -47,17 +47,16 @@ Your final grade in the course will be determined by the following breakdown:
 
 {b Lab Times/Locations:} See the {{: https://www.bu.edu/academics/cas/courses/cas-cs-320/ }registrar page}
 
-See the syllabus for this course for more logistical details regarding the course.
+See the {!section-course_info} section for more information.
 
 {1 Important Links}
 
 - {{: https://piazza.com/class/lrgw7v279iu7lo/ }Piazza}
 - {{: https://www.gradescope.com/courses/711798 }Gradescope}
 - {{: https://calendar.google.com/calendar/embed?src=c_baf8ab53722af14883326cf3b5dca8c8ea83d7fd84fa14bc1a20f059a28089f6%40group.calendar.google.com&ctz=America%2FNew_York} Office hours calendar}
-- {!section-course_info}
+- {{!page-topics} (NEW) Full List of Topics}
 - {{: https://ocaml.org/ }OCaml}
 - {{: https://code.visualstudio.com } VS Code}
-
 
 {1:schedule Schedule}
 
@@ -70,14 +69,17 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 1/18}
-    {td {!section-course_intro}}
+    {td {{!page-topics.course_intro} Course Introduction}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/intro/intro.html }1.(1-3)}}
     {td HW0 out}
   }
   {tr
     {td 1/23}
-    {td {!section-ocaml_intro} {!section-ocaml_intro_i}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html }2.1}, {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html }2.2.(1-2)}, {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html }2.3}}
+    {td {{!page-topics.ocaml_intro_i} Beginning Ocaml I: Expressions}}
+    {td
+	OCP {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html }2.1},
+	{{: https://cs3110.github.io/textbook/chapters/basics/compiling.html }2.2.(1-2)},
+	{{: https://cs3110.github.io/textbook/chapters/basics/expressions.html }2.3}}
     {td}
   }
   {tr
@@ -88,14 +90,18 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 1/25}
-    {td {!section-ocaml_intro} {!section-ocaml_intro_ii}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/basics/functions.html }2.4}, {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}2.6}}
+    {td {{!page-topics.ocaml_intro_ii} Beginning OCaml II: Functions}}
+    {td
+      OCP {{: https://cs3110.github.io/textbook/chapters/basics/functions.html }2.4},
+      {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}2.6}}
     {td HW1 out, HW0 due}
   }
   {tr
     {td 1/30}
-    {td {!section-ocaml_intro} {!section-ocaml_intro_iii}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/variants.html }3.2}, {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html }3.4}}
+    {td {{!page-topics.ocaml_intro_iii} Beginning OCaml III: Unions, Products}}
+    {td
+	OCP {{: https://cs3110.github.io/textbook/chapters/data/variants.html }3.2},
+	{{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html }3.4}}
     {td}
   }
   {tr
@@ -106,13 +112,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 2/1}
-    {td {!section-ocaml_intro} {!section-ocaml_intro_iv}}
+    {td {{!page-topics.ocaml_intro_iv} Begnning Ocaml IV: Lists, IO}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/data/lists.html }3.1}}
     {td HW2 out, HW1 due}
   }
   {tr
     {td 2/6}
-    {td {!section-ind_types} {!section-ind_types_i}}
+    {td {{!page-topics.ind_types_i} Inductive Types I: Introduction}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9.(1-4)}}
     {td}
   }
@@ -124,13 +130,15 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 2/8}
-    {td {!section-ind_types} {!section-ind_types_ii}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9.(5-7)}, {{: https://cs3110.github.io/textbook/chapters/data/trees.html }3.11}}
+    {td {{!page-topics.ind_types_ii} Inductive Types II: Examples}}
+    {td
+      OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9.(5-7)},
+      {{: https://cs3110.github.io/textbook/chapters/data/trees.html }3.11}}
     {td HW3 out, HW2 due}
   }
   {tr
     {td 2/13}
-    {td {!section-ho} {!section-ho_i}}
+    {td {{!page-topics.ho_i} Higher-Order Programming I: Maps, Filters}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/hop/intro.html }4.(1-3)}}
     {td}
   }
@@ -142,14 +150,16 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 2/15}
-    {td {!section-ho} {!section-ho_ii}}
+    {td {{!page-topics.ho_ii} Higher-Order Programming II: Folds, Examples}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/hop/intro.html }4.(4-7)}}
     {td HW4 out, HW3 due}
   }
   {tr
     {td 2/20}
-    {td {!section-inter} {!section-inter_i}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/options.html }3.7}, {{: https://cs3110.github.io/textbook/chapters/ds/monads.html }8.7}}
+    {td {{!page-topics.inter_i} Intermediate OCaml I: Options, Monads}}
+    {td
+      OCP {{: https://cs3110.github.io/textbook/chapters/data/options.html }3.7},
+      {{: https://cs3110.github.io/textbook/chapters/ds/monads.html }8.7}}
     {td}
   }
   {tr
@@ -160,8 +170,10 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 2/22}
-    {td {!section-inter} {!section-inter_ii}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html }5.1}, {{: https://cs3110.github.io/textbook/chapters/modules/modules.html }5.2}}
+    {td {{!page-topics.inter_ii} Intermediate OCaml II: Modules}}
+    {td
+      OCP {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html }5.1},
+      {{: https://cs3110.github.io/textbook/chapters/modules/modules.html }5.2}}
     {td HW4 due}
   }
   {tr
@@ -178,13 +190,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 2/29}
-    {td {!section-grammar} {!section-grammar_i}}
+    {td {{!page-topics.grammar_i} Formal Grammar I: Introduction}}
     {td}
     {td HW5 out}
   }
   {tr
     {td 3/5}
-    {td {!section-grammar} {!section-grammar_ii}}
+    {td {{!page-topics.grammar_ii} Formal Grammar II: Precedence}}
     {td}
     {td}
   }
@@ -196,7 +208,7 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 3/7}
-    {td {!section-grammar} {!section-grammar_iii}}
+    {td {{!page-topics.grammar_iii} Formal Grammar III: Extended BNF, Regular Expressions}}
     {td}
     {td HW6 out, HW5 due}
   }
@@ -208,7 +220,7 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 3/19}
-    {td {!section-parse} {!section-parse_i}}
+    {td {{!page-topics.parse_i} Parsing I: Introduction}}
     {td}
     {td}
   }
@@ -220,13 +232,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 3/21}
-    {td {!section-parse} {!section-parse_ii}}
+    {td {{!page-topics.parse_ii} Parsing II: Parsing in OCaml}}
     {td}
     {td HW7 out, HW6 due}
   }
   {tr
     {td 3/26}
-    {td {!section-parse} {!section-parse_iii}}
+    {td {{!page-topics.parse_iii} Parsing III: Combinators}}
     {td}
     {td}
   }
@@ -238,13 +250,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 3/28}
-    {td {!section-sem} {!section-sem_i}}
+    {td {{!page-topics.sem_i} Formal Semantics I: Operational Semantics}}
     {td}
     {td HW8 out, HW7 due}
   }
   {tr
     {td 4/2}
-    {td {!section-sem} {!section-sem_ii}}
+    {td {{!page-topics.sem_ii} Formal Semantics II: Applying Rules}}
     {td}
     {td}
   }
@@ -256,13 +268,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 4/4}
-    {td {!section-sem} {!section-sem_iii}}
+    {td {{!page-topics.sem_iii} Formal Semantics III: Designing Rules}}
     {td}
     {td P1 out, HW8 due}
   }
   {tr
     {td 4/9}
-    {td {!section-var} {!section-var_i}}
+    {td {{!page-topics.var_i} Variables I: Scoping}}
     {td}
     {td}
   }
@@ -274,13 +286,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 4/11}
-    {td {!section-var} {!section-var_ii}}
+    {td {{!page-topics.var_ii} Variables II: Binding}}
     {td}
     {td P2 out, P1 due}
   }
   {tr
     {td 4/16}
-    {td {!section-sub} {!section-sub_i}}
+    {td {{!page-topics.sub_i} Subprograms I: Introduction}}
     {td}
     {td}
   }
@@ -292,13 +304,13 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 4/18}
-    {td {!section-sub} {!section-sub_ii}}
+    {td {{!page-topics.sub_ii} Subprograms II: Activation Records}}
     {td}
     {td P3 out, P2 due}
   }
   {tr
     {td 4/23}
-    {td {!section-sub} {!section-sub_iii}}
+    {td {{!page-topics.sub_iii} Subprograms III: Activation Stack}}
     {td}
     {td}
   }
@@ -310,7 +322,7 @@ See the syllabus for this course for more logistical details regarding the cours
   }
   {tr
     {td 4/25}
-    {td {!section-adv} {!section-adv_topic}}
+    {td {{!page-topics.adv_topic} Advanced Topic: Infinite Data Types}}
     {td}
     {td P3 due}
   }
@@ -321,107 +333,6 @@ See the syllabus for this course for more logistical details regarding the cours
     {td}
   }
 }
-
-{1 Topics}
-
-{2:course_intro What is this course?}
-
-{b Overview:} We discuss the expectations of the course, and give a rough outline of the topics that will be covered.
-We will also touch on the benefits of the functional paradigm.
-
-{b Keywords:} course structure, course policy, OCaml, functional programming
-
-{b Required reading:} OCaml Programming (OCP) {{: https://cs3110.github.io/textbook/chapters/intro/intro.html}1.1-1.3: Better programming through OCaml}
-
-{b Additional information:} Homework 0 is released. {i It's not graded} but it's important that you complete it so that you're set up to submit the later assignments.
-
-{2:ocaml_intro Beginning OCaml}
-
-{3:ocaml_intro_i I:  Expressions}
-
-{b Overview:}
-We look at a couple ways of interacting with OCaml via UTop.
-We discuss expressions in OCaml, particularly if-expressions and let-expressions, and begin looking more careful at evaluation.
-
-{b Keywords:} UTop, values, expressions, evaluation, types, syntax, dynamic semantics, static semantics, if-expressions, let-expressions, let-defintions
-
-{b Required reading:}
-- OCP {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html }2.1: The OCaml Toplevel}
-- OCP {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html }2.2.(1-2): Compiling OCaml Programs}
-- OCP {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html }2.3: Expressions}
-
-{b Additional information:}
-- Homework 0 is due on Thursday by 11:59PM
-- The office hours calendar has been updated with locations
-- Attend lab this week if you need help setting up your programming environment
-
-{3:ocaml_intro_ii II: Functions}
-
-{3:ocaml_intro_iii III: Unions, products}
-
-{3:ocaml_intro_iv IV: IO, Lists}
-
-{2:ind_types Inductive types}
-
-{3:ind_types_i I: Introduction}
-
-{3:ind_types_ii II: Examples}
-
-{2:ho Higher-Order Programming}
-
-{3:ho_i I: Map, filter}
-
-{3:ho_ii II: Fold, examples}
-
-{2:inter Intermediate OCaml}
-
-{3:inter_i I: Options, monads}
-
-{3:inter_ii II: Modules}
-
-{2:grammar Formal Grammar}
-
-{3:grammar_i I: Introduction}
-
-{3:grammar_ii II: Precedence}
-
-{3:grammar_iii III: Extended BNFs, regular expressions}
-
-{2:parse Parsing}
-
-{3:parse_i I: Introduction}
-
-{3:parse_ii II: Parsing in OCaml}
-
-{3:parse_iii III: Combinators}
-
-{2:sem Formal Semantics}
-
-{3:sem_i I: Operational Semantics}
-
-{3:sem_ii II: Applying Rules}
-
-{3:sem_iii III: Designing Rules}
-
-{2:var Variables}
-
-{3:var_i I: Scoping}
-
-{3:var_ii II: Binding}
-
-{2:sub Subprograms}
-
-{3:sub_i I: Introduction}
-
-{3:sub_ii II: Activation records}
-
-{3:sub_iii III: Activation stack}
-
-{2:adv Advanced Topics}
-
-{3:adv_topic I: Infinite Data Types}
-
-{2:final Final Exam Review}
 
 {1:course_info Course Information}
 
@@ -478,4 +389,5 @@ We take all matters of student mental health and safety, inclusion, and academic
 
 {1 Log}
 
-- {b 1/31} Site is drafted
+- {b 1/25} Updated structure of site, topics now appear on their own page
+- {b 12/31} Site is drafted

@@ -1,0 +1,110 @@
+{1 Topics}
+
+{2:course_intro What is this course?}
+
+{b Overview:} We discuss the expectations of the course, and give a rough outline of the topics that will be covered.
+We will also touch on the benefits of the functional paradigm.
+
+{b Keywords:} course structure, course policy, OCaml, functional programming
+
+{b Required reading:} OCaml Programming (OCP) {{: https://cs3110.github.io/textbook/chapters/intro/intro.html}1.1-1.3: Better programming through OCaml}
+
+{b Additional information:} Homework 0 is released. {i It's not graded} but it's important that you complete it so that you're set up to submit the later assignments.
+
+{2 Beginning Ocaml}
+
+{3:ocaml_intro_i Expressions}
+
+{b Overview:}
+We look at a couple ways of interacting with OCaml via UTop.
+We discuss expressions in OCaml, particularly if-expressions and let-expressions, and begin looking more careful at evaluation.
+
+{b Keywords:} UTop, values, expressions, evaluation, types, syntax, dynamic semantics, static semantics, if-expressions, let-expressions, let-defintions
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html }2.1: The OCaml Toplevel}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html }2.2.(1-2): Compiling OCaml Programs}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html }2.3: Expressions}
+
+{b Additional information:}
+- Homework 0 is due on Thursday by 11:59PM
+- The office hours calendar has been updated with locations
+- Attend lab this week if you need help setting up your programming environment
+
+{3:ocaml_intro_ii Functions}
+
+{b Overview:}
+
+{b Keywords:}
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/functions.html }2.4: Functions}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/printing.html }2.6: Printing}
+
+{b Additional information:}
+- Homework 0 is due {i tonight} by 11:59PM
+- Homework 1 will be released before the start of lecture
+
+{3:ocaml_intro_iii Unions and Products}
+
+{3:ocaml_intro_iv Lists and IO}
+
+{2:ind_types Inductive Types}
+
+{3:ind_types_i Introduction}
+
+{3:ind_types_ii Examples}
+
+{2:ho Higher-Order Programming}
+
+{3:ho_i Maps and Filters}
+
+{3:ho_ii Folds and Examples}
+
+{2:inter Intermediate OCaml}
+
+{3:inter_i Options and Monads}
+
+{3:inter_ii Modules}
+
+{2:grammar Formal Grammar}
+
+{3:grammar_i Introduction}
+
+{3:grammar_ii Precedence}
+
+{3:grammar_iii Extended BNF and Regular Expressions}
+
+{2:parse Parsing}
+
+{3:parse_i Introduction}
+
+{3:parse_ii Parsing in OCaml}
+
+{3:parse_iii Combinators}
+
+{2:sem Formal Semantics}
+
+{3:sem_i Operational Semantics}
+
+{3:sem_ii Applying Rules}
+
+{3:sem_iii Designing Rules}
+
+{2:var Variables}
+
+{3:var_i Scoping}
+
+{3:var_ii Binding}
+
+{2:sub Subprograms}
+
+{3:sub_i Introduction}
+
+{3:sub_ii Activation Records}
+
+{3:sub_iii Activation Stack}
+
+{2:adv Advanced Topics}
+
+{3:adv_topic Infinite Data Types}
