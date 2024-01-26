@@ -34,8 +34,11 @@ We discuss expressions in OCaml, particularly if-expressions and let-expressions
 {3:ocaml_intro_ii Functions}
 
 {b Overview:}
+We cover the various ways of defining functions in OCaml, some fundamental and some just convenient.
+We note the issue of parentheses, which includes a discussion of the {i right} associativity of function types and the {i left} associativity of function application.
+This is all connected to type inference, a topic that will (likely) come up later in the course
 
-{b Keywords:}
+{b Keywords:} recursive functions, anonymous functions, (partial) function application,  pipelines, labeled and optional arguments, associativity, type inference
 
 {b Required reading:}
 - OCP {{: https://cs3110.github.io/textbook/chapters/basics/functions.html }2.4: Functions}
@@ -46,6 +49,17 @@ We discuss expressions in OCaml, particularly if-expressions and let-expressions
 - Homework 1 will be released before the start of lecture
 
 {3:ocaml_intro_iii Unions and Products}
+
+{b Overview:}
+
+{b Keywords:}
+
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/variants.html }3.2: Variants}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html }3.4: Records and Tuples}
+
+{b Additional information:}
 
 {3:ocaml_intro_iv Lists and IO}
 
