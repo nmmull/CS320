@@ -51,15 +51,20 @@ This is all connected to type inference, a topic that will (likely) come up late
 {3:ocaml_intro_iii Unions and Products}
 
 {b Overview:}
+We examine unions and products as ways of organizing data in OCaml via variants, tuples and records.
+We also start studying pattern matching more closely and, in particular, what exactly a {i pattern} is.
 
-{b Keywords:}
+{b Keywords:} variants, pattern matching, wildcards, tuples, records, accessors, record updates
 
 
 {b Required reading:}
 - OCP {{: https://cs3110.github.io/textbook/chapters/data/variants.html }3.2: Variants}
 - OCP {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html }3.4: Records and Tuples}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}3.9.(1-3): Data-Carrying Variants}
 
 {b Additional information:}
+- Homework 1 is due on Thursday by 11:59PM
+- Discussion this week will provide practice problems for the assignments and the exams
 
 {3:ocaml_intro_iv Lists and IO}
 
