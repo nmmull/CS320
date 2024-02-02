@@ -115,7 +115,9 @@ See the {!section-course_info} section for more information.
   {tr
     {td 2/1}
     {td {{!page-topics.ocaml_intro_iv} Begnning Ocaml IV: Lists, IO}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/lists.html }3.1}}
+    {td
+      OCP {{: https://cs3110.github.io/textbook/chapters/basics/printing.html }2.6},
+      {{: https://cs3110.github.io/textbook/chapters/data/lists.html }3.1}}
     {td HW2 out, HW1 due}
   }
   {tr

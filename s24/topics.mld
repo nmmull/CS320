@@ -68,6 +68,21 @@ We also start studying pattern matching more closely and, in particular, what ex
 
 {3:ocaml_intro_iv Lists and IO}
 
+{b Overview:}
+We look at lists, our first example of a more complex data type, one which can depend on other types (i.e., it is {i polymorphic}).
+We also discuss the connection between lists and tail recursion.
+In the reading, we see some useful functions for printing.
+
+{b Keywords.} cons, tail, type constructor, deep pattern matching, unit, printf
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/basics/printing.html }2.6: Printing}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/lists.html }3.1: Lists}
+
+{b Additional information:}
+- Homework 1 is due {i tonight} by 11:59PM
+- Homework 2 will be released before the start of lecture
+
 {2:ind_types Inductive Types}
 
 {3:ind_types_i Introduction}
