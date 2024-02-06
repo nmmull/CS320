@@ -87,6 +87,19 @@ In the reading, we see some useful functions for printing.
 
 {3:ind_types_i Introduction}
 
+{b Overview:}
+We cover in more detail algebraic data types (ADTs), in particular recurive ADTs and parametric ADTs.
+This will get us set up to start discussing things like evaluation strategies and infinite data types.
+
+{b Required reading:}
+OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9: Algebraic Data Types}
+
+{b Keywords:}
+algebraic data types, simple variants, pattern matching, constructors, data-carrying variants, recursive variants, parametric variants, lists, options, results
+
+{b Additional Information:}
+- Homework 2 is due on Thursday by 11:59PM
+
 {3:ind_types_ii Examples}
 
 {2:ho Higher-Order Programming}

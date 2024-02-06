@@ -123,7 +123,7 @@ See the {!section-course_info} section for more information.
   {tr
     {td 2/6}
     {td {{!page-topics.ind_types_i} Inductive Types I: Introduction}}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9.(1-4)}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9}}
     {td}
   }
   {tr
@@ -136,7 +136,7 @@ See the {!section-course_info} section for more information.
     {td 2/8}
     {td {{!page-topics.ind_types_ii} Inductive Types II: Examples}}
     {td
-      OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9.(5-7)},
+      OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9},
       {{: https://cs3110.github.io/textbook/chapters/data/trees.html }3.11}}
     {td HW3 out, HW2 due}
   }
