@@ -97,22 +97,67 @@ OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.htm
 {b Keywords:}
 algebraic data types, simple variants, pattern matching, constructors, data-carrying variants, recursive variants, parametric variants, lists, options, results
 
-{b Additional Information:}
+{b Additional information:}
 - Homework 2 is due on Thursday by 11:59PM
 
 {3:ind_types_ii Examples}
+
+{b Overview:}
+We see some examples of more complex algebraic data types like trees, as well as some of their operations.
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html }3.9: Algebraic Data Types}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/trees.html }3.11: Example: Trees}
+
+{b Keywords:}
+algebraic data types, trees, pre-order, post-order, membership
+
+{b Additional information:}
+- Homework 2 is due on {i tonight} by 11:59PM
 
 {2:ho Higher-Order Programming}
 
 {3:ho_i Maps and Filters}
 
+{b Overview:}
+We introduce the notion of higher-order functions, which can be used to parametrize functions by other functions.
+We look at two common higher order functions: map and filter.
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/higher_order.html }4.1: Higher-Order Functions}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/map.html}4.2: Map}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/filter.html}4.3: Filter}
+
+{b Keywords:}
+higher-order functions, first-class values, functions as function parameters, the abstraction principle, map, filter
+
+{b Additional information:}
+- This lecture is on Thursday instead of Tuesday because of cancellations due to weather
+- Homework 3 is due on Friday by 11:59PM
+
 {3:ho_ii Folds and Examples}
+
+{b Overview:}
+We finish our discussion of higher-order functions with folding and the use of higher-order functions for data types other than lists.
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/fold.html }4.4: Fold}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html }4.5: Beyond Lists}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/pipelining.html }4.6: Pipelining}
+- OCP {{: https://cs3110.github.io/textbook/chapters/hop/pipelining.html }4.7: Currying}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7: Options}
+
+{b Keywords:}
+fold right, fold left, tail-recursion, associativity, tree map, tree fold
+
+{b Additional information:}
+- Homework 4 is due on Friday by 11:59PM
+- No assignment will be assigned this week
+- The midterm is next week
 
 {2:inter Intermediate OCaml}
 
-{3:inter_i Options and Monads}
-
-{3:inter_ii Modules}
+{3:inter_i Options, Monads and Modules}
 
 {2:grammar Formal Grammar}
 
