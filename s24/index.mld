@@ -200,7 +200,7 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 3/5}
-    {td {{!page-topics.grammar_ii} Formal Grammar II: Precedence}}
+    {td {{!page-topics.grammar_ii} Formal Grammar II: Ambiguity}}
     {td}
     {td}
   }

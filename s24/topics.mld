@@ -159,13 +159,58 @@ fold right, fold left, tail-recursion, associativity, tree map, tree fold
 
 {3:inter_i Options, Monads and Modules}
 
+{b Overview:}
+We discuss very briefly the module system of OCaml and the use of monads.
+
+{b Required reading:}
+- OCP {{: https://cs3110.github.io/textbook/chapters/data/options.html } 3.7: Options}
+- OCP {{: https://cs3110.github.io/textbook/chapters/ds/monads.html }8.7: Monads}
+- OCP {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html }5.1: Module Systems}
+- OCP {{: https://cs3110.github.io/textbook/chapters/modules/modules.html }5.2: Modules}
+
+{b Keywords:}
+options, monads, modules
+
+{b Additional information:}
+- The midterm is next week
+- A practice midterm has been posted
+
 {2:grammar Formal Grammar}
 
 {3:grammar_i Introduction}
 
-{3:grammar_ii Precedence}
+{b Overview:}
+We introduce formal grammars and BNF specifications.
+
+{b Keywords:}
+Formal grammar, context-free grammar, BNF specification, nonterminal symbol, terminal symbol, sentential form, sentence, production rule, derivation, recongizing a sentence, generating a sentence, parse tree
+
+{b Additional information:}
+- Midterm grades will be posted next week
+
+{3:grammar_ii Ambiguity}
+
+{b Overview:}
+We discuss how grammars can be ambiguous, how we might avoid ambiguity, and why we might want to avoid ambiguity.
+
+{b Keywords:}
+grammatical ambiguity, (reverse) polish notation, parentheses, fixity, associativity, precedence
+
+{b Additional information:}
+- Homework 5 is due on Friday by 11:59PM
 
 {3:grammar_iii Extended BNF and Regular Expressions}
+
+{b Overview.}
+We introduce syntactic sugar into our BNF specifications to make them easier to define.
+We also take a brief detour to talk about regular grammars and regular expressions, which capture a weaker but ultimately very useful class of grammars.
+
+{b Keywords:}
+extended BNF, regular grammars, regular expressions
+
+{b Additional information:}
+- Homework 6 is assigned, it will not be due until after the break
+- Midterm grades have been posted
 
 {2:parse Parsing}
 
