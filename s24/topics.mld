@@ -216,6 +216,25 @@ extended BNF, regular grammars, regular expressions
 
 {3:parse_i Introduction}
 
+{b Overview:}
+We begin our study of parsing, starting with lexical analysis, and then thinking a bit about the general parsing problem.
+We will look at an example of recursive descent, a top-down parsing method.
+
+{b Keywords:}
+parser generators, lexical analysis, lexeme, token, parsing, recursive descent
+
+{b Supplemental reading:}
+Much of this part of the course is based loosely on the book {i Concepts of Programming Languages} by Robert W. Sebesta (available online without looking too hard, though we don't explicitly condone this...)
+We diverge from the book a fair amount, but if you want some additional reading on the topics, this source may be useful.
+- CPL 4.1: Introduction
+- CPL 4.2: Lexical Analysis
+- CPL 4.3: The Parsing Problem
+- CPL 4.4: Recursive-Descent Parsing
+
+{b Additional information:}
+- Homework 6 is due on Friday by 11:59PM
+- The withdraw deadline for the course is March 29th
+
 {3:parse_ii Parsing in OCaml}
 
 {3:parse_iii Combinators}
