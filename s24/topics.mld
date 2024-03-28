@@ -235,9 +235,29 @@ We diverge from the book a fair amount, but if you want some additional reading 
 - Homework 6 is due on Friday by 11:59PM
 - The withdraw deadline for the course is March 29th
 
-{3:parse_ii Parsing in OCaml}
+{3:parse_ii General Parsing}
+
+{b Overview:}
+We reiterate some of the material from last lecture and introduce the notion of Chomsky normal forms
+
+{b Keywords:}
+lexical analysis, Chomsky normal forms, context-free grammars
+
+{b Additional information:}
+- Homework 6 is due on Friday by 11:59PM
 
 {3:parse_iii Combinators}
+
+{b Overview:}
+We introduce a high-level functional interface for building up complex parsers.
+We see many examples, and connect this interface back to our dicussion of EBNF grammars
+
+{b Keywords:}
+combinator, mapping, sequencing, alternatives, pure, fail, bind, optionals, repetition
+
+{b Additional information:}
+- Homework 7 is due on Friday by 11:59PM
+- This week marks the beginning of the BUGSWU strike, please read the note on Piazza about how this will affect the course
 
 {2:sem Formal Semantics}
 

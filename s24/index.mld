@@ -236,7 +236,7 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 3/21}
-    {td {{!page-topics.parse_ii} Parsing II: Parsing in OCaml}}
+    {td {{!page-topics.parse_ii} Parsing II: General Parsing}}
     {td}
     {td HW7 out, HW6 due}
   }
