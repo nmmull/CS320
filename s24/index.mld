@@ -278,7 +278,7 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 4/9}
-    {td {{!page-topics.var_i} Variables I: Scoping}}
+    {td {{!page-topics.sub_i} Subprograms I: Variable Binding and Scoping}}
     {td}
     {td}
   }
@@ -290,13 +290,13 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 4/11}
-    {td {{!page-topics.var_ii} Variables II: Binding}}
+    {td {{!page-topics.sub_ii} Subprograms II: Parameter Passing}}
     {td}
     {td P2 out, P1 due}
   }
   {tr
     {td 4/16}
-    {td {{!page-topics.sub_i} Subprograms I: Introduction}}
+    {td {{!page-topics.sub_iii} Subprograms III: Activations Records and Closures}}
     {td}
     {td}
   }
@@ -308,13 +308,13 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 4/18}
-    {td {{!page-topics.sub_ii} Subprograms II: Activation Records}}
+    {td {{!page-topics.sub_iv} Subprograms IV: The Substitution Model}}
     {td}
     {td P3 out, P2 due}
   }
   {tr
     {td 4/23}
-    {td {{!page-topics.sub_iii} Subprograms III: Activation Stack}}
+    {td {{!page-topics.adv_topic_i} Advanced Topic: Compilation}}
     {td}
     {td}
   }
@@ -326,7 +326,7 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 4/25}
-    {td {{!page-topics.adv_topic} Advanced Topic: Infinite Data Types}}
+    {td {{!page-topics.adv_topic_ii} Advanced Topic: TBD}}
     {td}
     {td P3 due}
   }

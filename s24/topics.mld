@@ -238,7 +238,7 @@ We diverge from the book a fair amount, but if you want some additional reading 
 {3:parse_ii General Parsing}
 
 {b Overview:}
-We reiterate some of the material from last lecture and introduce the notion of Chomsky normal forms
+We reiterate some of the material from last lecture and introduce the notion of Chomsky normal forms.
 
 {b Keywords:}
 lexical analysis, Chomsky normal forms, context-free grammars
@@ -263,24 +263,50 @@ combinator, mapping, sequencing, alternatives, pure, fail, bind, optionals, repe
 
 {3:sem_i Operational Semantics}
 
+{b Overview:}
+We look generally at the notion of semantics, distinguishing between static and dynamic semantics.
+We introduce configurations and reduction rules as the basis of operational semantics.
+
+{b Keywords:}
+static semantics, dynamic semantics, denotational semantics, operational semantics, abstract machine, configuration, reduction rule, stack-oriented language
+
+{b Additional information:}
+- Homework 7 is due on Friday by 11:59PM
+- Homework 8 is released on Friday
+
 {3:sem_ii Applying Rules}
+
+{b Overview:}
+We look more carefully at the notion of a reduction rule and define the notion of a derivation, which verifies that a reduction holds.
+We also introduce additional reduction rules to be able to reason about multi-step reductions.
+We see see general techniques for building derivations of reductions.
+
+{b Keywords:}
+operational semantics, configuration, abstract machine, reduction rule, derivation, single-step reduction, multi-step reduction
+
+{b Additional information:}
+- Homework 8 is now due Saturday by 11:59PM
 
 {3:sem_iii Designing Rules}
 
-{2:var Variables}
+We briefly discuss the design of rules.
+We then introduce a toy stack language with variables (this will be useful for project 1).
 
-{3:var_i Scoping}
+{b Keywords:}
+Environment, fetching from the environment, updating the environment
 
-{3:var_ii Binding}
+{2:sub Variables and Subprograms}
 
-{2:sub Subprograms}
+{3:sub_i Variable Binding and Scoping}
 
-{3:sub_i Introduction}
+{3:sub_ii Parameter Passing}
 
-{3:sub_ii Activation Records}
+{3:sub_iii Activation Records and Closures}
 
-{3:sub_iii Activation Stack}
+{3:sub_iv Substitution Model}
 
 {2:adv Advanced Topics}
 
-{3:adv_topic Infinite Data Types}
+{3:adv_topic_i Compilation}
+
+{3:adv_topic_ii TBD}
