@@ -289,6 +289,7 @@ operational semantics, configuration, abstract machine, reduction rule, derivati
 
 {3:sem_iii Designing Rules}
 
+{b Overview:}
 We briefly discuss the design of rules.
 We then introduce a toy stack language with variables (this will be useful for project 1).
 
@@ -299,7 +300,21 @@ Environment, fetching from the environment, updating the environment
 
 {3:sub_i Variable Binding and Scoping}
 
+{b Overview:}
+We discuss the difference between dynamic and lexical scoping.
+We see some examples of dynamic scoping and hint at the difficulty of lexical scoping in the context of subroutines.
+
+{b Keywords:}
+environment, scope, mutability, binding, assignment, lexical scoping, dynamic scoping, let-bindings, binding-defined scope, block-defined scope
+
 {3:sub_ii Parameter Passing}
+
+{b Overview:}
+We discuss various methods of parameter passing, in particular call-by-name and call-by-value.
+We see the benefits and downsides of each method.
+
+{b Keywords:}
+evaluation strategy, call-by-name, call-by-value, the lambda calculus, call-by-reference
 
 {3:sub_iii Activation Records and Closures}
 
@@ -309,4 +324,4 @@ Environment, fetching from the environment, updating the environment
 
 {3:adv_topic_i Compilation}
 
-{3:adv_topic_ii TBD}
+{3:adv_topic_ii The Lean Theorem Prover}

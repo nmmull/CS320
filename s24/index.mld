@@ -326,7 +326,7 @@ See the {!section-course_info} section for more information.
   }
   {tr
     {td 4/25}
-    {td {{!page-topics.adv_topic_ii} Advanced Topic: TBD}}
+    {td {{!page-topics.adv_topic_ii} Advanced Topic: The Lean Theorem Prover}}
     {td}
     {td P3 due}
   }
