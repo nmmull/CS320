@@ -1,5 +1,7 @@
 (library
- (name CS320_F24))
+ (name Specifications)
+ (public_name Fall-2024)
+ (modules_without_implementation assign00))
 
 (documentation
   (package Fall-2024)
