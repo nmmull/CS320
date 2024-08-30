@@ -52,6 +52,7 @@ See the {!section-course_info} section for more details.
 - {{: https://piazza.com/class/m04dwmzkfjt4zh }Piazza}
 - {{: https://www.gradescope.com/courses/818075 }Gradescope}
 - {{: https://github.com/BU-CS320/cs320-fall-2024 }Course Repository}
+- {{!Specifications.Stdlib320} Course Standard Library}
 - Office hours calendar
 
 You may also want to take a look at:
@@ -80,7 +81,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Tue 9/3}
     {td {{!page-topics.course_intro}Course Introduction}}
-    {td HW0 out}
+    {td A0 out}
   }
   {tr
     {td Wed 9/4}
@@ -90,7 +91,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 9/5}
     {td {{!page-topics.ocaml_intro_i}Beginning Ocaml I: The Basics}}
-    {td HW1 out}
+    {td A1 out}
   }
   {tr {td } {td } {td }}
   {tr
@@ -106,7 +107,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 9/12}
     {td {{!page-topics.ocaml_intro_iii}Beginning OCaml III: Unions and Products}}
-    {td HW2 out, HW1 due}
+    {td A2 out, A1 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -122,7 +123,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 9/19}
     {td {{!page-topics.adt_ii}Algebraic Data Types II: Examples}}
-    {td HW3 out, HW2 due}
+    {td A3 out, A2 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -138,7 +139,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 9/26}
     {td {{!page-topics.hop_ii}Higher Order Programming II: Folds}}
-    {td HW4 out, HW3 due}
+    {td A4 out, A3 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -154,7 +155,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 10/3}
     {td {{!page-topics.mod_ii}Modular Programming II: Examples}}
-    {td HW5 out, HW4 due}
+    {td A5 out, A4 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -170,7 +171,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 10/10}
     {td {{!page-topics.lcalc}The Lambda Calculus}}
-    {td HW5 due, HW6 out}
+    {td A5 due, A6 out}
   }
   {tr {td } {td } {td }}
   {tr
@@ -202,7 +203,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 10/24}
     {td {{!page-topics.parse_ii}Parsing II: Lexer/Parser Generators}}
-    {td HW7 out, HW6 due}
+    {td A7 out, A6 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -218,7 +219,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 10/31}
     {td {{!page-topics.sem_ii}Formal Semantics II: The Substitution Model}}
-    {td MP1 out, HW7 due}
+    {td MP1 out, A7 due}
   }
   {tr {td } {td } {td }}
   {tr
