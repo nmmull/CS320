@@ -1,7 +1,10 @@
 (library
  (name Specifications)
  (public_name Fall-2024)
- (modules_without_implementation assign00 stdlib320))
+ (modules_without_implementation
+  assign00
+  assign01
+  stdlib320))
 
 (documentation
   (package Fall-2024)
