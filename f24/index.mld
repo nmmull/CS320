@@ -41,7 +41,7 @@ Your final grade in the course will be determined by the following breakdown:
 
 {b Lecture Times and Locations:}
 - TR 11AM-12:15PM LSE B01 (A1)
-- TR 12:30-1:45PM KCB 101 (A2) {b (Warning: location not yet confirmed)}
+- TR 12:30-1:45PM KCB 101 (A2)
 
 {b Lab Times:} See the {{: https://www.bu.edu/academics/cas/courses/cas-cs-320/}Course Registar}
 
@@ -53,7 +53,7 @@ See the {!section-course_info} section for more details.
 - {{: https://www.gradescope.com/courses/818075 }Gradescope}
 - {{: https://github.com/BU-CS320/cs320-fall-2024 }Course Repository}
 - {{!Specifications.Stdlib320} Course Standard Library}
-- Office hours calendar
+- {{: https://calendar.google.com/calendar/embed?src=c_46814b65fc93295c4de4bf1e8e5687e35739530499aaed88be8ad99c5eba0032%40group.calendar.google.com&ctz=America%2FNew_York}Office hours calendar}
 
 You may also want to take a look at:
 - {{: https://ocaml.org/ }OCaml}
