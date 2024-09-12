@@ -1,0 +1,523 @@
+{0 Inference Rules}
+
+This page includes the inference rules that we use for typing judgments and semantic judgments.
+We will typically try to update it on a per-abstraction basis.
+Eventually, once we learn more about syntax, we'll likely include the syntax rules here as well.
+
+{1 Typing judgments}
+
+A {b typing judgment} is of the form {m \Gamma \vdash e : \tau}, where
+
+- {m \Gamma} is a context
+- {m e} is an expression
+- {m \tau} is a type
+
+It reads "in the context {m \Gamma}, the expression {m e} has type {m \tau}."
+
+A {b context} is a set of typed variables written, for example, as
+
+{math \{ \texttt{x} : \texttt{int}, \texttt{y} : \texttt{string}\}}
+
+which is a context which has a variable {m \texttt{x}} of type {m \texttt{int}} and a variable {m \texttt{y}} of type {m \texttt{string}}.
+It's a {i set} in the sense that a variable can appear at most once, e.g.,
+
+{math \{\texttt{x} : \texttt{int}, \texttt{x} : \texttt{string}\}}
+
+is {i not} a valid context.
+
+
+{2 Variables}
+
+This rule says that if the variable {m x} has type {m \tau} in {m \Gamma} then we can derive (without premises) that {m x} has type {m \tau}.
+The requirement that {m x : \tau} appears in {m \Gamma} is called a side condition, and is not included in a typing derivation (you can tell side-conditions by the fact that they are premises which are not typing judgments).
+
+{math
+\frac
+{x : \tau \in \Gamma}
+{\Gamma \vdash x : \tau}
+\ \textsf{(Var)}
+}
+
+{2 Literals}
+
+These rules say that all literals (e.g., {m \texttt{2}}, {m \texttt{3.234}}, {m \texttt{"word"}}) have the appropriate type in any context without premises.
+
+{math
+\frac
+{n \text{ is an integer literal}}
+{\Gamma \vdash n : \texttt{int}}
+\ \textsf{(IntLit)}
+\qquad
+\frac
+{n \text{ is an integer literal}}
+{\Gamma \vdash n : \texttt{float}}
+\ \textsf{(FloatLit)}
+\qquad
+\frac
+{s \text{ is an integer literal}}
+{\Gamma \vdash s : \texttt{string}}
+\ \textsf{(StrLit)}
+}
+
+{math
+\frac{}{\Gamma \vdash \texttt{true} : \texttt{bool}}
+\ \textsf{(TrueLit)}
+\qquad
+\frac{}{\Gamma \vdash \texttt{false} : \texttt{bool}}
+\ \textsf{(FalseLit)}
+}
+
+{2 Integer arithmetic}
+
+These rules express that integer operations apply only to integers and return integers.
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{+} \ e_2 : \texttt{int}}
+\ \textsf{(IntAdd)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{-} \ e_2 : \texttt{int}}
+\ \textsf{(IntSub)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{*} \ e_2 : \texttt{int}}
+\ \textsf{(IntMul)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{/} \ e_2 : \texttt{int}}
+\ \textsf{(IntDiv)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{mod} \ e_2 : \texttt{int}}
+\ \textsf{(IntMod)}
+}
+
+{2 Floating-point arithmetic}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{+.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatAdd)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{-.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatSub)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{*.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatMul)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{/.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatDiv)}
+}
+
+{2 Boolean operators}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{bool}
+}
+{\Gamma \vdash e_1 \ \texttt{\&\&} \ e_2 : \texttt{bool}}
+\ \textsf{(And)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{bool}
+}
+{\Gamma \vdash e_1 \ \texttt{||} \ e_2 : \texttt{bool}}
+\ \textsf{(Or)}
+}
+
+{math
+\frac
+{\Gamma \vdash e : \texttt{bool}}
+{\Gamma \vdash \texttt{not} \ e : \texttt{bool}}
+\ \textsf{(Not)}
+}
+
+{2 Comparison operators}
+
+Note that comparison operators are {i polymorphic}, they can be apply to any type.
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{=} \ e_2 : \texttt{bool}}
+\ \textsf{(Equal)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{<>} \ e_2 : \texttt{bool}}
+\ \textsf{(NotEqual)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{<} \ e_2 : \texttt{bool}}
+\ \textsf{(LessThan)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{<=} \ e_2 : \texttt{bool}}
+\ \textsf{(LTE)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{>} \ e_2 : \texttt{bool}}
+\ \textsf{(GreaterThan)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{>=} \ e_2 : \texttt{bool}}
+\ \textsf{(GTE)}
+}
+
+
+{2 Let-expressions}
+
+The left rule reads
+- if {m e_1} is of type {m \tau} in the context {m \Gamma} and
+- {m e_2} is of type {m \tau'} in the context {m \Gamma} with {m x : \tau} added, then
+- {m \texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2} is of type {m \tau'} in {m \Gamma}.
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma, x : \tau \vdash e_2 : \tau'
+}
+{\Gamma \vdash \texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 : \tau'
+}
+\ \textsf{(Let)}
+\qquad
+\frac
+{\Gamma, x : \tau \vdash e_1 : \tau_1
+ \qquad
+ \Gamma, f : \tau \ \texttt{->} \ \tau_1 \vdash e_2 : \tau_2
+}
+{\Gamma \vdash \texttt{let} \ f \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 : \tau_2
+}
+\ \textsf{(LetFun)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau_1 \ \texttt{*} \ \tau_2 \ \texttt{*} \dots \texttt{*} \ \tau_n
+ \qquad
+ \Gamma, x_1 : \tau_1, x_2 : \tau_2, \dots, x_n : \tau_n \vdash e_2 : \tau'
+}
+{\Gamma \vdash \texttt{let (} x_1 \texttt, x_2 \texttt,\dots\texttt,x_n \texttt{) =} \ e_1 \ \texttt{in} \ e_2 : \tau'
+}
+\ \textsf{(LetTuple)}
+}
+
+{2 If-expressions}
+{math
+\frac
+{\Gamma \vdash e : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash \texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 : \tau}
+\ \textsf{(If)}
+}
+
+{2 Pattern matching}
+
+{math
+
+\frac
+{\Gamma \vdash e : \tau
+ \qquad
+ \Gamma \vdash p_1 : \tau
+ \ \dots \
+ \Gamma \vdash p_n : \tau
+ \qquad
+ \Gamma \vdash e_1 : \tau'
+ \ \dots \
+ \Gamma \vdash e_n : \tau'
+}
+{\Gamma \vdash \texttt{match} \ e \ \texttt{with} \ p_1 \ \texttt{->} \ e_1 \ \texttt{|} \ \dots \ \texttt{|} \ p_n \ \texttt{->} \ e_n : \tau'}
+\ \textsf{(Pattern)}
+}
+
+{i Note.} This rule is slightly informal because we haven't defined exactly what a {i pattern} is.
+You won't be expected to write a typing derivation with this rule.
+
+{2 Tuples}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau_1
+ \qquad
+ \Gamma \vdash e_2 : \tau_2
+ \qquad
+ \dots
+ \qquad
+ \Gamma \vdash e_n : \tau_n
+}
+{\Gamma \vdash \texttt{(}e_1\texttt{,} e_2\texttt{,} \dots \texttt{,} e_n \texttt{)} :
+\tau_1 \ \texttt{*} \ \tau_2 \ \texttt{*} \dots \texttt{*} \ \tau_n}
+\ \textsf{(Tuple)}
+}
+
+
+{1 Semantic judgements}
+
+We read {m e \Downarrow v} as "the expression {m e} {i evaluates} to the value {m v}.
+
+{2 Variables}
+
+This rules says that a variable evaluates to itself, without any premises.
+
+{math
+\frac
+{x \text{ is a variable}}
+{x \Downarrow x}
+\ \textsf{(VarEval)}
+}
+
+{2 Literals}
+
+This rule says that any literal evaluates to itself, without any premises.
+
+{math
+\frac
+{v \text{ is an integer/float/string/Boolean literal}}
+{v \Downarrow v}
+\ \textsf{(LitEval)}
+}
+
+{2 Operators}
+
+We will treat all operators for now as {i built-in}. When we evaluate an expression, we have to evaluate its operands and the apply the operator.
+
+{math
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 \ \mathsf{op} \ v_2 = v
+}
+{e_1 \ \texttt{op} \ e_2 \Downarrow v}
+\ \textsf{(OpEval)}
+}
+
+So for, example, these rules express that floating-point operators behave as expected.
+Note that in expressions we use typewriter font (e.g., {m \texttt{+.}}) to represent an operator, whereas for values we use mathematical font (e.g., {m +}).
+
+
+{math
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 + v_2 = v
+}
+{e_1 \ \texttt{+.} \ e_2 \Downarrow v}
+\ \textsf{(FloatAddEval)}
+\qquad
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 - v_2 = v
+}
+{e_1 \ \texttt{-.} \ e_2 \Downarrow v}
+\ \textsf{(FloatSubEval)}
+}
+
+{math
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 * v_2 = v
+}
+{e_1 \ \texttt{*.} \ e_2 \Downarrow v}
+\ \textsf{(FloatMulEval)}
+\qquad
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 / v_2 = v
+}
+{e_1 \ \texttt{/.} \ e_2 \Downarrow v}
+\ \textsf{(FloatDivEval)}
+}
+
+Also note that premises like '{m v_1 + v_2 = v}' are not a part of a derivation, they are like the side-conditions above.
+For example, we would write
+
+{math
+\frac
+{\texttt{2} \Downarrow \texttt{2}
+ \qquad
+ \texttt{3} \Downarrow \texttt{3}
+}
+{\texttt{2 + 3} \Downarrow \texttt{5}}
+}
+
+for a particular case of the rule for adding two integers.
+
+{2 Let-expressions}
+
+The rule on the left reads
+- if {m e_1} evaluates to {m v_1}
+- and {m e_2} {b with {m v_1} substituted for {m x}} evaluates to {m v_2}, then
+- {m \texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2} evaluates to {m v_2}.
+
+{math
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ [v_1/x]e_2 \Downarrow v_2
+}
+{\texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 \Downarrow v_2}
+\ \textsf{(LetEval)}
+}
+
+{math
+\frac
+{e_1 \Downarrow \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
+ \qquad
+ [v_1 / x_1, v_2 / x_2, \dots, v_n / x_n]e_2 \Downarrow v_2
+}
+{\texttt{let (} x_1 \texttt, x_2 \texttt,\dots\texttt,x_n \texttt{) =} \ e_1 \ \texttt{in} \ e_2 \Downarrow v_2
+}
+\ \textsf{(LetTupleEval)}
+}
+
+{2 If-expressions}
+
+{math
+\frac
+{e \Downarrow \texttt{true}
+ \qquad
+ e_1 \Downarrow v_1
+}
+{\texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 \Downarrow v_1}
+\ \textsf{(IfTrue)}
+\qquad
+\frac
+{e \Downarrow \texttt{false}
+ \qquad
+ e_2 \Downarrow v_2
+}
+{\texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 \Downarrow v_2}
+\ \textsf{(IfFalse)}
+}
+
+{2 Pattern matching}
+
+{math
+\frac
+{e \Downarrow v
+ \qquad
+ v \text{ matches } p_i
+ \qquad
+ \forall j < i.(v \text{ does not match } p_j)
+ \qquad
+ e_i \Downarrow v_i
+}
+{\texttt{match} \ e \ \texttt{with} \ p_1 \ \texttt{->} \ e_1 \ \texttt{|} \ \dots \ \texttt{|} \ p_n \ \texttt{->} \ e_n \Downarrow v_i}
+\ \textsf{(PatternEval)}
+}
+
+{i Note.} This rule is slightly informal because we haven't defined exactly what a pattern is.
+You won't be expected to write a derivation of a semantic judgment with this rule.
+
+{2 Tuples}
+
+{math
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ \dots
+ \qquad
+ e_n \Downarrow v_n
+}
+{\texttt{(} e_1\texttt{,} e_2\texttt{,} \dots \texttt{,} e_n \texttt{)}
+ \Downarrow
+ \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
+}
+\ \textsf{(TupleEval)}
+}
