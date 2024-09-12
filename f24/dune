@@ -4,6 +4,7 @@
  (modules_without_implementation
   assign00
   assign01
+  assign02
   stdlib320))
 
 (documentation
