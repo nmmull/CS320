@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>rules (Fall-2024.rules)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.2"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../odoc.support/katex.min.css"/><script src="../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="index.html">Fall-2024</a> &#x00BB; rules</nav><header class="odoc-preamble"><h1 id="inference-rules"><a href="#inference-rules" class="anchor"></a>Inference Rules</h1><p>This page includes the inference rules that we use for typing judgments and semantic judgments. We will typically try to update it on a per-abstraction basis. Eventually, once we learn more about syntax, we'll likely include the syntax rules here as well.</p></header><nav class="odoc-toc"><ul><li><a href="#typing-judgments">Typing judgments</a><ul><li><a href="#variables">Variables</a></li><li><a href="#literals">Literals</a></li><li><a href="#integer-arithmetic">Integer arithmetic</a></li><li><a href="#floating-point-arithmetic">Floating-point arithmetic</a></li><li><a href="#boolean-operators">Boolean operators</a></li><li><a href="#comparison-operators">Comparison operators</a></li><li><a href="#let-expressions">Let-expressions</a></li><li><a href="#if-expressions">If-expressions</a></li><li><a href="#pattern-matching">Pattern matching</a></li><li><a href="#tuples">Tuples</a></li></ul></li><li><a href="#semantic-judgements">Semantic judgements</a><ul><li><a href="#variables_2">Variables</a></li><li><a href="#literals_2">Literals</a></li><li><a href="#operators">Operators</a></li><li><a href="#let-expressions_2">Let-expressions</a></li><li><a href="#if-expressions_2">If-expressions</a></li><li><a href="#pattern-matching_2">Pattern matching</a></li><li><a href="#tuples_2">Tuples</a></li></ul></li></ul></nav><div class="odoc-content"><h2 id="typing-judgments"><a href="#typing-judgments" class="anchor"></a>Typing judgments</h2><p>A <b>typing judgment</b> is of the form <code class="odoc-katex-math">\Gamma \vdash e : \tau</code>, where</p><ul><li><code class="odoc-katex-math">\Gamma</code> is a context</li><li><code class="odoc-katex-math">e</code> is an expression</li><li><code class="odoc-katex-math">\tau</code> is a type</li></ul><p>It reads &quot;in the context <code class="odoc-katex-math">\Gamma</code>, the expression <code class="odoc-katex-math">e</code> has type <code class="odoc-katex-math">\tau</code>.&quot;</p><p>A <b>context</b> is a set of typed variables written, for example, as</p><div><pre class="odoc-katex-math display">\{ \texttt{x} : \texttt{int}, \texttt{y} : \texttt{string}\}</pre></div><p>which is a context which has a variable <code class="odoc-katex-math">\texttt{x}</code> of type <code class="odoc-katex-math">\texttt{int}</code> and a variable <code class="odoc-katex-math">\texttt{y}</code> of type <code class="odoc-katex-math">\texttt{string}</code>. It's a <i>set</i> in the sense that a variable can appear at most once, e.g.,</p><div><pre class="odoc-katex-math display">\{\texttt{x} : \texttt{int}, \texttt{x} : \texttt{string}\}</pre></div><p>is <i>not</i> a valid context.</p><h3 id="variables"><a href="#variables" class="anchor"></a>Variables</h3><p>This rule says that if the variable <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code> in <code class="odoc-katex-math">\Gamma</code> then we can derive (without premises) that <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code>. The requirement that <code class="odoc-katex-math">x : \tau</code> appears in <code class="odoc-katex-math">\Gamma</code> is called a side condition, and is not included in a typing derivation (you can tell side-conditions by the fact that they are premises which are not typing judgments).</p><div><pre class="odoc-katex-math display">\frac
+{x : \tau \in \Gamma}
+{\Gamma \vdash x : \tau}
+\ \textsf{(Var)}
+</pre></div><h3 id="literals"><a href="#literals" class="anchor"></a>Literals</h3><p>These rules say that all literals (e.g., <code class="odoc-katex-math">\texttt{2}</code>, <code class="odoc-katex-math">\texttt{3.234}</code>, <code class="odoc-katex-math">\texttt{&quot;word&quot;}</code>) have the appropriate type in any context without premises.</p><div><pre class="odoc-katex-math display">\frac
+{n \text{ is an integer literal}}
+{\Gamma \vdash n : \texttt{int}}
+\ \textsf{(IntLit)}
+\qquad
+\frac
+{n \text{ is an integer literal}}
+{\Gamma \vdash n : \texttt{float}}
+\ \textsf{(FloatLit)}
+\qquad
+\frac
+{s \text{ is an integer literal}}
+{\Gamma \vdash s : \texttt{string}}
+\ \textsf{(StrLit)}
+</pre></div><div><pre class="odoc-katex-math display">\frac{}{\Gamma \vdash \texttt{true} : \texttt{bool}}
+\ \textsf{(TrueLit)}
+\qquad
+\frac{}{\Gamma \vdash \texttt{false} : \texttt{bool}}
+\ \textsf{(FalseLit)}
+</pre></div><h3 id="integer-arithmetic"><a href="#integer-arithmetic" class="anchor"></a>Integer arithmetic</h3><p>These rules express that integer operations apply only to integers and return integers.</p><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{+} \ e_2 : \texttt{int}}
+\ \textsf{(IntAdd)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{-} \ e_2 : \texttt{int}}
+\ \textsf{(IntSub)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{*} \ e_2 : \texttt{int}}
+\ \textsf{(IntMul)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{/} \ e_2 : \texttt{int}}
+\ \textsf{(IntDiv)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{int}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{int}
+}
+{\Gamma \vdash e_1 \ \texttt{mod} \ e_2 : \texttt{int}}
+\ \textsf{(IntMod)}
+</pre></div><h3 id="floating-point-arithmetic"><a href="#floating-point-arithmetic" class="anchor"></a>Floating-point arithmetic</h3><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{+.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatAdd)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{-.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatSub)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{*.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatMul)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{float}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{float}
+}
+{\Gamma \vdash e_1 \ \texttt{/.} \ e_2 : \texttt{float}}
+\ \textsf{(FloatDiv)}
+</pre></div><h3 id="boolean-operators"><a href="#boolean-operators" class="anchor"></a>Boolean operators</h3><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{bool}
+}
+{\Gamma \vdash e_1 \ \texttt{\&amp;\&amp;} \ e_2 : \texttt{bool}}
+\ \textsf{(And)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_2 : \texttt{bool}
+}
+{\Gamma \vdash e_1 \ \texttt{||} \ e_2 : \texttt{bool}}
+\ \textsf{(Or)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e : \texttt{bool}}
+{\Gamma \vdash \texttt{not} \ e : \texttt{bool}}
+\ \textsf{(Not)}
+</pre></div><h3 id="comparison-operators"><a href="#comparison-operators" class="anchor"></a>Comparison operators</h3><p>Note that comparison operators are <i>polymorphic</i>, they can be apply to any type.</p><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{=} \ e_2 : \texttt{bool}}
+\ \textsf{(Equal)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{&lt;&gt;} \ e_2 : \texttt{bool}}
+\ \textsf{(NotEqual)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{&lt;} \ e_2 : \texttt{bool}}
+\ \textsf{(LessThan)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{&lt;=} \ e_2 : \texttt{bool}}
+\ \textsf{(LTE)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{&gt;} \ e_2 : \texttt{bool}}
+\ \textsf{(GreaterThan)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash e_1 \ \texttt{&gt;=} \ e_2 : \texttt{bool}}
+\ \textsf{(GTE)}
+</pre></div><h3 id="let-expressions"><a href="#let-expressions" class="anchor"></a>Let-expressions</h3><p>The left rule reads</p><ul><li>if <code class="odoc-katex-math">e_1</code> is of type <code class="odoc-katex-math">\tau</code> in the context <code class="odoc-katex-math">\Gamma</code> and</li><li><code class="odoc-katex-math">e_2</code> is of type <code class="odoc-katex-math">\tau'</code> in the context <code class="odoc-katex-math">\Gamma</code> with <code class="odoc-katex-math">x : \tau</code> added, then</li><li><code class="odoc-katex-math">\texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2</code> is of type <code class="odoc-katex-math">\tau'</code> in <code class="odoc-katex-math">\Gamma</code>.</li></ul><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma, x : \tau \vdash e_2 : \tau'
+}
+{\Gamma \vdash \texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 : \tau'
+}
+\ \textsf{(Let)}
+\qquad
+\frac
+{\Gamma, x : \tau \vdash e_1 : \tau_1
+ \qquad
+ \Gamma, f : \tau \ \texttt{-&gt;} \ \tau_1 \vdash e_2 : \tau_2
+}
+{\Gamma \vdash \texttt{let} \ f \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 : \tau_2
+}
+\ \textsf{(LetFun)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau_1 \ \texttt{*} \ \tau_2 \ \texttt{*} \dots \texttt{*} \ \tau_n
+ \qquad
+ \Gamma, x_1 : \tau_1, x_2 : \tau_2, \dots, x_n : \tau_n \vdash e_2 : \tau'
+}
+{\Gamma \vdash \texttt{let (} x_1 \texttt, x_2 \texttt,\dots\texttt,x_n \texttt{) =} \ e_1 \ \texttt{in} \ e_2 : \tau'
+}
+\ \textsf{(LetTuple)}
+</pre></div><h3 id="if-expressions"><a href="#if-expressions" class="anchor"></a>If-expressions</h3><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e : \texttt{bool}
+ \qquad
+ \Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+}
+{\Gamma \vdash \texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 : \tau}
+\ \textsf{(If)}
+</pre></div><h3 id="pattern-matching"><a href="#pattern-matching" class="anchor"></a>Pattern matching</h3><div><pre class="odoc-katex-math display">
+\frac
+{\Gamma \vdash e : \tau
+ \qquad
+ \Gamma \vdash p_1 : \tau
+ \ \dots \
+ \Gamma \vdash p_n : \tau
+ \qquad
+ \Gamma \vdash e_1 : \tau'
+ \ \dots \
+ \Gamma \vdash e_n : \tau'
+}
+{\Gamma \vdash \texttt{match} \ e \ \texttt{with} \ p_1 \ \texttt{-&gt;} \ e_1 \ \texttt{|} \ \dots \ \texttt{|} \ p_n \ \texttt{-&gt;} \ e_n : \tau'}
+\ \textsf{(Pattern)}
+</pre></div><p><i>Note.</i> This rule is slightly informal because we haven't defined exactly what a <i>pattern</i> is. You won't be expected to write a typing derivation with this rule.</p><h3 id="tuples"><a href="#tuples" class="anchor"></a>Tuples</h3><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau_1
+ \qquad
+ \Gamma \vdash e_2 : \tau_2
+ \qquad
+ \dots
+ \qquad
+ \Gamma \vdash e_n : \tau_n
+}
+{\Gamma \vdash \texttt{(}e_1\texttt{,} e_2\texttt{,} \dots \texttt{,} e_n \texttt{)} :
+\tau_1 \ \texttt{*} \ \tau_2 \ \texttt{*} \dots \texttt{*} \ \tau_n}
+\ \textsf{(Tuple)}
+</pre></div><h2 id="semantic-judgements"><a href="#semantic-judgements" class="anchor"></a>Semantic judgements</h2><p>We read <code class="odoc-katex-math">e \Downarrow v</code> as &quot;the expression <code class="odoc-katex-math">e</code> <i>evaluates</i> to the value <code class="odoc-katex-math">v</code>.</p><h3 id="variables_2"><a href="#variables_2" class="anchor"></a>Variables</h3><p>This rules says that a variable evaluates to itself, without any premises.</p><div><pre class="odoc-katex-math display">\frac
+{x \text{ is a variable}}
+{x \Downarrow x}
+\ \textsf{(VarEval)}
+</pre></div><h3 id="literals_2"><a href="#literals_2" class="anchor"></a>Literals</h3><p>This rule says that any literal evaluates to itself, without any premises.</p><div><pre class="odoc-katex-math display">\frac
+{v \text{ is an integer/float/string/Boolean literal}}
+{v \Downarrow v}
+\ \textsf{(LitEval)}
+</pre></div><h3 id="operators"><a href="#operators" class="anchor"></a>Operators</h3><p>We will treat all operators for now as <i>built-in</i>. When we evaluate an expression, we have to evaluate its operands and the apply the operator.</p><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 \ \mathsf{op} \ v_2 = v
+}
+{e_1 \ \texttt{op} \ e_2 \Downarrow v}
+\ \textsf{(OpEval)}
+</pre></div><p>So for, example, these rules express that floating-point operators behave as expected. Note that in expressions we use typewriter font (e.g., <code class="odoc-katex-math">\texttt{+.}</code>) to represent an operator, whereas for values we use mathematical font (e.g., <code class="odoc-katex-math">+</code>).</p><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 + v_2 = v
+}
+{e_1 \ \texttt{+.} \ e_2 \Downarrow v}
+\ \textsf{(FloatAddEval)}
+\qquad
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 - v_2 = v
+}
+{e_1 \ \texttt{-.} \ e_2 \Downarrow v}
+\ \textsf{(FloatSubEval)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 * v_2 = v
+}
+{e_1 \ \texttt{*.} \ e_2 \Downarrow v}
+\ \textsf{(FloatMulEval)}
+\qquad
+\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ v_1 / v_2 = v
+}
+{e_1 \ \texttt{/.} \ e_2 \Downarrow v}
+\ \textsf{(FloatDivEval)}
+</pre></div><p>Also note that premises like '<code class="odoc-katex-math">v_1 + v_2 = v</code>' are not a part of a derivation, they are like the side-conditions above. For example, we would write</p><div><pre class="odoc-katex-math display">\frac
+{\texttt{2} \Downarrow \texttt{2}
+ \qquad
+ \texttt{3} \Downarrow \texttt{3}
+}
+{\texttt{2 + 3} \Downarrow \texttt{5}}
+</pre></div><p>for a particular case of the rule for adding two integers.</p><h3 id="let-expressions_2"><a href="#let-expressions_2" class="anchor"></a>Let-expressions</h3><p>The rule on the left reads</p><ul><li>if <code class="odoc-katex-math">e_1</code> evaluates to <code class="odoc-katex-math">v_1</code></li><li>and <code class="odoc-katex-math">e_2</code> <b>with <code class="odoc-katex-math">v_1</code> substituted for <code class="odoc-katex-math">x</code></b> evaluates to <code class="odoc-katex-math">v_2</code>, then</li><li><code class="odoc-katex-math">\texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2</code> evaluates to <code class="odoc-katex-math">v_2</code>.</li></ul><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1
+ \qquad
+ [v_1/x]e_2 \Downarrow v_2
+}
+{\texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 \Downarrow v_2}
+\ \textsf{(LetEval)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
+ \qquad
+ [v_1 / x_1, v_2 / x_2, \dots, v_n / x_n]e_2 \Downarrow v_2
+}
+{\texttt{let (} x_1 \texttt, x_2 \texttt,\dots\texttt,x_n \texttt{) =} \ e_1 \ \texttt{in} \ e_2 \Downarrow v_2
+}
+\ \textsf{(LetTupleEval)}
+</pre></div><h3 id="if-expressions_2"><a href="#if-expressions_2" class="anchor"></a>If-expressions</h3><div><pre class="odoc-katex-math display">\frac
+{e \Downarrow \texttt{true}
+ \qquad
+ e_1 \Downarrow v_1
+}
+{\texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 \Downarrow v_1}
+\ \textsf{(IfTrue)}
+\qquad
+\frac
+{e \Downarrow \texttt{false}
+ \qquad
+ e_2 \Downarrow v_2
+}
+{\texttt{if} \ e \ \texttt{then} \ e_1 \ \texttt{else} \ e_2 \Downarrow v_2}
+\ \textsf{(IfFalse)}
+</pre></div><h3 id="pattern-matching_2"><a href="#pattern-matching_2" class="anchor"></a>Pattern matching</h3><div><pre class="odoc-katex-math display">\frac
+{e \Downarrow v
+ \qquad
+ v \text{ matches } p_i
+ \qquad
+ \forall j &lt; i.(v \text{ does not match } p_j)
+ \qquad
+ e_i \Downarrow v_i
+}
+{\texttt{match} \ e \ \texttt{with} \ p_1 \ \texttt{-&gt;} \ e_1 \ \texttt{|} \ \dots \ \texttt{|} \ p_n \ \texttt{-&gt;} \ e_n \Downarrow v_i}
+\ \textsf{(PatternEval)}
+</pre></div><p><i>Note.</i> This rule is slightly informal because we haven't defined exactly what a pattern is. You won't be expected to write a derivation of a semantic judgment with this rule.</p><h3 id="tuples_2"><a href="#tuples_2" class="anchor"></a>Tuples</h3><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1
+ \qquad
+ e_2 \Downarrow v_2
+ \qquad
+ \dots
+ \qquad
+ e_n \Downarrow v_n
+}
+{\texttt{(} e_1\texttt{,} e_2\texttt{,} \dots \texttt{,} e_n \texttt{)}
+ \Downarrow
+ \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
+}
+\ \textsf{(TupleEval)}
+</pre></div></div></body></html>
