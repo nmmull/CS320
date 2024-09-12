@@ -2,7 +2,6 @@
 
 This page includes the inference rules that we use for typing judgments and semantic judgments.
 We will typically try to update it on a per-abstraction basis.
-Eventually, once we learn more about syntax, we'll likely include the syntax rules here as well.
 
 {1 Typing judgments}
 
@@ -332,7 +331,7 @@ You won't be expected to write a typing derivation with this rule.
 }
 
 
-{1 Semantic judgements}
+{1 Semantic judgments}
 
 We read {m e \Downarrow v} as "the expression {m e} {i evaluates} to the value {m v}.
 
