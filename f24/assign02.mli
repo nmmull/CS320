@@ -70,7 +70,7 @@ type matrix =
 
 val mk_matrix : float list -> int * int -> matrix
 (** Implement the function [mk_matrix] which, given a list of floating-point [entries] and a pair of integers [(r, c)] representing a number of rows and a number of columns, constructs a matrix with [r] rows and [c] columns using the numbers in [entries].
-    That is, the first [r] numbers in [entries] make up the first row, the next [r] numbers make up the second row, and so on.
+    That is, the first [c] numbers in [entries] make up the first row, the next [c] numbers make up the second row, and so on.
     You may assume that [entries] is length [r * c].
     The behavior of the implementation is undefined otherwise.
 
