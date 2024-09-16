@@ -278,6 +278,18 @@ The left rule reads
 \ \textsf{(LetTuple)}
 }
 
+{2 Function Application}
+
+{math
+\frac
+{\Gamma \vdash f : \tau \to \tau_1
+ \qquad
+ \Gamma \vdash e : \tau
+}
+{\Gamma \vdash f \ e : \tau_1}
+\ \textsf{(App)}
+}
+
 {2 If-expressions}
 {math
 \frac
