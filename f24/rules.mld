@@ -342,6 +342,50 @@ You won't be expected to write a typing derivation with this rule.
 \ \textsf{(Tuple)}
 }
 
+{2 Lists}
+
+{math
+\frac
+{}
+{\Gamma \vdash \texttt{[]} : \alpha \ \texttt{list}}
+\ \textsf{(Nil)}
+\qquad
+\frac
+{\Gamma \vdash e : \tau
+ \qquad
+ \Gamma \vdash l : \tau \ \texttt{list}
+}
+{\Gamma \vdash (e \ \texttt{::} \ l) : \tau \ \texttt{list}
+}
+\ \textsf{(Cons)}
+}
+
+{math
+\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+ \qquad
+ \dots
+ \qquad
+ \Gamma \vdash e_n : \tau
+}
+{\Gamma \vdash \texttt{[} e_1 \texttt{;} e_2\texttt{;}\dots\texttt;e_n\texttt{]} : \tau \ \texttt{list}}
+\ \textsf{(ListLit)}
+}
+
+{math
+\frac
+{\Gamma \vdash e : \tau \ \texttt{list}
+ \qquad
+ \Gamma \vdash e_1 : \tau'
+ \qquad
+ \Gamma, h : \tau, t : \tau \ \texttt{list} \vdash e_2 : \tau'
+}
+{\Gamma \vdash \left(\texttt{match} \ e \ \texttt{with [] -> } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -> } e_2 \right) : \tau'
+}
+\ \textsf{(ListMatch)}
+}
 
 {1 Semantic judgments}
 
@@ -531,4 +575,47 @@ You won't be expected to write a derivation of a semantic judgment with this rul
  \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
 }
 \ \textsf{(TupleEval)}
+}
+
+{2 Lists}
+
+{math
+\frac{}{\texttt{[]} \Downarrow \texttt{[]}}
+\ \textsf{(NilEval)}
+\qquad
+\frac
+{e \Downarrow v
+ \qquad
+ l \Downarrow \texttt{[} v_1 \texttt{;} v_2\texttt{;}\dots\texttt;v_n\texttt{]}
+}
+{e \ \texttt{::} \ l \Downarrow
+ \texttt{[} v \texttt{;} v_1 \texttt{;} v_2\texttt{;}\dots\texttt;v_n\texttt{]}
+}
+\ \textsf{(ConsEval)}
+}
+
+{math
+\frac
+{e \Downarrow \texttt{[]}
+ \qquad
+ e_1 \Downarrow v_1
+}
+{\left(\texttt{match} \ e \ \texttt{with [] -> } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -> } e_2 \right)
+ \Downarrow
+ v_1
+}
+\ \textsf{(ListMatchNilEval)}
+}
+
+{math
+\frac
+{e \Downarrow (v \ \texttt{::} \ v')
+ \qquad
+ [v / h][v' / t]e_2 \Downarrow v_2
+}
+{\left(\texttt{match} \ e \ \texttt{with [] -> } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -> } e_2 \right)
+ \Downarrow
+ v_2
+}
+\ \textsf{(ListMatchConsEval)}
 }
