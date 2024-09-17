@@ -54,7 +54,7 @@ See the {!section-course_info} section for more details.
 - {{: https://github.com/BU-CS320/cs320-fall-2024 }Course Repository}
 - {{!Specifications.Stdlib320} Course Standard Library}
 - {{: https://calendar.google.com/calendar/embed?src=c_46814b65fc93295c4de4bf1e8e5687e35739530499aaed88be8ad99c5eba0032%40group.calendar.google.com&ctz=America%2FNew_York}Office hours calendar}
-- {{!page-rules} Inference Rules (NEW)}
+- {{!page-rules} Inference Rules}
 
 You may also want to take a look at:
 - {{: https://ocaml.org/ }OCaml}
