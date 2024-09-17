@@ -16,7 +16,7 @@
           });
         
 //]]>
-</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="index.html">Fall-2024</a> &#x00BB; rules</nav><header class="odoc-preamble"><h1 id="inference-rules"><a href="#inference-rules" class="anchor"></a>Inference Rules</h1><p>This page includes the inference rules that we use for typing judgments and semantic judgments. We will typically try to update it on a per-abstraction basis.</p></header><nav class="odoc-toc"><ul><li><a href="#typing-judgments">Typing judgments</a><ul><li><a href="#variables">Variables</a></li><li><a href="#literals">Literals</a></li><li><a href="#integer-arithmetic">Integer arithmetic</a></li><li><a href="#floating-point-arithmetic">Floating-point arithmetic</a></li><li><a href="#boolean-operators">Boolean operators</a></li><li><a href="#comparison-operators">Comparison operators</a></li><li><a href="#let-expressions">Let-expressions</a></li><li><a href="#function-application">Function Application</a></li><li><a href="#if-expressions">If-expressions</a></li><li><a href="#pattern-matching">Pattern matching</a></li><li><a href="#tuples">Tuples</a></li></ul></li><li><a href="#semantic-judgments">Semantic judgments</a><ul><li><a href="#variables_2">Variables</a></li><li><a href="#literals_2">Literals</a></li><li><a href="#operators">Operators</a></li><li><a href="#let-expressions_2">Let-expressions</a></li><li><a href="#if-expressions_2">If-expressions</a></li><li><a href="#pattern-matching_2">Pattern matching</a></li><li><a href="#tuples_2">Tuples</a></li></ul></li></ul></nav><div class="odoc-content"><h2 id="typing-judgments"><a href="#typing-judgments" class="anchor"></a>Typing judgments</h2><p>A <b>typing judgment</b> is of the form <code class="odoc-katex-math">\Gamma \vdash e : \tau</code>, where</p><ul><li><code class="odoc-katex-math">\Gamma</code> is a context</li><li><code class="odoc-katex-math">e</code> is an expression</li><li><code class="odoc-katex-math">\tau</code> is a type</li></ul><p>It reads &quot;in the context <code class="odoc-katex-math">\Gamma</code>, the expression <code class="odoc-katex-math">e</code> has type <code class="odoc-katex-math">\tau</code>.&quot;</p><p>A <b>context</b> is a set of typed variables written, for example, as</p><div><pre class="odoc-katex-math display">\{ \texttt{x} : \texttt{int}, \texttt{y} : \texttt{string}\}</pre></div><p>which is a context which has a variable <code class="odoc-katex-math">\texttt{x}</code> of type <code class="odoc-katex-math">\texttt{int}</code> and a variable <code class="odoc-katex-math">\texttt{y}</code> of type <code class="odoc-katex-math">\texttt{string}</code>. It's a <i>set</i> in the sense that a variable can appear at most once, e.g.,</p><div><pre class="odoc-katex-math display">\{\texttt{x} : \texttt{int}, \texttt{x} : \texttt{string}\}</pre></div><p>is <i>not</i> a valid context.</p><h3 id="variables"><a href="#variables" class="anchor"></a>Variables</h3><p>This rule says that if the variable <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code> in <code class="odoc-katex-math">\Gamma</code> then we can derive (without premises) that <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code>. The requirement that <code class="odoc-katex-math">x : \tau</code> appears in <code class="odoc-katex-math">\Gamma</code> is called a side condition, and is not included in a typing derivation (you can tell side-conditions by the fact that they are premises which are not typing judgments).</p><div><pre class="odoc-katex-math display">\frac
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="index.html">Fall-2024</a> &#x00BB; rules</nav><header class="odoc-preamble"><h1 id="inference-rules"><a href="#inference-rules" class="anchor"></a>Inference Rules</h1><p>This page includes the inference rules that we use for typing judgments and semantic judgments. We will typically try to update it on a per-abstraction basis.</p></header><nav class="odoc-toc"><ul><li><a href="#typing-judgments">Typing judgments</a><ul><li><a href="#variables">Variables</a></li><li><a href="#literals">Literals</a></li><li><a href="#integer-arithmetic">Integer arithmetic</a></li><li><a href="#floating-point-arithmetic">Floating-point arithmetic</a></li><li><a href="#boolean-operators">Boolean operators</a></li><li><a href="#comparison-operators">Comparison operators</a></li><li><a href="#let-expressions">Let-expressions</a></li><li><a href="#function-application">Function Application</a></li><li><a href="#if-expressions">If-expressions</a></li><li><a href="#pattern-matching">Pattern matching</a></li><li><a href="#tuples">Tuples</a></li><li><a href="#lists">Lists</a></li></ul></li><li><a href="#semantic-judgments">Semantic judgments</a><ul><li><a href="#variables_2">Variables</a></li><li><a href="#literals_2">Literals</a></li><li><a href="#operators">Operators</a></li><li><a href="#let-expressions_2">Let-expressions</a></li><li><a href="#if-expressions_2">If-expressions</a></li><li><a href="#pattern-matching_2">Pattern matching</a></li><li><a href="#tuples_2">Tuples</a></li><li><a href="#lists_2">Lists</a></li></ul></li></ul></nav><div class="odoc-content"><h2 id="typing-judgments"><a href="#typing-judgments" class="anchor"></a>Typing judgments</h2><p>A <b>typing judgment</b> is of the form <code class="odoc-katex-math">\Gamma \vdash e : \tau</code>, where</p><ul><li><code class="odoc-katex-math">\Gamma</code> is a context</li><li><code class="odoc-katex-math">e</code> is an expression</li><li><code class="odoc-katex-math">\tau</code> is a type</li></ul><p>It reads &quot;in the context <code class="odoc-katex-math">\Gamma</code>, the expression <code class="odoc-katex-math">e</code> has type <code class="odoc-katex-math">\tau</code>.&quot;</p><p>A <b>context</b> is a set of typed variables written, for example, as</p><div><pre class="odoc-katex-math display">\{ \texttt{x} : \texttt{int}, \texttt{y} : \texttt{string}\}</pre></div><p>which is a context which has a variable <code class="odoc-katex-math">\texttt{x}</code> of type <code class="odoc-katex-math">\texttt{int}</code> and a variable <code class="odoc-katex-math">\texttt{y}</code> of type <code class="odoc-katex-math">\texttt{string}</code>. It's a <i>set</i> in the sense that a variable can appear at most once, e.g.,</p><div><pre class="odoc-katex-math display">\{\texttt{x} : \texttt{int}, \texttt{x} : \texttt{string}\}</pre></div><p>is <i>not</i> a valid context.</p><h3 id="variables"><a href="#variables" class="anchor"></a>Variables</h3><p>This rule says that if the variable <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code> in <code class="odoc-katex-math">\Gamma</code> then we can derive (without premises) that <code class="odoc-katex-math">x</code> has type <code class="odoc-katex-math">\tau</code>. The requirement that <code class="odoc-katex-math">x : \tau</code> appears in <code class="odoc-katex-math">\Gamma</code> is called a side condition, and is not included in a typing derivation (you can tell side-conditions by the fact that they are premises which are not typing judgments).</p><div><pre class="odoc-katex-math display">\frac
 {x : \tau \in \Gamma}
 {\Gamma \vdash x : \tau}
 \ \textsf{(Var)}
@@ -237,6 +237,40 @@
 {\Gamma \vdash \texttt{(}e_1\texttt{,} e_2\texttt{,} \dots \texttt{,} e_n \texttt{)} :
 \tau_1 \ \texttt{*} \ \tau_2 \ \texttt{*} \dots \texttt{*} \ \tau_n}
 \ \textsf{(Tuple)}
+</pre></div><h3 id="lists"><a href="#lists" class="anchor"></a>Lists</h3><div><pre class="odoc-katex-math display">\frac
+{}
+{\Gamma \vdash \texttt{[]} : \alpha \ \texttt{list}}
+\ \textsf{(Nil)}
+\qquad
+\frac
+{\Gamma \vdash e : \tau
+ \qquad
+ \Gamma \vdash l : \tau \ \texttt{list}
+}
+{\Gamma \vdash (e \ \texttt{::} \ l) : \tau \ \texttt{list}
+}
+\ \textsf{(Cons)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e_1 : \tau
+ \qquad
+ \Gamma \vdash e_2 : \tau
+ \qquad
+ \dots
+ \qquad
+ \Gamma \vdash e_n : \tau
+}
+{\Gamma \vdash \texttt{[} e_1 \texttt{;} e_2\texttt{;}\dots\texttt;e_n\texttt{]} : \tau \ \texttt{list}}
+\ \textsf{(ListLit)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{\Gamma \vdash e : \tau \ \texttt{list}
+ \qquad
+ \Gamma \vdash e_1 : \tau'
+ \qquad
+ \Gamma, h : \tau, t : \tau \ \texttt{list} \vdash e_2 : \tau'
+}
+{\Gamma \vdash \left(\texttt{match} \ e \ \texttt{with [] -&gt; } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -&gt; } e_2 \right) : \tau'
+}
+\ \textsf{(ListMatch)}
 </pre></div><h2 id="semantic-judgments"><a href="#semantic-judgments" class="anchor"></a>Semantic judgments</h2><p>We read <code class="odoc-katex-math">e \Downarrow v</code> as &quot;the expression <code class="odoc-katex-math">e</code> <i>evaluates</i> to the value <code class="odoc-katex-math">v</code>.</p><h3 id="variables_2"><a href="#variables_2" class="anchor"></a>Variables</h3><p>This rules says that a variable evaluates to itself, without any premises.</p><div><pre class="odoc-katex-math display">\frac
 {x \text{ is a variable}}
 {x \Downarrow x}
@@ -353,4 +387,36 @@
  \texttt{(} v_1\texttt{,} v_2\texttt{,} \dots \texttt{,} v_n \texttt{)}
 }
 \ \textsf{(TupleEval)}
+</pre></div><h3 id="lists_2"><a href="#lists_2" class="anchor"></a>Lists</h3><div><pre class="odoc-katex-math display">\frac{}{\texttt{[]} \Downarrow \texttt{[]}}
+\ \textsf{(NilEval)}
+\qquad
+\frac
+{e \Downarrow v
+ \qquad
+ l \Downarrow \texttt{[} v_1 \texttt{;} v_2\texttt{;}\dots\texttt;v_n\texttt{]}
+}
+{e \ \texttt{::} \ l \Downarrow
+ \texttt{[} v \texttt{;} v_1 \texttt{;} v_2\texttt{;}\dots\texttt;v_n\texttt{]}
+}
+\ \textsf{(ConsEval)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{e \Downarrow \texttt{[]}
+ \qquad
+ e_1 \Downarrow v_1
+}
+{\left(\texttt{match} \ e \ \texttt{with [] -&gt; } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -&gt; } e_2 \right)
+ \Downarrow
+ v_1
+}
+\ \textsf{(ListMatchNilEval)}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{e \Downarrow (v \ \texttt{::} \ v')
+ \qquad
+ [v / h][v' / t]e_2 \Downarrow v_2
+}
+{\left(\texttt{match} \ e \ \texttt{with [] -&gt; } e_1 \ \texttt{|} \ h \ \texttt{::} \ t \texttt{ -&gt; } e_2 \right)
+ \Downarrow
+ v_2
+}
+\ \textsf{(ListMatchConsEval)}
 </pre></div></div></body></html>
