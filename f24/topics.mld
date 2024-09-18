@@ -2,7 +2,8 @@
 
 {2:course_intro Course Introduction}
 
-We describe what this course is about, including how the course is structured, a rough outline of the topics, and high-level remarks about the study of programming languages.  We also introduce OCaml, including how to work with [utop], how to compile simple programs, and how to write basic expressions.
+We describe what this course is about, including how the course is structured, a rough outline of the topics, and high-level remarks about the study of programming languages.
+We also introduce OCaml, including how to work with [utop], how to compile simple programs, and how to write basic expressions.
 
 {b Reading:}
 - OCP 1.1: {{: https://cs3110.github.io/textbook/chapters/intro/past.html}The Past of OCaml}
@@ -11,11 +12,6 @@ We describe what this course is about, including how the course is structured, a
 - OCP 2.1: {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html}The OCaml Toplevel}
 - OCP 2.2: {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}Compiling OCaml Programs} (excluding 2.2.3)
 - OCP 2.3: {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}Expressions}
-
-{b Additional information:}
-
-- Homework 0 is released. {i It's not graded} but it's important that you complete it so that you're set up to submit the later assignments.
-- Please make sure to also read through the course webpage and policies page.
 
 {2 Beginning Ocaml}
 
@@ -27,24 +23,16 @@ We also introduce dune (which we'll be using this for assignments).
 
 {b Reading:}
 - OCP 2.2: {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}Compiling OCaml Programs} (including 2.2.3)
-- OCP 2.3: {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}Expressions}
 - OCP 2.4: {{: https://cs3110.github.io/textbook/chapters/basics/functions.html}Functions} (excluding 2.4.4, 2.4.6)
 - OCP 2.6: {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}Printing}
 
-{b Additional information:}
+{3:ocaml_intro_ii Let Expressions}
 
-- Homework 1 is released
-- Please make sure that you have OCaml and dune working on your machine by this point.
+We explore further the notion of expressions in OCaml (everything is an expression in OCaml).
+In particuluar, we look at let expressions as a way of using local variables.
+We continue to emphasize that as we introduce more programming abstractions, we have to formally present their syntax, typing, and semantics.
 
-{3:ocaml_intro_ii Lists, Tail Recursion}
-
-We introduce the familiar notion of lists in OCaml, emphasizing that {b lists are immutable} in OCaml.
-We also talk about tail recursion, how to write tail recursive functions, and why we might want to.
-
-{b Reading:}
-
-- OCP 3.1: {{: https://cs3110.github.io/textbook/chapters/data/lists.html}Lists}
-- OCP 3.8: {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}Association Lists}
+- OCP 2.3: {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}Expressions}
 
 {3:ocaml_intro_iii Unions and Products}
 
@@ -58,14 +46,19 @@ We also introduced the notion of a {i pattern} (which is is {i not} the same thi
 - OCP 3.6: {{: https://cs3110.github.io/textbook/chapters/data/type_synonym.html}Type Synonyms} (not covered in lecture)
 - OCP 3.9: {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}Algebraic Data Types} (only 3.9.1)
 
-{b Additional information:}
+{3:ocaml_intro_iv Lists, Tail Recursion}
 
-- Homework 2 is released
-- Homework 1 is due by 11:59PM
+We introduce the familiar notion of lists in OCaml, emphasizing that {b lists are immutable} in OCaml.
+We also talk about tail recursion, how to write tail recursive functions, and why we might want to.
 
-{2 Algebraic Data Types}
+{b Reading:}
 
-{3:adt_i Introduction}
+- OCP 3.1: {{: https://cs3110.github.io/textbook/chapters/data/lists.html}Lists}
+- OCP 3.5: {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}Advanced Pattern Matching}
+- OCP 3.7: {{: https://cs3110.github.io/textbook/chapters/data/options.html}Options}
+- OCP 3.8: {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}Association Lists}
+
+{2:adt Algebraic Data Types}
 
 We introduce algebraic data types as a way of defining recursive and parameterized data types.
 We look at many examples.
@@ -73,25 +66,13 @@ We look at many examples.
 
 {b Reading:}
 
-- OCP 3.5: {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}Advanced Pattern Matching}
-- OCP 3.7: {{: https://cs3110.github.io/textbook/chapters/data/options.html}Options}
 - OCP 3.9: {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}Algebraic Data Types} (excluding 3.9.6)
-
-{3:adt_ii Examples}
-
-We work through an implementation of trees in OCaml (trees are a canonical recursive data type).
-We also look at tail recursive function on trees.
-More on point for this course, we use ADTs to represent arithmetic expressions, and work through an implementation of a simple evaluator.
-
-{b Reading:}
-
 - OCP 3.11: {{: https://cs3110.github.io/textbook/chapters/data/trees.html}Example: Trees}
 - OCP 8.3: {{: https://cs3110.github.io/textbook/chapters/ds/rb.html}Red-Black Trees} (only 8.3.1: Binary Search Trees)
 
-{b Additional information:}
+{2:poly Polymorphism}
 
-- Homework 3 is released
-- Homework 2 is due by 11:59PM
+We take a moment to discuss more formally the notion of polymorphism.
 
 {2 Higher Order Programming}
 
@@ -117,62 +98,28 @@ We also look at how higher-order functions can be useful for things other than l
 - OCP 4.4: {{: https://cs3110.github.io/textbook/chapters/hop/fold.html}Fold}
 - OCP 4.5: {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}Beyond Lists}
 
-{b Additional information:}
-
-- Homework 4 is released
-- Homework 3 is due by 11:59PM
-
-{2 Modular Programming}
-
-{3:mod_i Introduction}
+{2:mod Modular Programming}
 
 We introduce modules as a way of organizing OCaml code.
 We will need to know how modules work for the mini-projects in the second-half of the course.
-
-{b Reading:}
-
-- OCP 5.1: {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html}Module Systems}
-- OCP 5.2: {{: https://cs3110.github.io/textbook/chapters/modules/modules.html}Modules}
-
-{3:mod_ii Examples}
-
 We see at how modules can also be used to organize interfaces for data structures.
 We also look a bit at the relationship between dune and toplevel.
 
 {b Reading:}
 
+- OCP 5.1: {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html}Module Systems}
+- OCP 5.2: {{: https://cs3110.github.io/textbook/chapters/modules/modules.html}Modules}
 - OCP 5.3: {{: https://cs3110.github.io/textbook/chapters/modules/toplevel.html}Modules and the Toplevel} (only 5.3.1, 5.3.2)
 - OCP 5.4: {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}Encapsulation} (excluding 5.4.3)
 - OCP 5.5: {{: https://cs3110.github.io/textbook/chapters/modules/functional_data_structures.html}Functional Data Structures} (only 5.6.2)
-
-{b Additional information:}
-
-- Homework 5 is released
-- Homework 4 is due by 11:59PM
 
 {2:monads Introduction to Monads}
 
 We introduce monads as a way to more elegantly deal with [option]s in functional code.  We show how to use [let*] syntax in OCaml to make code easier to follow.
 
-{b Reading:}
+{2:prog Progress and Preservation}
 
-TBD
-
-{2:lcalc The Lambda Calculus}
-
-We think about functional programming more formally (with an eye towards the second half of the course) starting with the untyped lambda calculus.
-In particular, we look at specifying the syntax and (operational) semantics of a programming language.
-
-{b Reading:}
-
-- OCP 9.0: {{: https://cs3110.github.io/textbook/chapters/interp/intro.html}Interpreters}
-
-{b Additional information:}
-
-- Homework 6 is released
-- Homework 5 is due by 11:59PM
-- There is no lecture next Tuesday
-- The midterm is next week on Thursday
+We take our last lecture before the midterm to discuss the notions of progress and preservation.
 
 {2 Parsing}
 
@@ -181,9 +128,6 @@ In particular, we look at specifying the syntax and (operational) semantics of a
 We introduce the second half of the course, including the full interpretation pipeline.
 We then start at the beginning of the pipeline (i.e., {i parsing}) looking at (E)BNF grammars, ambiguity, and precedence.
 
-{b Reading:}
-
-TBD
 
 {3:parse_ii Lexer/Parser Generators}
 
@@ -194,11 +138,6 @@ We then see how to use [menhir] to generate lexers and parsers for a grammar (in
 {b Reading:}
 
 - OCP 9.2: {{: https://cs3110.github.io/textbook/chapters/interp/parsing.html}Parsing}
-
-{b Additional information:}
-
-- Homework 7 is released
-- Homework 6 is due by 11:59PM
 
 {2 Formal Semantics}
 
@@ -220,11 +159,6 @@ We look at capture-avoiding substitution and (if we have time) DeBruijn indices 
 
 - OCP 9.3: {{: https://cs3110.github.io/textbook/chapters/interp/substitution.html}Substitution Model}
 
-{b Additional information:}
-
-- Mini-Project 1 is released
-- Homework 7 is due by 11:59PM
-
 {3:sem_iii Variables, Scope, Parameter Passing}
 
 We discuss (dynamic and lexical) scoping, but with an emphasis on how variable scoping is dealt with in OCaml.
@@ -243,92 +177,48 @@ We introduce the environment model as a more efficient alternative to the substi
 
 - OCP 9.4: {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}Environment Model}
 
-{b Additional information:}
+{2 Type Checking}
 
-- Mini-Project 2 is released
-- Mini-Project 1 is due by 11:59PM
+{3:type_check_i Introduction}
 
-{2 Stack-Based Languages}
+We look even more carefully at the notion of a typing derivation.
 
-{3:stack_i Introduction}
+{3:type_check_ii In Practice}
 
-We discuss stack-oriented languages in general and introduce the syntax and semantics of a basic stack-oriented language with procedures.
-We extend then this language to include variables.
-
-{b Reading:}
-
-TBD
-
-{3:stack_ii Environments and Procedures}
-
-We finish our discussion of environments.
-We then recap closures and introduce continuation passing as a method of implementing procedures in the stack-oriented setting.
-
-{b Reading:}
-
-TBD
-
-{b Additional information:}
-
-- Mini-Project 3 is released
-- Mini-Project 2 is due by 11:59PM
-
-{2 Compilation}
-
-{3:comp_i Introduction}
-
-We give a high-level introduction of compilation and its relation to interpretation and work through some simple examples.
-
-{b Reading:}
-
-TBD
-
-{3:comp_ii Byte-Code Interpretation}
-
-We give a high-level introduction to byte-code interpreters, emphasizing benefits and trade-offs.
-We then go through an example of building a simple byte-code interpreter.
-
-{b Reading:}
-
-TBD
-
-{b Additional information:}
-
-- Mini-Project 4 is released. Note that you will have more time than usual so it will be a bit longer.
-- Mini-Project 3 is due by 11:59PM
-
-{3:comp_iii Examples}
-
-We'll take this (likely highly attended) lecture to look at some of the intricacies of the last mini-project.
-
-{b Additional information:}
-
-- There is no lecture this Thursday because of the Thanksgiving recess
-
-{2 Types}
-
-{3:types_i Type Checking}
-
-We introduce the notion of a typing derivation and add type checking (in the context of full type information) to the fragment of OCaml we've been working with in the mini-projects.
-
+We look at the practical considerations of type checking.
 
 {b Reading:}
 
 - OCP 9.5: {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}Type Checking}
 
-{b Additional information:}
+{2 Type Inference}
 
-{3:types_ii Type Inference}
+{3:type_inf_i Introduction}
 
-We discuss type inference, let-polymorphism (potentially non-polymorphic lets) and add type inference to the fragment of OCaml we've been working with in the mini-projects.
+We discuss type inference and let-polymorphism (potentially non-polymorphic lets).
+
+{3:type_inf_ii Unification}
+
+We discuss more generally the notion of unification, which underlies the type inference algorithm we will be implementing
+
+{3:type_inf_iii In Practice}
+
+We look at practical considerations in the implementation of a type inference algorithm.
 
 {b Reading:}
 
 - OCP 9.6: {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}Type Inference}
 
-{b Additional information:}
+{2 Compilation}
 
-- Mini-Project 4 is due by 11:59PM
+{3:comp_i Stack-Based Languages}
+
+We discuss stack-oriented languages in general and introduce the syntax and semantics of a basic stack-oriented language with procedures.
+
+{3:comp_ii In Practice}
+
+We give a high-level introduction of compilation and its relation to interpretation and work through some simple examples.
+We then go through an example of building a simple byte-code interpreter.
 
 {2:adv Advanced Topic: TBA}
 

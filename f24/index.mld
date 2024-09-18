@@ -99,7 +99,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr {td } {td } {td }}
   {tr
     {td Tue 9/10}
-    {td {{!page-topics.ocaml_intro_ii}Beginning Ocaml II: Lists, Tail Recursion}}
+    {td {{!page-topics.ocaml_intro_ii}Beginning Ocaml II: Let Expressions}}
     {td }
   }
   {tr
@@ -115,23 +115,23 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr {td } {td } {td }}
   {tr
     {td Tue 9/17}
-    {td {{!page-topics.adt_i}Algebraic Data Types I: Introduction}}
+    {td {{!page-topics.ocaml_intro_iv}Beginning OCaml IV: Lists, Tail Recursion}}
     {td }
   }
   {tr
     {td Wed 9/18}
-    {td Week 3 Lab: Practice with ADTs}
+    {td Week 3 Lab: Practice with Derivations}
     {td }
   }
   {tr
     {td Thu 9/19}
-    {td {{!page-topics.adt_ii}Algebraic Data Types II: Examples}}
+    {td {{!page-topics.adt}Algebraic Data Types}}
     {td A3 out, A2 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 9/24}
-    {td {{!page-topics.hop_i}Higher Order Programming I: Maps and Filters}}
+    {td {{!page-topics.poly}Polymorphism}}
     {td }
   }
   {tr
@@ -141,29 +141,29 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Thu 9/26}
-    {td {{!page-topics.hop_ii}Higher Order Programming II: Folds}}
+    {td {{!page-topics.hop_i}Higher Order Programming I: Maps and Filters}}
     {td A4 out, A3 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 10/1}
-    {td {{!page-topics.mod_i}Modular Programming I: Introduction}}
+    {td {{!page-topics.hop_ii}Higher Order Programming II: Folds}}
     {td }
   }
   {tr
     {td Wed 10/2}
-    {td Week 5 Lab: Practice with Modules}
+    {td Week 5 Lab: Practice with Folds}
     {td }
   }
   {tr
     {td Thu 10/3}
-    {td {{!page-topics.mod_ii}Modular Programming II: Examples}}
+    {td {{!page-topics.mod}Modules}}
     {td A5 out, A4 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 10/8}
-    {td {{!page-topics.monads}Advanced Ocaml: Introduction to Monads}}
+    {td {{!page-topics.monads}Introduction to Monads}}
     {td }
   }
   {tr
@@ -173,7 +173,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Thu 10/10}
-    {td {{!page-topics.lcalc}The Lambda Calculus}}
+    {td {{!page-topics.prog}Progress and Preservation}}
     {td A5 due, A6 out}
   }
   {tr {td } {td } {td }}
@@ -243,23 +243,23 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr {td } {td } {td }}
   {tr
     {td Tue 11/12}
-    {td {{!page-topics.stack_i}Stack-Based Languages I: Introduction}}
+    {td {{!page-topics.type_check_i}Type Checking I: Introduction}}
     {td }
   }
   {tr
     {td Wed 11/13}
-    {td Week 11 Lab: A Stack-Based Calculator}
+    {td Week 11 Lab: The Simply-Typed Lambda Calculus}
     {td }
   }
   {tr
     {td Thu 11/14}
-    {td {{!page-topics.stack_ii}Stack-Based Languages II: Environments and Procedures}}
+    {td {{!page-topics.type_check_ii}Type Checking II: In Practice}}
     {td MP3 out, MP2 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 11/19}
-    {td {{!page-topics.comp_i}Compilation I: Introduction}}
+    {td {{!page-topics.type_inf_i}Type Inference I: Introduction}}
     {td }
   }
   {tr
@@ -269,13 +269,13 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Thu 11/21}
-    {td {{!page-topics.comp_ii}Compilation II: Byte-Code Interpretation}}
+    {td {{!page-topics.type_inf_ii}Type Inference II: Unification}}
     {td MP4, out, MP3 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 11/26}
-    {td {{!page-topics.comp_iii}Compilation III: Examples}}
+    {td {{!page-topics.type_inf_iii}Type Inference III: In Practice}}
     {td }
   }
   {tr
@@ -291,7 +291,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr {td } {td } {td }}
   {tr
     {td Tue 12/3}
-    {td {{!page-topics.types_i}Types I: Type Checking}}
+    {td {{!page-topics.comp_i}Compilation I: Stack-Based Languages}}
     {td }
   }
   {tr
@@ -301,7 +301,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Thu 12/5}
-    {td {{!page-topics.types_ii}Types II: Type Inference}}
+    {td {{!page-topics.comp_ii}Compilation II: In Practice}}
     {td MP4 due}
   }
   {tr {td } {td } {td }}
