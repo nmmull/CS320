@@ -5,6 +5,7 @@
   assign00
   assign01
   assign02
+  assign03
   stdlib320))
 
 (documentation
