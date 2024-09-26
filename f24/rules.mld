@@ -619,3 +619,9 @@ You won't be expected to write a derivation of a semantic judgment with this rul
 }
 \ \textsf{(ListMatchConsEval)}
 }
+
+{math
+\frac
+{e_1 \Downarrow v_1 \qquad e_1 \Downarrow v_2 \qquad \dots \qquad e_n \Downarrow v_n}
+{\texttt{[} e_1 \texttt{;} e_2 \texttt{;}\dots\texttt;e_n\texttt{]} \Downarrow \texttt{[} v_1 \texttt{;} v_2 \texttt{;}\dots\texttt;v_n\texttt{]}}
+\ \textsf{(ListLitEval)}
