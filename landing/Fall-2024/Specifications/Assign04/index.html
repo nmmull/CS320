@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Assign04 (Fall-2024.Specifications.Assign04)</title><meta charset="utf-8"/><link rel="stylesheet" href="../../../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.2"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../../../odoc.support/katex.min.css"/><script src="../../../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="../index.html">Up</a> – <a href="../../index.html">Fall-2024</a> &#x00BB; <a href="../index.html">Specifications</a> &#x00BB; Assign04</nav><header class="odoc-preamble"><h1>Module <code><span>Specifications.Assign04</span></code></h1></header><nav class="odoc-toc"><ul><li><a href="#assignment-4">Assignment 4</a><ul><li><a href="#programming-part">Programming Part</a><ul><li><a href="#problem-1:-last-function-standing">Problem 1: Last function standing</a></li><li><a href="#problem-2:-your-first-type-checker">Problem 2: Your first type checker</a></li><li><a href="#problem-3:-your-first-evaluator">Problem 3: Your first evaluator</a></li><li><a href="#problem-4:-your-second-type-checker">Problem 4: Your second type checker</a></li></ul></li><li><a href="#written-part">Written Part</a><ul><li><a href="#problem-1:-typing-derivations">Problem 1: Typing Derivations</a></li><li><a href="#problem-2:-semantic-derivations">Problem 2: Semantic Derivations</a></li></ul></li></ul></li></ul></nav><div class="odoc-content"><h2 id="assignment-4"><a href="#assignment-4" class="anchor"></a>Assignment 4</h2><p>This assignment is due on <b>Thursday 10/3 by 11:59PM</b>. It include both a programming part and a written part which are to be submitted on Gradescope under <i>assign04</i> and <i>assign04 (written)</i>, respectively.</p><p>In order to run the given test suite you have to define every required function in the assignment. <b>We would recommend creating dummy values for each problem when you start</b> if you want to be able to run tests as you work.</p><h3 id="programming-part"><a href="#programming-part" class="anchor"></a>Programming Part</h3><h4 id="problem-1:-last-function-standing"><a href="#problem-1:-last-function-standing" class="anchor"></a>Problem 1: Last function standing</h4><p>Given</p><ul><li>a <b>starting value</b> <code class="odoc-katex-math">s</code> of type <code>'a</code></li><li>a <b>failing condition</b> <code class="odoc-katex-math">P</code> of type <code>'a -&gt; bool</code></li></ul><p>we say that a function <code class="odoc-katex-math">f</code> of type <code>'a -&gt; 'a</code> <b>survives for <code class="odoc-katex-math">k</code> steps with respect to <code class="odoc-katex-math">s</code> and <code class="odoc-katex-math">P</code></b> if <code class="odoc-katex-math">P(f^i(s))</code> is false for every integer <code class="odoc-katex-math">i</code> satisfying <code class="odoc-katex-math">1 \leq i \leq k</code>. In logical notation:</p><div><pre class="odoc-katex-math display">    \neg P(f(s)) \land \neg P(f(f(s))) \land \dots \land \neg P(f^k(s))
+    </pre></div><p>We define <code class="odoc-katex-math">\mathsf{lifespan}(f, s, P)</code> to be the greatest number of steps <code class="odoc-katex-math">f</code> survives with respect to <code class="odoc-katex-math">s</code> and <code class="odoc-katex-math">P</code>. Note that this value may be <code class="odoc-katex-math">\infty</code>.</p><p>Given a set of functions <code class="odoc-katex-math">F</code>, we define the <b>last function standing with respect to <code class="odoc-katex-math">s</code> and <code class="odoc-katex-math">P</code></b> to be</p><div><pre class="odoc-katex-math display">    \mathsf{argmax}_{f \in F} \mathsf{lifespan}(f, s, P)
+    </pre></div><p>For this problem, we will say that the <code class="odoc-katex-math">\mathsf{argmax}</code> is undefined if there are multiple functions in <code class="odoc-katex-math">F</code> with the same lifespan, or if <code class="odoc-katex-math">F</code> is empty.</p><div class="odoc-spec"><div class="spec value anchored" id="val-last_function_standing"><a href="#val-last_function_standing" class="anchor"></a><code><span><span class="keyword">val</span> last_function_standing : 
+  <span><span><span>(<span><span class="type-var">'a</span> <span class="arrow">&#45;&gt;</span></span> <span class="type-var">'a</span>)</span> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span class="type-var">'a</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><span class="type-var">'a</span> <span class="arrow">&#45;&gt;</span></span> bool)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><span class="type-var">'a</span> <span class="arrow">&#45;&gt;</span></span> <span class="type-var">'a</span>)</span> option</span></span></code></div><div class="spec-doc"><p>Implement the function <code>last_function_standing</code> so that</p><pre class="language-ocaml"><code>last_function_standing funcs start pred funcs</code></pre><p>is the last function standing in <code>funcs</code> with respect to the starting point <code>start</code> and failing condition <code>pred</code>. The value should be returned as an option, where the value is <code>None</code> when <code>funcs</code> is empty, or there are multiple functions in <code>funcs</code> with the same <b>finite</b> lifespan. The behavior of the implementation is undefined if <code>funcs</code> has multiple functions with infinite lifespan.</p><p>Put your solution in a file called <code>assign04/lib/assign04_01.ml</code>. See the file <code>assign04/test/test_suite/test01.ml</code> for example output behavior.</p></div></div><h4 id="problem-2:-your-first-type-checker"><a href="#problem-2:-your-first-type-checker" class="anchor"></a>Problem 2: Your first type checker</h4><p>We're at a point in the course when we can implement our first type checker (technically, we're going to implement a type inference algorithm, but for very simple languages we can implement type checking in terms of type inference). As we've said many times, when we describe a programming language, we need to specify three things: syntax, typing rules and semantics. In this problem, we'll consider a very simple expression language for Boolean values and integers.</p><p>We're going to ignore syntax for now (this will come when we start talking about parsing) and instead start with an ADT for expressions in our language (like we did in lecture).</p><div class="odoc-spec"><div class="spec type anchored" id="type-expr"><a href="#type-expr" class="anchor"></a><code><span><span class="keyword">type</span> expr</span><span> = </span></code><ol><li id="type-expr.True" class="def variant constructor anchored"><a href="#type-expr.True" class="anchor"></a><code><span>| </span><span><span class="constructor">True</span></span></code></li><li id="type-expr.False" class="def variant constructor anchored"><a href="#type-expr.False" class="anchor"></a><code><span>| </span><span><span class="constructor">False</span></span></code></li><li id="type-expr.Num" class="def variant constructor anchored"><a href="#type-expr.Num" class="anchor"></a><code><span>| </span><span><span class="constructor">Num</span> <span class="keyword">of</span> int</span></code></li><li id="type-expr.Or" class="def variant constructor anchored"><a href="#type-expr.Or" class="anchor"></a><code><span>| </span><span><span class="constructor">Or</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Add" class="def variant constructor anchored"><a href="#type-expr.Add" class="anchor"></a><code><span>| </span><span><span class="constructor">Add</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.IfThenElse" class="def variant constructor anchored"><a href="#type-expr.IfThenElse" class="anchor"></a><code><span>| </span><span><span class="constructor">IfThenElse</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li></ol></div></div><p>For example, we can represent the expression</p><pre class="language-ocaml"><code>if true || false then 3 else 3 + 3</code></pre><p>with the value</p><pre class="language-ocaml"><code>let e =
+  IfThenElse
+    ( Or (True, False)
+    , Num 3
+    , Add (Num 3, Num 3)
+    )</code></pre><p>(and the process of parsing is exactly the process of getting from the above string to the given value)</p><p>We then define our type rules, when means first defining what a type is. For this simple language, every well-typed expression is either an integer or a Boolean value. And for the rules themselves, note that, since there are no variables in this language, there is no need for a context.</p><div class="odoc-spec"><div class="spec type anchored" id="type-ty"><a href="#type-ty" class="anchor"></a><code><span><span class="keyword">type</span> ty</span><span> = </span></code><ol><li id="type-ty.Int" class="def variant constructor anchored"><a href="#type-ty.Int" class="anchor"></a><code><span>| </span><span><span class="constructor">Int</span></span></code></li><li id="type-ty.Bool" class="def variant constructor anchored"><a href="#type-ty.Bool" class="anchor"></a><code><span>| </span><span><span class="constructor">Bool</span></span></code></li></ol></div></div><div><pre class="odoc-katex-math display">    \frac
+    {}{\texttt{true} : \texttt{bool}}
+    \qquad
+    \frac
+    {}{\texttt{false} : \texttt{bool}}
+    \qquad
+    \frac
+    {n \text{ is an integer}}
+    {n : \texttt{int}}
+    </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">    \frac
+    {e_1 : \texttt{int}
+     \qquad
+     e_2 : \texttt{int}
+    }
+    {e_1 \ \texttt{+} \ e_2 : \texttt{int}}
+    \qquad
+    \frac
+    {e_1 : \texttt{bool}
+     \qquad
+     e_2 : \texttt{bool}
+    }
+    {e_1 \ \texttt{||} \ e_2 : \texttt{bool}}
+    </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">    \frac
+    {e_1 : \texttt{bool}
+     \qquad
+     e_2 : \tau
+     \qquad
+     e_3 : \tau
+    }
+    {\texttt{if} \ e_1 \ \texttt{then} \ e_2 \ \texttt{else} \ e_3 : \tau}
+    </pre></div><div class="odoc-spec"><div class="spec value anchored" id="val-type_of"><a href="#val-type_of" class="anchor"></a><code><span><span class="keyword">val</span> type_of : <span><a href="#type-expr">expr</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ty">ty</a> option</span></span></code></div><div class="spec-doc"><p>Implement a function <code>type_of</code> where <code>type_of e</code> is <code>Some t</code> if <code>t</code> is the type of <code>e</code> according to the above rules (i.e., there is a derivation of <code>e</code> : <code>t</code>) and <code>None</code> if <code>e</code> is not well-typed (i.e., there is no derivation of <code>e</code> : <code>t</code>). Try to think about how your implementation implicitly builds a typing derivation, if one exists.</p><p>Put your solution in a file called <code>assign04/lib/assign04_02.ml</code>. See the file <code>assign04/test/test02.ml</code> for example output behavior. <b>Important:</b> You must include the definitions of <code>expr</code> and <code>ty</code> in your solution.</p></div></div><h4 id="problem-3:-your-first-evaluator"><a href="#problem-3:-your-first-evaluator" class="anchor"></a>Problem 3: Your first evaluator</h4><p>We continue on with the language in the previous problem. The next thing we need is the semantic rules.</p><div><pre class="odoc-katex-math display">  \frac{}{\texttt{true} \Downarrow \texttt{true}}
+  \qquad
+  \frac{}{\texttt{false} \Downarrow \texttt{false}}
+  \qquad
+  \frac{n \text{ is a number}}{n \Downarrow n}
+  </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">  \frac
+  {e_1 \Downarrow v_1
+   \qquad
+   e_2 \Downarrow v_2
+   \qquad
+   v = v_1 + v_2
+  }
+  {e_1 \ \texttt{+} \ e_2 \Downarrow v}
+  \qquad
+  \frac
+  {e_1 \Downarrow v_1
+   \qquad
+   e_2 \Downarrow v_2
+   \qquad
+   v = v_1 \lor v_2
+  }
+  {e_1 \ \texttt{||} \ e_2 \Downarrow v}
+  </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">  \frac
+  {e_1 \Downarrow \texttt{true}
+   \qquad
+   e_2 \Downarrow v_2
+  }
+  {\texttt{if} \ e_1 \ \texttt{then} \ e_2 \ \texttt{else} \ e_3 \Downarrow v_2}
+  \qquad
+  \frac
+  {e_1 \Downarrow \texttt{false}
+   \qquad
+   e_3 \Downarrow v_3
+  }
+  {\texttt{if} \ e_1 \ \texttt{then} \ e_2 \ \texttt{else} \ e_3 \Downarrow v_3}
+  </pre></div><div class="odoc-spec"><div class="spec type anchored" id="type-value"><a href="#type-value" class="anchor"></a><code><span><span class="keyword">type</span> value</span><span> = </span></code><ol><li id="type-value.VNum" class="def variant constructor anchored"><a href="#type-value.VNum" class="anchor"></a><code><span>| </span><span><span class="constructor">VNum</span> <span class="keyword">of</span> int</span></code></li><li id="type-value.VBool" class="def variant constructor anchored"><a href="#type-value.VBool" class="anchor"></a><code><span>| </span><span><span class="constructor">VBool</span> <span class="keyword">of</span> bool</span></code></li></ol></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-eval"><a href="#val-eval" class="anchor"></a><code><span><span class="keyword">val</span> eval : <span><a href="#type-expr">expr</a> <span class="arrow">&#45;&gt;</span></span> <a href="#type-value">value</a></span></code></div><div class="spec-doc"><p>Implement the function <code>eval</code> so that <code>eval e</code> is the value of <code>e</code> according to the above rules (i.e., it's possible to derive <code>e</code> <code class="odoc-katex-math">\Downarrow</code> <code>eval e</code>). The behavior of the implementation is undefined if <code>e</code> is not well-typed (this is one of the benefits of typing).</p><p>Put your solution in a file called <code>assign04/lib/assign04_03.ml</code>. See the file <code>assign04/test/test03.ml</code> for example output behavior. <b>Important:</b> You should include the line <code>open Assign04_02.ml</code> so you have access to the type definitions in that file. You must also include the definition of <code>value</code> in your solution.</p></div></div><h4 id="problem-4:-your-second-type-checker"><a href="#problem-4:-your-second-type-checker" class="anchor"></a>Problem 4: Your second type checker</h4><p>Another thing that we've said is that the <i>only</i> reason we maintain a context in our typing derivations is to type expressions with variables. Let's see how this works by re-doing problem 2, but with a language that has variables and let-bindings.</p><p>The following ADT for expressions is the same as the one previously defined but with variables and let-bindings. The type <code>ident</code> is just a synonym for strings, which are used to represent variable names.</p><div class="odoc-spec"><div class="spec type anchored" id="type-ident"><a href="#type-ident" class="anchor"></a><code><span><span class="keyword">type</span> ident</span><span> = string</span></code></div></div><div class="odoc-spec"><div class="spec type anchored" id="type-expr'"><a href="#type-expr'" class="anchor"></a><code><span><span class="keyword">type</span> expr'</span><span> = </span></code><ol><li id="type-expr'.True" class="def variant constructor anchored"><a href="#type-expr'.True" class="anchor"></a><code><span>| </span><span><span class="constructor">True</span></span></code></li><li id="type-expr'.False" class="def variant constructor anchored"><a href="#type-expr'.False" class="anchor"></a><code><span>| </span><span><span class="constructor">False</span></span></code></li><li id="type-expr'.Num" class="def variant constructor anchored"><a href="#type-expr'.Num" class="anchor"></a><code><span>| </span><span><span class="constructor">Num</span> <span class="keyword">of</span> int</span></code></li><li id="type-expr'.Var" class="def variant constructor anchored"><a href="#type-expr'.Var" class="anchor"></a><code><span>| </span><span><span class="constructor">Var</span> <span class="keyword">of</span> <a href="#type-ident">ident</a></span></code></li><li id="type-expr'.Let" class="def variant constructor anchored"><a href="#type-expr'.Let" class="anchor"></a><code><span>| </span><span><span class="constructor">Let</span> <span class="keyword">of</span> <a href="#type-ident">ident</a> * <a href="#type-expr'">expr'</a> * <a href="#type-expr'">expr'</a></span></code></li><li id="type-expr'.Add" class="def variant constructor anchored"><a href="#type-expr'.Add" class="anchor"></a><code><span>| </span><span><span class="constructor">Add</span> <span class="keyword">of</span> <a href="#type-expr'">expr'</a> * <a href="#type-expr'">expr'</a></span></code></li><li id="type-expr'.Or" class="def variant constructor anchored"><a href="#type-expr'.Or" class="anchor"></a><code><span>| </span><span><span class="constructor">Or</span> <span class="keyword">of</span> <a href="#type-expr'">expr'</a> * <a href="#type-expr'">expr'</a></span></code></li><li id="type-expr'.IfThenElse" class="def variant constructor anchored"><a href="#type-expr'.IfThenElse" class="anchor"></a><code><span>| </span><span><span class="constructor">IfThenElse</span> <span class="keyword">of</span> <a href="#type-expr'">expr'</a> * <a href="#type-expr'">expr'</a> * <a href="#type-expr'">expr'</a></span></code></li></ol></div></div><p>We keep the same notion of a type, but introduce a type synonym for contexts, which are association lists that map identifiers to types.</p><div class="odoc-spec"><div class="spec type anchored" id="type-ty'"><a href="#type-ty'" class="anchor"></a><code><span><span class="keyword">type</span> ty'</span><span> = </span></code><ol><li id="type-ty'.Int" class="def variant constructor anchored"><a href="#type-ty'.Int" class="anchor"></a><code><span>| </span><span><span class="constructor">Int</span></span></code></li><li id="type-ty'.Bool" class="def variant constructor anchored"><a href="#type-ty'.Bool" class="anchor"></a><code><span>| </span><span><span class="constructor">Bool</span></span></code></li></ol></div></div><div class="odoc-spec"><div class="spec type anchored" id="type-context"><a href="#type-context" class="anchor"></a><code><span><span class="keyword">type</span> context</span><span> = <span><span>(<a href="#type-ident">ident</a> * <a href="#type-ty'">ty'</a>)</span> list</span></span></code></div></div><p>We also rewrite the above typing rules to include contexts, and include rules for variables and let-bindings.</p><div><pre class="odoc-katex-math display">    \frac
+    {}{\Gamma \vdash \texttt{true} : \texttt{bool}}
+    \qquad
+    \frac
+    {}{\Gamma \vdash \texttt{false} : \texttt{bool}}
+    \qquad
+    \frac
+    {n \text{ is an integer}}
+    {\Gamma \vdash n : \texttt{int}}
+    </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">    \frac
+    {\Gamma \vdash e_1 : \texttt{int}
+     \qquad
+     \Gamma \vdash e_2 : \texttt{int}
+    }
+    {\Gamma \vdash e_1 \ \texttt{+} \ e_2 : \texttt{int}}
+    \qquad
+    \frac
+    {\Gamma \vdash e_1 : \texttt{bool}
+     \qquad
+     \Gamma \vdash e_2 : \texttt{bool}
+    }
+    {\Gamma \vdash e_1 \ \texttt{||} \ e_2 : \texttt{bool}}
+    </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">    \frac
+    {\Gamma \vdash e_1 : \texttt{bool}
+     \qquad
+     \Gamma \vdash e_2 : \tau
+     \qquad
+     \Gamma \vdash e_3 : \tau
+    }
+    {\Gamma \vdash \texttt{if} \ e_1 \ \texttt{then} \ e_2 \ \texttt{else} \ e_3 : \tau}
+    </pre></div><div><pre class="odoc-katex-math display">\frac{}{}</pre></div><div><pre class="odoc-katex-math display">    \frac
+    {x : \tau \text{ appears in }\Gamma}
+    {\Gamma \vdash x : \tau}
+    \qquad
+    \frac
+    {\Gamma \vdash e_1 : \tau_1
+     \qquad
+     \Gamma, x : \tau_1 \vdash e_2 : \tau_2
+    }
+    {\Gamma \vdash \texttt{let} \ x \ \texttt{=} \ e_1 \ \texttt{in} \ e_2 : \tau_2}
+    </pre></div><div class="odoc-spec"><div class="spec value anchored" id="val-type_of'"><a href="#val-type_of'" class="anchor"></a><code><span><span class="keyword">val</span> type_of' : <span><a href="#type-context">context</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-expr'">expr'</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ty'">ty'</a> option</span></span></code></div><div class="spec-doc"><p>Implement a function <code>type_of'</code> where <code>type_of' gamma e</code> is <code>Some t</code> if <code>e</code> has type <code>t</code> in the context <code>gamma</code> (i.e., <code>gamma</code> <code class="odoc-katex-math">\vdash</code> <code>e</code> <code class="odoc-katex-math">: </code> <code>t</code> is derivable) and <code>None</code> if <code>e</code> is not well-typed in the context <code>gamma</code>.</p><p>Put your solution in a file called <code>assign04/lib/assign04_04.ml</code>. See the file <code>assign04/test/test04.ml</code> for example output behavior. <b>Important:</b> You must include the definitions of <code>expr'</code> and <code>ty'</code> in your solution.</p></div></div><h3 id="written-part"><a href="#written-part" class="anchor"></a>Written Part</h3><h4 id="problem-1:-typing-derivations"><a href="#problem-1:-typing-derivations" class="anchor"></a>Problem 1: Typing Derivations</h4><p>The following typing judgment is not derivable.</p><div><pre class="odoc-katex-math display">    \cdot \vdash \texttt{let a = let b = 3 in a + b in 2 * a} : \texttt{int}
+    </pre></div><p>That said, we can try to construct the &quot;most complete&quot; typing derivation to see where trying to type the given expression fails.</p><p>Construct a typing derivation from bottom-up until you reach a judgment of the form <code class="odoc-katex-math">\Gamma \vdash x : \tau</code> which <i>does not</i> follow from the <code class="odoc-katex-math">\mathsf{Var}</code> rule. You final solution should be a valid typing derivation <i>except</i> that one of its axioms (i.e., judgments with no premises) is not valid. <b>Please circle or otherwise mark this invalid judgment.</b></p><h4 id="problem-2:-semantic-derivations"><a href="#problem-2:-semantic-derivations" class="anchor"></a>Problem 2: Semantic Derivations</h4><p>Write a derivation for the semantic judgment</p><div><pre class="odoc-katex-math display">    \left(\texttt{let a = let b = 3 in b + b in 2 * a}\right) \Downarrow \texttt{12}
+    </pre></div></div></body></html>
