@@ -34,10 +34,10 @@
 val last_function_standing : ('a -> 'a) list -> 'a -> ('a -> bool) -> ('a -> 'a) option
 (** Implement the function [last_function_standing] so that
 
-    {[last_function_standing funcs start pred funcs]}
+    {[last_function_standing funcs start pred]}
 
     is the last function standing in [funcs] with respect to the starting point [start] and failing condition [pred].
-    The value should be returned as an option, where the value is [None] when [funcs] is empty, or there are multiple functions in [funcs] with the same {b finite} lifespan.
+    The value should be returned as an option, where the value is [None] when [funcs] is empty, or there are multiple functions in [funcs] with the same {b finite} maximum lifespan.
     The behavior of the implementation is undefined if [funcs] has multiple functions with infinite lifespan.
 
     Put your solution in a file called [assign04/lib/assign04_01.ml].
