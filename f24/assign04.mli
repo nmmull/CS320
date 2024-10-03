@@ -203,7 +203,7 @@ val eval : expr -> value
 
     Put your solution in a file called [assign04/lib/assign04_03.ml].
     See the file [assign04/test/test03.ml] for example output behavior.
-    {b Important:} You should include the line [open Assign04_02.ml] so you have access to the type definitions in that file. You must also include the definition of [value] in your solution.
+    {b Important:} You should include the line [open Assign04_02] so you have access to the type definitions in that file. You must also include the definition of [value] in your solution.
  *)
 
 (** {3 Problem 4: Your second type checker}
