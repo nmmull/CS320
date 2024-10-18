@@ -217,8 +217,8 @@ val eval : expr -> value
     The behavior of the implementation is undefined if [e] is not well-typed (i.e., if [type_of e] is [None]).
 
     Put your solution into a file called [lib/assign06_04.ml].
-    See the file [test/test_suite/test04.ml] for example behavior.
     Remember that you need to include the line [open Utils] to use the types defined there.
+    There are no provided tests this week, you will have to test this function yourself.
  *)
 
 (** {1 The Executable}
