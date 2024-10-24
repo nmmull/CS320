@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Assign07 (Fall-2024.Specifications.Assign07)</title><meta charset="utf-8"/><link rel="stylesheet" href="../../../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.2"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body class="odoc"><nav class="odoc-nav"><a href="../index.html">Up</a> – <a href="../../index.html">Fall-2024</a> &#x00BB; <a href="../index.html">Specifications</a> &#x00BB; Assign07</nav><header class="odoc-preamble"><h1>Module <code><span>Specifications.Assign07</span></code></h1></header><nav class="odoc-toc"><ul><li><a href="#assignment-7">Assignment 7</a><ul><li><a href="#programming-part">Programming Part</a></li><li><a href="#written-part">Written Part</a><ul><li><a href="#problem-1:-derivations">Problem 1: Derivations</a></li><li><a href="#problem-2:-ambiguity">Problem 2: Ambiguity</a></li></ul></li></ul></li></ul></nav><div class="odoc-content"><h2 id="assignment-7"><a href="#assignment-7" class="anchor"></a>Assignment 7</h2><p>This assignment is due on <b>Thursday 10/31 by 11:59PM</b>.</p><h3 id="programming-part"><a href="#programming-part" class="anchor"></a>Programming Part</h3><p>There is a single task in the programming part of this assignment: generate a parser using Menhir for the following grammar.</p><pre class="language-text"><code>&lt;prog&gt;  ::= &lt;expr&gt;
+
+&lt;expr&gt;  ::= if &lt;expr&gt; then &lt;expr&gt; else &lt;expr&gt;
+          | let &lt;var&gt; = &lt;expr&gt; in &lt;expr&gt;
+          | fun &lt;var&gt; -&gt; &lt;expr&gt;
+          | &lt;expr2&gt;
+
+&lt;expr2&gt; ::= &lt;expr2&gt; &lt;bop&gt; &lt;expr2&gt;
+          | &lt;expr3&gt; { &lt;expr3&gt; }
+
+&lt;expr3&gt; ::= () | true | false
+          | &lt;num&gt; | &lt;var&gt;
+          | ( &lt;expr&gt; )
+
+&lt;bop&gt;   ::= + | - | * | / | mod | &lt; | &lt;= | &gt; | &gt;= | = | &lt;&gt; | &amp;&amp; | ||
+
+&lt;num&gt;   ::= handled by lexer
+
+&lt;var&gt;   ::= handled by lexer</code></pre><p>A couple notes about the this grammar:</p><ul><li>The last alternative for <code>&lt;bop&gt;</code> is <code>||</code>, as in Boolean disjunction in OCaml.</li><li>The second alternative of <code>&lt;expr2&gt;</code> represents application, and the curly braces refer to repetition in EBNF syntax. Remember that application is <i>left associative</i>, so given a sequence like <code>e1 e2 e3</code>, this should parse to <code>(App (App(e1, e2), e3)</code>. See the example from lecture for more details.</li></ul><p>In the following table the operators of the above language are given alongside their associativity, in order of increasing precedence.</p><table class="odoc-table"><tr><th><p>Operator</p></th><th><p>Associativity</p></th></tr><tr><td><p><code>||</code></p></td><td><p>right</p></td></tr><tr><td><p><code>&amp;&amp;</code></p></td><td><p>right</p></td></tr><tr><td><p><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>&lt;&gt;</code></p></td><td><p>left</p></td></tr><tr><td><p><code>+</code>, <code>-</code></p></td><td><p>left</p></td></tr><tr><td><p><code>*</code>, <code>/</code>, <code>mod</code></p></td><td><p>left</p></td></tr></table><p>Your parser should target the following ADT, which is given in <code>lib/utils/utils.ml</code>.</p><pre class="language-ocaml"><code>type bop =
+  | Add | Sub | Mul | Div | Mod
+  | Lt | Lte | Gt | Gte | Eq | Neq
+  | And | Or
+
+type expr =
+  | Num of int
+  | Var of string
+  | Unit | True | False
+  | App of expr * expr
+  | Bop of bop * expr * expr
+  | If of expr * expr * expr
+  | Let of string * expr * expr
+  | Fun of string * expr
+
+type prog = expr</code></pre><p>In this assignment, you are given some skeleton code (you won't be given any skeleton code in the mini-projects). Your task is to fill in <code>lex.mll</code> and <code>par.mly</code> so <code>My_parser.parse</code> is a parser for the above grammar. See <code>test/test_suite/test_parser.ml</code> for example behavior. <b>Note.</b> The tests given there are far from exhaustive. You should do a bit of testing yourself.</p><h3 id="written-part"><a href="#written-part" class="anchor"></a>Written Part</h3><p>Consider the following toy grammar for match statements in OCaml. Note that we use <code>'|'</code> to distinguish between the alternative symbol and the syntax for matches.</p><pre class="language-text"><code>&lt;expr&gt;    ::= match &lt;expr&gt; with &lt;matches&gt;
+            | &lt;var&gt;
+            | &lt;num&gt;
+
+&lt;match&gt;   ::= '|' &lt;pat&gt; -&gt; &lt;expr&gt;
+&lt;matches&gt; ::= &lt;match&gt; | &lt;match&gt; &lt;matches&gt;
+
+&lt;pat&gt;     ::= &lt;var&gt; | &lt;num&gt;
+&lt;var&gt;     ::= x
+&lt;num&gt;     ::= 0</code></pre><h4 id="problem-1:-derivations"><a href="#problem-1:-derivations" class="anchor"></a>Problem 1: Derivations</h4><p>Give a leftmost derivation of the sentence <code>match x with | 0 -&gt; x | x -&gt; 0</code> in the above grammar Remember that in a leftmost derivation, you must expand <i>exactly one</i> nonterminal symbol in each line.</p><h4 id="problem-2:-ambiguity"><a href="#problem-2:-ambiguity" class="anchor"></a>Problem 2: Ambiguity</h4><p>Demonstrate that the above grammar is ambiguous by presenting a sentence which has two distinct parse trees according to the grammar. You do not need to present the parse trees, but you should explain why the sentence you give is ambiguous.</p></div></body></html>
