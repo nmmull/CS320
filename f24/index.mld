@@ -7,12 +7,12 @@ In this course, we take up the "programming language" as an {i object of formal 
 This course is {i not} about how to program, though the principles we cover are generally useful for designing and reasoning about programs.
 
 The first part of the course is on functional programming in {{: https://ocaml.org/ }OCaml}, based on {i CS 3110: Data Structures and Functional Programming} at Cornell University and its associated {{: https://cs3110.github.io/textbook/cover.html }textbook} (referred to as OCP below).
-Its topics include inductive types, data abstraction, higher-order functions, combinators, and polymorphism.
-It is during this part that we learn to {i think} functionally, to view programs not (necessarily) as sequences of commands manipulating global state, but as compositions of (pure) functions which decompose and reorient data.
+Its topics include inductive types, higher-order functions, and polymorphism.
+It's during this part that we learn to {i think} functionally, to view programs not as sequences of commands manipulating global state, but as compositions of functions which deconstruct and reorient data.
 
-In the second part of the course we {i implement} several interpreters for a small fragment of OCaml itself (that is, we will build OCaml programs which {i execute} OCaml programs).
-The topics covered include parsing, operational semantics, variable scope and binding, stack-based languages, byte-code interpretation, and type checking.
-After this part, you will be able to run some of the (simpler) programs we wrote in the first part of the course (pretty neat).
+In the second part of the course we {i implement} several interpreters for a small fragment of OCaml itself; that is, we will write OCaml programs which {i execute} OCaml programs.
+The topics covered include parsing, operational semantics, variable scope and binding, type checking and type inference.
+After this part, you will be able to execute some of the simpler programs we wrote in the first part of the course using your own interpreter (pretty neat).
 
 {2 Prerequisites}
 
@@ -20,7 +20,7 @@ After this part, you will be able to run some of the (simpler) programs we wrote
 - CAS CS 131: Combinatoric Structures
 - CAS CS 210: Computer Systems
 
-You'll get the most out of this course (and will have the best time of it) if you complete the 200 level CS major requirements beforehand.
+You'll get the most out of this course (and will have the best time of it) if you've completed the 200 level CS major requirements beforehand.
 Experience with a high-level programming language (like Python or Java) is a must.
 
 {2 Requisites}
@@ -29,7 +29,7 @@ The workload for this course consists of assignments, mini-projects, a midterm e
 Your final grade in the course will be determined by the following breakdown:
 
 - 30% Assignments (6 of 7 assignments, 5% each)
-- 30% Mini-project (4 total, ≈7% each)
+- 30% Mini-project (3 total, 10% each)
 - 20% Midterm exam
 - 20% Final exam
 
@@ -51,12 +51,13 @@ See the {!section-course_info} section for more details.
 
 - {{: https://piazza.com/class/m04dwmzkfjt4zh }Piazza}
 - {{: https://www.gradescope.com/courses/818075 }Gradescope}
+- {{: https://calendar.google.com/calendar/embed?src=c_46814b65fc93295c4de4bf1e8e5687e35739530499aaed88be8ad99c5eba0032%40group.calendar.google.com&ctz=America%2FNew_York}Office hours calendar}
+
 - {{: https://github.com/BU-CS320/cs320-fall-2024 }Course Repository}
 - {{!Specifications.Stdlib320} Course Standard Library}
-- {{: https://calendar.google.com/calendar/embed?src=c_46814b65fc93295c4de4bf1e8e5687e35739530499aaed88be8ad99c5eba0032%40group.calendar.google.com&ctz=America%2FNew_York}Office hours calendar}
 - {{!page-rules} Inference Rules}
 
-You may also want to take a look at:
+
 - {{: https://ocaml.org/ }OCaml}
 - {{: https://code.visualstudio.com }VS Code}
 
@@ -162,13 +163,13 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Thu 10/3}
-    {td {{!page-topics.mod}Modules}}
+    {td {{!page-topics.mod}Modules and Monads}}
     {td A5 out, A4 due}
   }
   {tr {td } {td } {td }}
   {tr
     {td Tue 10/8}
-    {td {{!page-topics.monads}Introduction to Monads}}
+    {td Midterm Review}
     {td }
   }
   {tr
@@ -205,7 +206,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Wed 10/23}
-    {td Week 8 Lab: Recursive Descent Parsing}
+    {td Week 8 Lab: Practice with Grammars}
     {td }
   }
   {tr
@@ -232,17 +233,17 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr {td } {td } {td }}
   {tr
     {td Tue 11/5}
-    {td {{!page-topics.sem_iii}Formal Semantics III: Variables, Scope, Parameter Passing}}
+    {td {{!page-topics.sem_iii}Formal Semantics III: Variables, Scope, Closures}}
     {td }
   }
   {tr
     {td Wed 11/6}
-    {td Week 10 Lab: A Language with Dynamic Scoping}
+    {td Week 10 Lab: Desugaring}
     {td }
   }
   {tr
     {td Thu 11/7}
-    {td {{!page-topics.sem_iv}Formal Semantics IV: Closures and the Environment Model}}
+    {td {{!page-topics.sem_iv}Formal Semantics IV: The Environment Model}}
     {td MP2 out, MP1 due}
   }
   {tr {td } {td } {td }}
@@ -259,7 +260,7 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   {tr
     {td Thu 11/14}
     {td {{!page-topics.type_check_ii}Type Checking II: In Practice}}
-    {td MP3 out, MP2 due}
+    {td }
   }
   {tr {td } {td } {td }}
   {tr
@@ -269,13 +270,13 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Wed 11/20}
-    {td Week 12 Lab: Compiling the Lambda Calculus}
+    {td Week 12 Lab: Practice with Unification}
     {td }
   }
   {tr
     {td Thu 11/21}
     {td {{!page-topics.type_inf_ii}Type Inference II: Unification}}
-    {td MP4, out, MP3 due}
+    {td MP3 out, MP2 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -301,13 +302,13 @@ See the {{!page-topics} full list of topics} (linked in the entries of the table
   }
   {tr
     {td Wed 12/4}
-    {td Week 14 Lab: Help with Mini-Project 4}
+    {td Week 14 Lab: Help with Mini-Project 3}
     {td }
   }
   {tr
     {td Thu 12/5}
     {td {{!page-topics.comp_ii}Compilation II: In Practice}}
-    {td MP4 due}
+    {td MP3 due}
   }
   {tr {td } {td } {td }}
   {tr
@@ -342,7 +343,7 @@ The first part will be taught by Ankush Das and the second part will be taught b
 We hold lab meetings once a week on Wednesdays (see details {{!minutiae}above}).
 Please attend the lab meeting in which you are registered.
 This is an opportunity for you to engage with the material in a smaller setting with our teaching fellows.
-We will not take attendance, but again, its highly recommended that you attend (our teaching fellows can provide you with another (invaluable) perspective on the material).
+We will not take attendance, but again, its highly recommended that you attend; our teaching fellows can provide you with another invaluable perspective on the material.
 
 {2 Communication}
 
@@ -376,9 +377,9 @@ This means {b we will not accept late homework assignments, under any circumstan
 
 {2 Mini-Projects}
 
-In the second half of the course, we will primarily be working on mini-projects, each of which requires you to build an interpreter.
-Each interpreter will be a more efficient and (a bit) more complex than the last.
-You should think of these as roughly the same amount of work as a programming assignment, but with a single large programming task (as in building an interpreter) instead of many small programming tasks (as in a problem set).
+In the second half of the course, we'll primarily be working on mini-projects, each of which requires you to build an interpreter.
+Each interpreter will be a bit more complex than the last.
+You should think of these as roughly the same amount of work as two programming assignment, but with a single large programming task (building an interpreter) instead of many small programming tasks.
 {b It is not possible to drop a mini-project}.
 
 {2 Policies and Guidelines}

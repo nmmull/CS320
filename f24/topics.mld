@@ -19,7 +19,7 @@ We also introduce OCaml, including how to work with [utop], how to compile simpl
 
 We look at the basic constructs we need to start writing more interesting OCaml programs, and work through some examples.
 We start to see how the typing rules and semantics of OCaml work.
-We also introduce dune (which we'll be using this for assignments).
+We also introduce dune (which we'll be using for assignments).
 
 {b Reading:}
 - OCP 2.2: {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}Compiling OCaml Programs} (including 2.2.3)
@@ -29,7 +29,7 @@ We also introduce dune (which we'll be using this for assignments).
 {3:ocaml_intro_ii Let Expressions}
 
 We explore further the notion of expressions in OCaml (everything is an expression in OCaml).
-In particuluar, we look at let expressions as a way of using local variables.
+In particular, we look at let expressions as a way of using local variables.
 We continue to emphasize that as we introduce more programming abstractions, we have to formally present their syntax, typing, and semantics.
 
 - OCP 2.3: {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}Expressions}
@@ -72,7 +72,9 @@ We look at many examples.
 
 {2:poly Polymorphism}
 
-We take a moment to discuss more formally the notion of polymorphism.
+Many of the programs that we've written so far used specific types like [int], [string], and [bool].
+We take a moment to discuss {i polymorphism} more formally, and how to use polymorphism to write more general programs.
+
 
 {2 Higher Order Programming}
 
@@ -98,12 +100,13 @@ We also look at how higher-order functions can be useful for things other than l
 - OCP 4.4: {{: https://cs3110.github.io/textbook/chapters/hop/fold.html}Fold}
 - OCP 4.5: {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}Beyond Lists}
 
-{2:mod Modular Programming}
+{2:mod Modules and Monads}
 
 We introduce modules as a way of organizing OCaml code.
-We will need to know how modules work for the mini-projects in the second-half of the course.
 We see at how modules can also be used to organize interfaces for data structures.
-We also look a bit at the relationship between dune and toplevel.
+
+We also introduce monads as a way to more elegantly deal with [option]s in functional code.
+We show how to use [let*] syntax in OCaml to make code easier to follow.
 
 {b Reading:}
 
@@ -113,13 +116,11 @@ We also look a bit at the relationship between dune and toplevel.
 - OCP 5.4: {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}Encapsulation} (excluding 5.4.3)
 - OCP 5.5: {{: https://cs3110.github.io/textbook/chapters/modules/functional_data_structures.html}Functional Data Structures} (only 5.6.2)
 
-{2:monads Introduction to Monads}
-
-We introduce monads as a way to more elegantly deal with [option]s in functional code.  We show how to use [let*] syntax in OCaml to make code easier to follow.
-
 {2:prog Progress and Preservation}
 
 We take our last lecture before the midterm to discuss the notions of progress and preservation.
+These theorems express that well-typed programs are well-behaved, and hold for any {i good} programming languages.
+Professor Das also takes a moment to lament about programming languages.
 
 {2 Parsing}
 
@@ -128,12 +129,16 @@ We take our last lecture before the midterm to discuss the notions of progress a
 We introduce the second half of the course, including the full interpretation pipeline.
 We then start at the beginning of the pipeline (i.e., {i parsing}) looking at (E)BNF grammars, ambiguity, and precedence.
 
+{b Reading:}
+
+- {{: https://nmmull.github.io/PL-at-BU/Intro/notes.html}The Interpretation Pipeline} (draft)
+- {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}Formal Grammar} (draft)
 
 {3:parse_ii Lexer/Parser Generators}
 
 We look more carefully at the difference between lexing and parsing.
-We then see how to use [menhir] to generate lexers and parsers for a grammar (in particular, how to deal with ambiguity and precedence).
-({i Note.} We will use [menhir] for {i every} interpreter we build, so it is important to become comfortable with this tool)
+We then see how to use [ocamllex] and [menhir] to generate lexers and parsers for a grammar (in particular, how to deal with ambiguity and precedence).
+({i Note.} We will use these tools for {i every} interpreter we build, so it is important to become comfortable with them)
 
 {b Reading:}
 
@@ -152,17 +157,17 @@ We give some examples of derivations for various semantics.
 
 {3:sem_ii The Substitution Model}
 
-We work again through the untyped lambda calculus, this time with the formal machinery from last lecture.
-We look at capture-avoiding substitution and (if we have time) DeBruijn indices as ways of dealing with some of the more subtle details of evaluating expressions in the lambda calculus.
+We look the lambda calculus, its syntax and semantics.
+We also discuss capture-avoiding substitution as a way of dealing with some of the more subtle details of evaluating expressions in the lambda calculus.
 
 {b Reading:}
 
 - OCP 9.3: {{: https://cs3110.github.io/textbook/chapters/interp/substitution.html}Substitution Model}
 
-{3:sem_iii Variables, Scope, Parameter Passing}
+{3:sem_iii Variables, Scope, Closures}
 
-We discuss (dynamic and lexical) scoping, but with an emphasis on how variable scoping is dealt with in OCaml.
-We also consider the general problem of passing parameters to functions when they they are called, and look specifically at the call-by-name and call-by-value evaluation strategies in the functional setting.
+We discuss (dynamic and lexical) scoping, with an emphasis on how variable scoping is dealt with in OCaml.
+We consider how this connects to call-by-value semantics and closures.
 
 {b Reading:}
 
@@ -170,7 +175,7 @@ We also consider the general problem of passing parameters to functions when the
 
 {3:sem_iv Closures and the Environment Model}
 
-We introduce closures as a way to correctly implement lexical scoping in functional programming languages.
+We further discuss closures as a way to better implement lexical scoping in functional programming languages.
 We introduce the environment model as a more efficient alternative to the substitution model from the previous week.
 
 {b Reading:}
@@ -199,7 +204,7 @@ We discuss type inference and let-polymorphism (potentially non-polymorphic lets
 
 {3:type_inf_ii Unification}
 
-We discuss more generally the notion of unification, which underlies the type inference algorithm we will be implementing
+We discuss more generally the notion of unification, which underlies the type inference algorithm we will be implementing.
 
 {3:type_inf_iii In Practice}
 
