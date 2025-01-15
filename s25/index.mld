@@ -12,8 +12,9 @@ In the second part of the course we {e implement} several interpreters for vario
 The topics covered include parsing, operational semantics, variable scope and binding, type checking and type inference.
 By the end of the course, you'll be able to execute some of the simpler programs we wrote in the first part of the course using your own interpreter.
 
-See the syllabus and the following links for more course-specific information.
+See the following links for more information.
 
+- Syllabus
 - {{:https://piazza.com/class/m5rfm3r6mqt2lf/}Piazza}
 - {{:https://www.gradescope.com/courses/933669}Gradescope}
 - {{:https://github.com/BU-CS320/cs320-spring-2025}Course Repository}
