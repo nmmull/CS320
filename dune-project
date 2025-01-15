@@ -11,3 +11,7 @@
 (package
   (name Fall-2024)
   (depends ocaml dune))
+
+(package
+  (name Spring-2025)
+  (depends ocaml dune))

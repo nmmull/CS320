@@ -1,0 +1,12 @@
+(library
+ (name Specifications)
+ (public_name Spring-2025)
+ (modules_without_implementation
+   stdlib320))
+
+(documentation
+  (package Spring-2025)
+  (mld_files
+   index
+   topics
+   lab1))

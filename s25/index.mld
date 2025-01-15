@@ -1,0 +1,313 @@
+{0 CAS CS 320: Concepts of Programming Languages}
+
+{b (UNDER CONSTRUCTION)} CAS CS 320 is a course {e about} programming languages, particularly the {b design} and {b implementation} of programming languages.
+In this course, we take up the programming language as an {e object of formal study}.
+This course is {e not} about how to program, though the principles we cover are generally useful for writing and reasoning about programs.
+
+The first part of the course is on functional programming in {{: https://ocaml.org/ }OCaml}, based on {i CS 3110: Data Structures and Functional Programming} at Cornell University and its associated {{: https://cs3110.github.io/textbook/cover.html }textbook} (referred to as OCP below).
+Its topics include algebraic data types, higher-order functions, and polymorphism.
+It's during this part that we learn to {e think} functionally, to view programs not as sequences of commands manipulating global state, but as compositions of functions which deconstruct and reorient data.
+
+In the second part of the course we {e implement} several interpreters for various fragments of OCaml; that is, we will write OCaml programs which {i execute} OCaml programs.
+The topics covered include parsing, operational semantics, variable scope and binding, type checking and type inference.
+By the end of the course, you'll be able to execute some of the simpler programs we wrote in the first part of the course using your own interpreter.
+
+See the syllabus and the following links for more course-specific information.
+
+- {{:https://piazza.com/class/m5rfm3r6mqt2lf/}Piazza}
+- {{:https://www.gradescope.com/courses/933669}Gradescope}
+- {{:https://github.com/BU-CS320/cs320-spring-2025}Course Repository}
+- {{!Specifications.Stdlib320}Course Standard Library}
+- {{:https://calendar.google.com/calendar/embed?src=c_f91e7ed5b2449fd9f700327e269eb875fb70b963a2c6af67b2da9569c7bf1dd6%40group.calendar.google.com&ctz=America%2FNew_York}Office Hours Calendar}
+- {{!page-topics}Full List of Topics}
+
+The following table contains a complete schedule for the semester. You can click on any of the topics, to see the corresponding reading, any assignment to see the assignment, and any lab to see the lab.
+{table
+  {tr
+    {th Date}
+    {th Topic}
+    {th Reading}
+    {th Assignments}
+  }
+  {tr
+    {td Tue 1/21}
+    {td {{!page-topics.course_intro}Course Introduction}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/intro/past.html}1.1}, {{: https://cs3110.github.io/textbook/chapters/intro/present.html}1.2}, {{: https://cs3110.github.io/textbook/chapters/intro/future.html}1.3}, {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html}2.1}, {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}2.2}, {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}2.3})}
+    {td Assignment 0}
+  }
+  {tr
+    {td Wed 1/22}
+    {td Lab 1: Installation Party}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 1/23}
+    {td {{!page-topics.ocaml_intro_i}Beginning Ocaml I: The Basics}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}2.2}, {{: https://cs3110.github.io/textbook/chapters/basics/functions.html}2.4}, {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}2.6}, {{: https://cs3110.github.io/textbook/chapters/basics/debugging.html}2.7})}
+    {td Assignment 1 (A0 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 1/28}
+    {td {{!page-topics.ocaml_intro_ii}Beginning Ocaml II: Unions and Products}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/variants.html}3.2}, {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html}3.4}, {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}3.9})
+
+}
+    {td }
+  }
+  {tr
+    {td Wed 1/29}
+    {td Lab 2: Thinking Recursively}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 1/30}
+    {td {{!page-topics.ocaml_intro_iii}Beginning OCaml III: Lists, Tail Recursion}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/lists.html}3.1}, {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}3.5}, {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7}, {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}3.8})}
+    {td Assignment 2 (A1 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 2/4}
+    {td {{!page-topics.adt_i}Algebraic Data Types I: The Basics}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/type_synonym.html}3.6}, {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}3.9}, {{: https://cs3110.github.io/textbook/chapters/data/trees.html}3.11}, {{: https://cs3110.github.io/textbook/chapters/ds/rb.html}8.3})}
+   {td }
+  }
+  {tr
+    {td Wed 2/5}
+    {td Lab 3: TSV Reader}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 2/6}
+    {td {{!page-topics.adt_ii}Algebraic Data Types II: Polymorphism}}
+    {td }
+    {td Assignment 3 (A2 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 2/11}
+    {td {{!page-topics.hop_i}Higher Order Programming I: Maps and Filters}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/hop/higher_order.html}4.1}, {{: https://cs3110.github.io/textbook/chapters/hop/map.html}4.2}, {{: https://cs3110.github.io/textbook/chapters/hop/filter.html}4.3}, {{: https://cs3110.github.io/textbook/chapters/hop/currying.html}4.7})}
+    {td }
+  }
+  {tr
+    {td Wed 2/12}
+    {td Lab 4: S-Expressions}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 2/13}
+    {td {{!page-topics.hop_ii}Higher Order Programming II: Folds}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/hop/fold.html}4.4}, {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}4.5})}
+    {td Assignment 4 (A3 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 2/18}
+    {td {b No Lecture} (Substitute Monday) }
+    {td {b No Lecture} (Substitute Monday) }
+    {td }
+  }
+  {tr
+    {td Wed 2/19}
+    {td Lab 5: When2meet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 2/20}
+    {td {{!page-topics.inter_i}Intermediate OCaml I: Error Handling, Testing}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/ounit.html}3.3}, {{: https://cs3110.github.io/textbook/chapters/data/exceptions.html}3.10})}
+    {td Assignment 5 (A4 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 2/25}
+    {td {{!page-topics.inter_ii}Intermediate OCaml II: Modules}}
+    {td OCP ({{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html}5.1}, {{: https://cs3110.github.io/textbook/chapters/modules/modules.html}5.2}, {{: https://cs3110.github.io/textbook/chapters/modules/toplevel.html}5.3}, {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}5.4}, {{: https://cs3110.github.io/textbook/chapters/modules/functional_data_structures.html}5.5})}
+    {td }
+  }
+  {tr
+    {td Wed 2/26}
+    {td Lab 6: Midterm Review}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 2/27}
+    {td {b Midterm}}
+    {td {b Midterm}}
+    {td }
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 3/4}
+    {td {{!page-topics.parse_i}Parsing I: Formal Grammar}}
+    {td PL@BU ({{: https://nmmull.github.io/PL-at-BU/Intro/notes.html}1}, {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}2})}
+    {td }
+  }
+  {tr
+    {td Wed 3/5}
+    {td Week 7 Lab: A Calculator}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 3/6}
+    {td {{!page-topics.parse_ii}Parsing II: Lexing, Parsing Ambiguity}}
+    {td PL@BU {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}2}}
+    {td Assignment 6 (A5 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td 3/10-3/14}
+    {td {b No Class} (Spring Recess)}
+    {td {b No Class} (Spring Recess)}
+    {td }
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 3/18}
+    {td {{!page-topics.parse_iii}Parsing III: Lexer/Parser Generators}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/parsing.html}9.2}, PL@BU {{: https://nmmull.github.io/PL-at-BU/Parsing/notes.html}3}}
+    {td }
+  }
+  {tr
+    {td Wed 3/19}
+    {td Week 8 Lab: Formal Grammar Worksheet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 3/20}
+    {td {{!page-topics.sem_i}Formal Semantics I: Operational Semantics}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/calculator.html}9.1}}
+    {td Mini-Project 1 (A6 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 3/25}
+    {td {{!page-topics.sem_ii}Formal Semantics II: The Substitution Model}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/substitution.html}9.3}}
+    {td }
+  }
+  {tr
+    {td Wed 3/26}
+    {td Week 9 Lab: Operational Semantics Worksheet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 3/27}
+    {td {{!page-topics.sem_iii}Formal Semantics III: Variables, Scope, Closures}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}9.4}}
+    {td (MP1 check-in due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 4/1}
+    {td {{!page-topics.sem_iv}Formal Semantics IV: The Environment Model}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}9.4}}
+    {td }
+  }
+  {tr
+    {td Wed 4/2}
+    {td Week 10 Lab: An Imperative Language}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 4/3}
+    {td {{!page-topics.type_check_i}Type Checking I: The Simply-Typed Lambda Calculus}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}9.5}}
+    {td Mini-Project 2 (MP1 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 4/8}
+    {td {{!page-topics.type_check_ii}Type Checking II: Progress and Preservation}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}9.5}}
+    {td }
+  }
+  {tr
+    {td Wed 4/9}
+    {td Week 11 Lab: Closures Worksheet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 4/10}
+    {td {{!page-topics.type_check_iii}Type Checking III: Extended Example}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}9.5}}
+    {td (MP2 check-in due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 4/15}
+    {td {{!page-topics.type_inf_i}Type Inference I: Hindley-Milner (Light)}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}9.6}}
+    {td }
+  }
+  {tr
+    {td Wed 4/16}
+    {td Week 12 Lab: Typing Derivation Worksheet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 4/17}
+    {td {{!page-topics.type_inf_ii}Type Inference II: Unification}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}9.6}}
+    {td Mini-Project 3 (MP2 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 4/22}
+    {td {{!page-topics.type_inf_iii}Type Inference III: Constraint-Based Inference}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}9.6}}
+    {td }
+  }
+  {tr
+    {td Wed 4/23}
+    {td Lab 13: Logic Programming}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 4/24}
+    {td {{!page-topics.type_inf_iv}Type Inference IV: Extended Example}}
+    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}9.6}}
+    {td (MP3 check-in due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td Tue 4/29}
+    {td {{!page-topics.comp_i}Compilation I: Stack-Based Languages}}
+    {td }
+    {td }
+  }
+  {tr
+    {td Wed 4/30}
+    {td Lab 14: Type Inference Worksheet}
+    {td }
+    {td }
+  }
+  {tr
+    {td Thu 5/1}
+    {td {{!page-topics.comp_ii}Compilation II: Byte-Code Interpretion}}
+    {td }
+    {td (MP3 due)}
+  }
+  {tr {td } {td } {td } {td }}
+  {tr
+    {td TBD}
+    {td {b Final Exam}}
+    {td }
+    {td }
+  }
+}
