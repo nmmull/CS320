@@ -241,7 +241,7 @@ val char_of_int : int -> char
     code *)
 
 val string_of_bool : bool -> string
-(** Converts a Boolean value to a string. *)
+(** Converts a Boolean value to a string *)
 
 val bool_of_string : string -> bool
 (** Converts a string to a Boolean value, raising a [Failure]
@@ -322,7 +322,7 @@ val print_endline : string -> unit
 (** Prints a string followed by a newline character to standard output *)
 
 val print : string -> unit
-(** [print] is an alias for [print_endline]. *)
+(** [print] is an alias for [print_endline] *)
 
 (** {2 Reading}
 
@@ -345,7 +345,7 @@ val read : unit -> string
 val ( |> ) : 'a -> ('a -> 'b) -> 'b
 (** [x |> f |> g] is equivalent to [g (f x)].  This operator is useful
     for
-    {{:https://cs3110.github.io/textbook/chapters/basics/functions.html#pipeline}pipelining}. *)
+    {{:https://cs3110.github.io/textbook/chapters/basics/functions.html#pipeline}pipelining} *)
 
 (** {2 Integers} *)
 
@@ -353,7 +353,7 @@ module Int : sig
   val sprint : int -> string
   val print : int -> unit
 end
-(** A module containing printers for integers. *)
+(** A module containing printers for integers *)
 
 (** {2 Floats} *)
 
@@ -362,7 +362,7 @@ module Float : sig
   val sprint : float -> string
   val print : float -> unit
 end
-(** A module containing printers for floats, and the value [pi]. *)
+(** A module containing printers for floats, and the value [pi] *)
 
 (** {2 Booleans} *)
 
@@ -370,7 +370,7 @@ module Bool : sig
   val sprint : bool -> string
   val print : bool -> unit
 end
-(** A module containing printers for Boolean values. *)
+(** A module containing printers for Boolean values *)
 
 (** {2 Characters} *)
 
@@ -378,7 +378,7 @@ module Char : sig
   val sprint : char -> string
   val print : char -> unit
 end
-(** A module containing printers for characters. *)
+(** A module containing printers for characters *)
 
 (** {2 Strings}
 
@@ -401,7 +401,7 @@ val ( ^ ) : string -> string -> string
 
  *)
 
-(** A module containing basic string operations. *)
+(** A module containing basic string operations *)
 module String : sig
 
   (** {1 Basic functions} *)
@@ -509,6 +509,7 @@ val ( @ ) : 'a list -> 'a list -> 'a list
 
  *)
 
+(** A module containing basic list operations *)
 module List : sig
 
   (** {1 Basic functions} *)
@@ -523,7 +524,7 @@ module List : sig
    *)
 
   val nth : 'a list -> int -> 'a
-  (** [nth l i] is the [i]th element of [l] if [i >= 0] and [i < length l].
+  (** [nth l i] is the [i]th element of [l] if [i >= 0] and [i < length l]
 
       {[
       let _ = assert (nth [1;2;3] 1 = 2)
@@ -577,11 +578,11 @@ module List : sig
    *)
 
   val fold_left : ('acc -> 'a -> 'acc) -> 'acc -> 'a list -> 'acc
-  (** Left-associative folding function for lists. [fold_left op init [x_1;x_2;...;x_n]] is equivalent to [op (...(op (op init x_1) x_2)...) x_n].
+  (** Left-associative folding function for lists. [fold_left op init [x_1;x_2;...;x_n]] is equivalent to [op (...(op (op init x_1) x_2)...) x_n]
    *)
 
   val fold_right : ('a -> 'acc -> 'acc) -> 'a list -> 'acc -> 'acc
-  (** Right-associative folding function for lists. [fold_right op [x_1;x_2;...;x_n]] is equivalent to [op x_1 (op x_2 (...(op x_n base)...))].
+  (** Right-associative folding function for lists. [fold_right op [x_1;x_2;...;x_n]] is equivalent to [op x_1 (op x_2 (...(op x_n base)...))]
    *)
 
   (** {1 Finding} *)
@@ -589,7 +590,7 @@ module List : sig
   val mem : 'a -> 'a list -> bool
   (** Membership predicate for lists. [mem x l] is
       - [true] if [x] appears in [l]
-      - [false] otherwise. *)
+      - [false] otherwise *)
 
   val find : ('a -> bool) -> 'a list -> 'a
   (** Finds based on a predicate.  [find f l] is the first appearance of an element of [l] which satisfies [f].
@@ -603,7 +604,7 @@ module List : sig
   (** {1 Sorting} *)
 
   val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-  (** Generic sorting function for lists. [sort f l] has the same elements as [l], but sorted according to the comparing function [f]. *)
+  (** Generic sorting function for lists. [sort f l] has the same elements as [l], but sorted according to the comparing function [f] *)
 
   (** {1 Association lists} *)
 
@@ -613,10 +614,10 @@ module List : sig
       [snd (find (fun (k, v) -> k = x))] *)
 
   val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-  (** Same as the previous function, but is [None] in the case of failure. *)
+  (** Same as the previous function, but is [None] in the case of failure *)
 
   val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-  (** [remove_assoc k l] is [l] but with the first appearance of a pair of the form [(k, v)] removed. *)
+  (** [remove_assoc k l] is [l] but with the first appearance of a pair of the form [(k, v)] removed *)
 
 
   (** {1 Printers} *)
@@ -702,7 +703,7 @@ end
 
 type ('a, 'b) result = Ok of 'a | Error of 'b
 
-(** A module containing basic result operations. *)
+(** A module containing basic result operations *)
 module Result : sig
   val is_ok : ('a, 'e) result -> bool
   (** [is_ok r] is
@@ -760,7 +761,7 @@ module Ntree : sig
   val sprint : ?unicode:bool -> ('a -> string) -> 'a ntree -> string
   val print : ?unicode:bool -> ('a -> string) -> 'a ntree -> unit
 end
-(** A module containing printers for trees. *)
+(** A module containing printers for trees *)
 
 (** {1 Exception Handling}
 
@@ -801,15 +802,14 @@ val atanh : float -> float
 
 (** {2 Randomness} *)
 
-(** A module containing basic random operations. *)
+(** A module containing basic operations for randomness *)
 module Random : sig
   val int : int -> int
-  (** [int n] is a random integer chosen uniformly from the range {m [0, n)}. *)
+  (** [int n] is a random integer chosen uniformly from the range {m [0, n)} *)
 
   val float : float -> float
-  (** [float n] is a random float chosen from the range {m [0, n) *)
+  (** [float n] is a random float chosen from the range {m [0, n)} *)
 
   val bool : unit -> bool
-  (** [bool ()] is a random Boolean value. *)
-
+  (** [bool ()] is a random Boolean value *)
 end
