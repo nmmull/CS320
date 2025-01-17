@@ -389,6 +389,64 @@ You should see the message that you put in your program.
 
 }
 
+{- {b Use Utop.} Utop is an interface for OCaml's toplevel, like
+Python's REPL.  It's a standalone program, you can type in your terminal:
+
+{[
+utop
+]}
+
+and from there you can type in any OCaml expression followed by two
+semicolons [;;], which Utop will evaluate, e.g.:
+
+{[
+utop # 2 + 2;;
+- : int = 4
+]}
+
+When you're done, type [#quit] to leave Utop.
+
+It's will be more common for us to use Utop via Dune so that it runs
+in a {e project aware} way.  Let's start by creating a file called
+[lib/hello_dune.ml] and in it write the line:
+
+{[
+let welcome = "TODO"
+]}
+
+replacing [TODO] with a welcome message of your choosing.  Then in
+your terminal (within the directory [hello_dune]) type:
+
+{[
+dune utop
+]}
+
+This will open Utop, but it will {e also} make available any code that
+you've written in the [lib] directory.  You can type:
+
+{[
+Hello_dune.welcome;;
+]}
+
+within Utop, and Utop will evaluate it to be the message you wrote.
+Note the capital 'H' here.  [Hello_dune] is a {i module} which is
+defined in the file [lib/hello_dune.ml] and in which the value
+[welcome] is defined.
+
+The last thing we'll do is use this value in our executable program.
+Go back to [bin/main.ml] and replace its content with:
+
+{[
+let () = print_endline Hello_dune.welcome
+]}
+
+The point: the code in [bin/main.ml] can refer to the [Hello_dune]
+module. This is how most of our dune projects will be structured;
+we'll put library code in the [lib] directory and executable code in
+the [bin] directory (hence, the names).
+
+}
+
 }
 
 And that's it for now, you've created a dune project.  For most
