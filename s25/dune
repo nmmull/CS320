@@ -2,7 +2,8 @@
  (name Specifications)
  (public_name Spring-2025)
  (modules_without_implementation
-   stdlib320))
+   stdlib320
+   assign0))
 
 (documentation
   (package Spring-2025)
