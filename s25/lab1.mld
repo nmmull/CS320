@@ -98,7 +98,7 @@ git clone https://github.com/USERNAME/cs320-spring-2025-private.git
 {- Add the course repository as a remote for your private repository:
 
 {@text[
-git -C ./cs320-spring-2025-private remote add upstream https://github.com/USERNAME/cs320-spring-2025-private.git
+git -C ./cs320-spring-2025-private remote add upstream https://github.com/BU-CS320/cs320-spring-2025.git
 ]}
 
 }
