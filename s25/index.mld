@@ -46,7 +46,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 1/23}
     {td {{!page-topics.ocaml_intro_i}Beginning Ocaml I: The Basics}}
     {td OCP ({{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}2.2}, {{: https://cs3110.github.io/textbook/chapters/basics/functions.html}2.4}, {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}2.6}, {{: https://cs3110.github.io/textbook/chapters/basics/debugging.html}2.7})}
-    {td Assignment 1 (A0 due)}
+    {td {{!Specifications.Assign1}Assignment 1} (A0 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr

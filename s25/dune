@@ -3,7 +3,8 @@
  (public_name Spring-2025)
  (modules_without_implementation
    stdlib320
-   assign0))
+   assign0
+   assign1))
 
 (documentation
   (package Spring-2025)
