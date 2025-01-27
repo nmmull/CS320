@@ -1,0 +1,134 @@
+{0 Lab 2: Thinking Recursively}
+
+Before we can start building more interesting OCaml programs, we have
+to get used to the "functional" way of thinking.  In part, this means
+making sure that we have a strong handle on recursion.  This week,
+we're going to be implementing some recursive "best-ofs", i.e.,
+functions that can be implemented recursively in an interesting or
+elegant way.
+
+I would recommend pair programming for this lab.  Since there's
+nothing to turn in, it would be a good way to talk through how to
+approach each problem.
+
+{1 Setting up a Dune Project}
+
+To practice, you're going to set up the Dune project for this lab.
+
+{ol
+
+{- In the [labs] directory, run the command
+
+{@text[
+dune init project lab2
+]}
+
+This should create a directory called [lab2] with the following
+structure:
+
+{@text[
+.
+├── bin
+│   ├── dune
+│   └── main.ml
+├── dune-project
+├── lab2.opam
+├── lib
+│   └── dune
+└── test
+    ├── dune
+    └── test_lab2.ml
+]}
+}
+
+{- Next you should create a file called [lib/lab2.ml].  You can put
+your solutions to this lab there.
+}
+
+{- Finally, you should update the file [test/dune] to look as follows:
+
+{[
+(test
+ (name test_lab2)
+ (libraries lab2))
+]}
+
+This tells dune that the test suite should be able to refer to the
+functions you've written in [lib/lab2.ml].
+}
+}
+
+{1 Problems}
+
+You should put your implementation of each function in the file
+[lib/lab2.ml].  If you want to verify that your implmentation behaves
+as expected, you can run [dune utop] to open UTop.  When referring to the
+functions you've written in Utop, you have to prefix them with
+[Lab2.], i.e., if I write [let foo = 2] in [lib/lab2.ml], then I can
+write [Lab2.foo] in UTop.
+
+{i Note.} Nearly all of the problems here are classics, which means
+there are solutions all over the Internet.  Naturally, this lab will
+be more useful if you don't look up those solutions first.
+
+{2 Towers of Hanoi}
+
+{{:https://en.wikipedia.org/wiki/Tower_of_Hanoi}Towers of Hanoi} is a
+puzzle game consisting of disks of distinct sizes placed on one of
+three pegs in order of decreasing size (from top to bottom).  The goal
+is to move a stack of disks on one peg (let's say the left) to another
+(let's say the right), with the restrictions (quoted from Wikipedia):
+
+{ol
+{- only one disk may be moved at a time}
+
+{- each move consists of taking the upper disk from one of the stacks
+and placing it on top of another stack or on an empty rod}
+
+{- no disk may be placed on top of a disk that is smaller than it}
+}
+
+See the Wikipedia page (linked above) for more information about the
+rules.
+
+Implement a function [hanoi] of type [int -> unit] which prints out
+the moves required to win towers of Hanoi.
+
+{2 Palindromic Integers}
+
+An integer is {i palindromic} if it is the same as itself written in
+reverse order (we'll say that no negative integer is palindromic).
+
+Write a function [palindromic] of type [int -> bool], where
+[palindromic n] is [true] if [n] is palindromic and [false] otherwise.
+
+{2 Pythagorean Triples}
+
+This problem is not so much about recursion as it is about
+understanding how to think about nested for-loops recursively.
+
+A {i Pythagorean triple} is a collection of three positive integers in
+nondecreasing order {m (i, j, k)} such that {m i^2 + j^2 = k^2}.
+
+Implement a function [print_triples] of type [int -> unit] such that
+[print_triples n] prints all Pythagorean triples consisting of numbers
+which are at most [n].  Order doesn't matter, but there should be no
+repeats.
+
+{2 ASCII Art}
+
+Write a function [hour_glass] of type [int -> string] such that
+[hour_glass n] is an ASCII representation of an hour glass with [2 * n
++ 1] lines, e.g., [hour_glass 4] is
+
+{@text[
+*********
+ *******
+  *****
+   ***
+    *
+   ***
+  *****
+ *******
+*********
+]}
