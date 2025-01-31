@@ -67,7 +67,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 1/30}
     {td {{!page-topics.ocaml_intro_iii}Beginning OCaml III: Lists, Tail Recursion}}
     {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/lists.html}3.1}, {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}3.5}, {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7}, {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}3.8})}
-    {td Assignment 2 (A1 due)}
+    {td {{!Specifications.Assign2}Assignment 2} (A1 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr

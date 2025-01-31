@@ -4,7 +4,8 @@
  (modules_without_implementation
    stdlib320
    assign0
-   assign1))
+   assign1
+   assign2))
 
 (documentation
   (package Spring-2025)
