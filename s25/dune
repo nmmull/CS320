@@ -5,7 +5,8 @@
    stdlib320
    assign0
    assign1
-   assign2))
+   assign2
+   lab3))
 
 (documentation
   (package Spring-2025)
