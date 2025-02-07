@@ -66,7 +66,7 @@ dir2/file1</code></pre><p>we can construct the nonempty tree <code>file_tree &qu
                                {f:int→bool} ⊢ 2 : int    {f:int→bool} ⊢ 3 : int
 ─────────────────────────(var) ────────────────────────────────────────────────(addInt)
 {f:int→bool} ⊢ f:int→bool                 {f:int→bool} ⊢ 2+3 : int
-───────────────────────────────────────────────────────────────────(if)
+───────────────────────────────────────────────────────────────────(app)
                   {f:int→bool} ⊢ f (2+3) : bool</code></pre><p>Write an English argument which expresses the same thing as the derivation above. <i>Note.</i> It's very subjective what constitutes <em>enough</em> detail. You'll be graded primarily on effort, please just be as descriptive as you can, using your best judgment.</p><h3 id="typing-derivation"><a href="#typing-derivation" class="anchor"></a>Typing Derivation</h3><div><pre class="odoc-katex-math display">   \{ \texttt{f} : \texttt{int -&gt; bool} \} \vdash \texttt{(if f 2 then (fun x -&gt; true) else f) 3} : \texttt{bool}
    </pre></div><p>Give a derivation of the above typing judgment. <i>Note.</i> This will take a bit of space. Please write as neatly as possible.</p><h3 id="semantic-derivation"><a href="#semantic-derivation" class="anchor"></a>Semantic Derivation</h3><div><pre class="odoc-katex-math display">   \texttt{let x = true in 3 + (if false || x then 2 else 1)} \Downarrow 5
    </pre></div><p>Give a derivation of the above semantic judgment.</p></div></body></html>
