@@ -86,7 +86,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 2/6}
     {td {{!page-topics.adt_ii}Algebraic Data Types II: Polymorphism}}
     {td }
-    {td Assignment 3 (A2 due)}
+    {td {{!Specifications.Assign3}Assignment 3} (A2 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr

@@ -1,11 +1,13 @@
 (library
  (name Specifications)
  (public_name Spring-2025)
+ (libraries stdlib320)
  (modules_without_implementation
    stdlib320
    assign0
    assign1
    assign2
+   assign3
    lab3))
 
 (documentation

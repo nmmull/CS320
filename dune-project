@@ -14,4 +14,4 @@
 
 (package
   (name Spring-2025)
-  (depends ocaml dune))
+  (depends ocaml dune stdlib320))
