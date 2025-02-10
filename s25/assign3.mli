@@ -200,6 +200,7 @@ val string_of_expr : expr -> string
     - Sequences of the same operator should not have parentheses. For example, [Add (Num 2, Add (Num 3, Num 4))] should be represented by the string ["2 + 3 + 4"] and not ["(2 + 3) + 4"] or ["2 + (3 + 4)"].
     - Parentheses should be included only when necessary for disambiguation. For example, [Add (Mul (Num 2, Num 3), Num 4)] should be represented by the string ["2 * 3 + 4"] and not ["(2 * 3) + 4"]
     - A negative number should be surrounded by parentheses {e unless} it is the first number of a (possibly empty) sequence of operations at the top-level, or within parentheses. For example [Add (Num (-2), Add (Num (-3), Num 4))] should be represented as the string ["-2 + (-3) + 4"] whereas [Mul (Num (-2), Add (Num (-3), Num 4))] should be represented by the string ["-2 * (-3 + 4)"].  Note that [-3] is not surrounded by parentheses in this last example.
+    - A variable should be represent by its name, e.g., [Add (Var "x") (Var "foo")] should be represend by the string [x + foo].
 
  *)
 
