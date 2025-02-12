@@ -8,7 +8,8 @@
    assign1
    assign2
    assign3
-   lab3))
+   lab3
+   lab4))
 
 (documentation
   (package Spring-2025)
