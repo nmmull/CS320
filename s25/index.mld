@@ -105,7 +105,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 2/13}
     {td {{!page-topics.hop_ii}Higher Order Programming II: Folds}}
     {td OCP ({{: https://cs3110.github.io/textbook/chapters/hop/fold.html}4.4}, {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}4.5})}
-    {td Assignment 4 (A3 due)}
+    {td {{!Specifications.Assign4}Assignment 4} (A3 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr
