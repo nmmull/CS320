@@ -197,7 +197,6 @@ val random_walk : (int -> int list) -> int -> int -> distr
 
 (**
    {math
-   \varnothing \vdash
    \texttt{let a = let b = 3 in b + b in 4 * a} \Downarrow v
    }
 
