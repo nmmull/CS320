@@ -155,6 +155,10 @@ val random_walk : (int -> int list) -> int -> int -> distr
     assert (random_walk drunkard 0 2
             = [(-2, {num=1;rat=4}); (0, {num=1;rat=2}), (2, {num=1;rat=4})])
     ]}
+
+    {b Important:} You may assume that [walk n] is nonempty for every
+    integer [n].
+
  *)
 
 (** {1 Written} *)
