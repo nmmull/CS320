@@ -10,7 +10,8 @@
    assign3
    assign4
    lab3
-   lab4))
+   lab4
+   lab5))
 
 (documentation
   (package Spring-2025)
