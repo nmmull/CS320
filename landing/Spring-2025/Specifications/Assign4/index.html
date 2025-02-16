@@ -29,6 +29,5 @@ let bar (Foo f) = f
 let baz x = bar x x
 let out = baz ???</code></pre><p>Consider the above OCaml program. Given an expression to put in place of <code>???</code> so that <code>out</code> evaluates to the integer <code>42</code>. Explain your answer.</p><h3 id="typing-derivation"><a href="#typing-derivation" class="anchor"></a>Typing Derivation</h3><div><pre class="odoc-katex-math display">   \varnothing \vdash
    \texttt{let a = let b = 3 in b + b in (a, true)} : \tau
-   </pre></div><p>Determine a type <code class="odoc-katex-math">\tau</code> such that the above typing judgment is derivable, and give the derivation.</p><h3 id="semantic-derivation"><a href="#semantic-derivation" class="anchor"></a>Semantic Derivation</h3><div><pre class="odoc-katex-math display">   \varnothing \vdash
-   \texttt{let a = let b = 3 in b + b in 4 * a} \Downarrow v
+   </pre></div><p>Determine a type <code class="odoc-katex-math">\tau</code> such that the above typing judgment is derivable, and give the derivation.</p><h3 id="semantic-derivation"><a href="#semantic-derivation" class="anchor"></a>Semantic Derivation</h3><div><pre class="odoc-katex-math display">   \texttt{let a = let b = 3 in b + b in 4 * a} \Downarrow v
    </pre></div><p>Determine a value <code class="odoc-katex-math">v</code> such that the above semantic judgment is derivable, and give the derviation.</p></div></body></html>
