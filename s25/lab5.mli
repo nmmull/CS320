@@ -99,7 +99,12 @@ val is_empty : interval -> bool
 
 val compare_interval: interval -> interval -> int
 (** Implement the function [compare_interval] so that it is a
-    comparison function for intervals as described above.
+    comparison function for intervals as described above {e which
+    orders intervals by day and start_time.} For example, any interval
+    on Wednesday should appear before any interval on Friday, but
+    given two intervals on Wednesday, the one with earlier starting
+    time should appear first, or they should be considered equal if
+    they have the same starting time.
 
  *)
 
