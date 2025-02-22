@@ -124,7 +124,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 2/20}
     {td {{!page-topics.inter_i}Intermediate OCaml I: Error Handling, Testing}}
     {td OCP ({{: https://cs3110.github.io/textbook/chapters/data/ounit.html}3.3}, {{: https://cs3110.github.io/textbook/chapters/data/exceptions.html}3.10})}
-    {td Assignment 5 (A4 due)}
+    {td {{!Specifications.Assign5}Assignment 5} (A4 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr
