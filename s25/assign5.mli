@@ -293,7 +293,7 @@ val flip_keys_and_values : int StringMap.t -> StringSet.t IntMap.t
     this rule, give a derivation of the following typing judgment.
 
     {math
-    \varnothing \vdash \texttt{let rec sum l = match l with | [] -> 0 | h :: t -> h + sum t in sum} : \texttt{int list → int list}
+    \varnothing \vdash \texttt{let rec sum l = match l with | [] -> 0 | h :: t -> h + sum t in sum} : \texttt{int list → int}
     }
 
     This will be a somewhat wide derivation. You may use arrows as
