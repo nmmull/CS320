@@ -154,7 +154,7 @@ The following table contains a complete schedule for the semester. You can click
   }
   {tr
     {td Wed 3/5}
-    {td Week 7 Lab: A Calculator}
+    {td Week 7 Lab: Expressions with Metadata}
     {td }
     {td }
   }
@@ -162,7 +162,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 3/6}
     {td {{!page-topics.parse_ii}Parsing II: Lexing, Parsing Ambiguity}}
     {td PL@BU {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}2}}
-    {td Assignment 6 (A5 due)}
+    {td {{!Specifications.Assign6}Assignment 6} (A5 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr
