@@ -221,9 +221,9 @@ val eval : expr -> value
          | B B
    ]}
 
-   Determine the {e shortest} sentence which has two distinct leftmost
-   derivations in the above grammar.  Also write down these two
-   leftmost derivations.
+   Determine a sentence {i with fewer than 8 symbols} which has two
+   distinct leftmost derivations in the above grammar.  Also write
+   down these two leftmost derivations.
 
  *)
 
