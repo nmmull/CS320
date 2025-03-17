@@ -1,0 +1,36 @@
+{0 Lab 8: Formal Grammar Worksheet}
+
+The following is a small collection of exercises related to formal
+grammars.
+
+{1 Ambiguity}
+
+{@text[
+<a> ::= <b> <c>
+<b> ::= <b> y | x
+<c> ::= <d> | <d> y
+<d> ::= z <b> | z
+]}
+
+{ol
+
+{- Give a leftmost derivation of the sentence [xyz].}
+
+{- Draw a parse tree for the sentence [xyz].}
+
+{- Find the {i shortest} sentence accepted by the above grammar which
+has multiple parse trees. Draw both parse trees.}
+
+}
+
+{1 Designing Grammars}
+
+Design an unambiguous grammar for Boolean expressions over the
+constants [True] and [False] in Python.  When you're done, compare
+with the
+{{:https://docs.python.org/3/reference/expressions.html#boolean-operations}Python
+grammar for Boolean operators}.
+
+{b Challenge.} We just discussed parser generators in lecture. If you
+have time, build a parser for these expressions using [menhir] and
+[ocamllex].
