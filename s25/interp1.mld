@@ -1,0 +1,112 @@
+{0 Mini-Project 1: You First Interpreter}
+
+For mini-project 1, you'll be building an interpreter for a small
+{i untyped} subset of OCaml.  This will mean building a parser and an
+evaluator.  There will be no type checker for this project.
+
+This mini-project is due on {b Thursday 4/03 by 8:00PM}. {i It cannot
+be dropped.} This is the "landing page" for the project, it {i does
+not} contain one of the actual information about the project.  The
+details of the project are given in the file
+[assigns/interp1/spec.pdf].
+
+{1 One-Week Check-in}
+
+To verify you're making progressing the mini-projects, you will be
+required to submit part of the mini-project, along with some written
+problems, by {b Thursday 03/27 8:00PM}.
+
+This time around, you must submit:
+
+{ul
+
+{- An implementation of [parse], as detailed in the mini-project
+specification}
+
+{- Solutions to the written problems below}
+
+}
+
+{i Note.} We will {b not} retest parts of the mini-project from the
+one-week check-in.  To recieve full credit on the mini-project, you
+must successfully submit both the one-week check-in and the complete
+mini-project.
+
+{1 Written Problems}
+
+{2 Non-Regular Grammars}
+
+It is a standard exercise in formal language theory to show that the
+set of sentences with some number of [0]s followed by {i the same
+number} of [1]s is not regular (e.g., [0011], [000111],
+[00001111], and so on). Write a grammar that recognizes exactly the
+sentences:
+
+{math
+
+\{\texttt{0}^m\texttt{1}^n : |m - n| \le 2\}
+
+}
+
+That is, the set of sentences of the form, [AB], [AA] [AAB], [ABB], [AABBBB],
+[AAABB], [AAABBB], and so on.
+
+{2 Small-Step Semantics}
+
+The following is a variant of the toy-language from Assignment 6.
+
+{math
+\begin{align*}
+\textcolor{blue}{\texttt{<expr>}} &::= \textcolor{blue}{\texttt{<int>}} \\
+&\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{true}} \\
+&\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{false}} \\
+&\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{+}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{red}{\texttt{)}} \\
+&\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{<}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{red}{\texttt{)}} \\
+&\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{?}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{blue}{\texttt{<expr>}} \ \textcolor{red}{\texttt{)}} \\
+\end{align*}
+}
+
+We take values in the big-step semantics to be expressions in the
+language itself.
+
+{math
+\frac
+{n \text{ is an integer literal}}
+{n \Downarrow n}
+\qquad
+\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 + v_2 = v}
+{\texttt{(} \ \texttt{+} \ e_1 \ e_2 \ \texttt{)} \Downarrow v}
+\qquad
+\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 < v_2}
+{\texttt{(} \ \texttt{<} \ e_1 \ e_2 \ \texttt{)} \Downarrow \texttt{true}}
+}
+
+{math
+\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 \geq v_2}
+{\texttt{(} \ \texttt{<} \ e_1 \ e_2 \ \texttt{)} \Downarrow \texttt{false}}
+\qquad
+\frac
+{e_1 \Downarrow \texttt{true} \qquad e_2 \Downarrow v_2}
+{\texttt{(} \ \texttt{?} \ e_1 \ e_2 \ e_3 \ \texttt{)} \Downarrow v_2}
+\qquad
+\frac
+{e_1 \Downarrow \texttt{false} \qquad e_3 \Downarrow v_3}
+{\texttt{(} \ \texttt{?} \ e_1 \ e_2 \ e_3 \ \texttt{)} \Downarrow v_3}
+}
+
+Write down the small-step semantics ({m e \longrightarrow e'}) for this
+language so that it is equivalent to the big-step semantics given
+above. In particular, it should be the case that:
+
+{ul
+
+{- If {m e \Downarrow v} according to the big-step semantics above,
+then {m e \longrightarrow^* v} according to the small-step semantics
+you give.}
+
+{- Expressions are evaluated from left to right.}
+
+}
