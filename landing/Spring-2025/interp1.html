@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>interp1 (Spring-2025.interp1)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.4"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../odoc.support/katex.min.css"/><script src="../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="index.html">Spring-2025</a> &#x00BB; interp1</nav><header class="odoc-preamble"><h1 id="mini-project-1:-you-first-interpreter"><a href="#mini-project-1:-you-first-interpreter" class="anchor"></a>Mini-Project 1: You First Interpreter</h1><p>For mini-project 1, you'll be building an interpreter for a small <i>untyped</i> subset of OCaml. This will mean building a parser and an evaluator. There will be no type checker for this project.</p><p>This mini-project is due on <b>Thursday 4/03 by 8:00PM</b>. <i>It cannot be dropped.</i> This is the &quot;landing page&quot; for the project, it <i>does not</i> contain any information about the project specification. The details of the project are given in the file <code>assigns/interp1/spec.pdf</code>.</p></header><nav class="odoc-toc"><ul><li><a href="#one-week-check-in">One-Week Check-in</a></li><li><a href="#written-problems">Written Problems</a><ul><li><a href="#small-step-semantics">Small-Step Semantics</a></li></ul></li></ul></nav><div class="odoc-content"><h2 id="one-week-check-in"><a href="#one-week-check-in" class="anchor"></a>One-Week Check-in</h2><p>To verify you're making progressing the mini-projects, you will be required to submit part of the mini-project, along with some written problems, by <b>Thursday 03/27 8:00PM</b>.</p><p>This time around, you must submit:</p><ul><li>An implementation of <code>parse</code>, as detailed in the mini-project specification. You should be able to leave your implementations of the other functions partial or empty <i>as long as your code builds</i>.</li><li>Solutions to the written problems below.</li></ul><p><i>Note.</i> We will <b>not</b> re-test parts of the mini-project from the one-week check-in. To recieve full credit on the mini-project, you must successfully submit both the one-week check-in and the complete mini-project.</p><h2 id="written-problems"><a href="#written-problems" class="anchor"></a>Written Problems</h2><h3 id="small-step-semantics"><a href="#small-step-semantics" class="anchor"></a>Small-Step Semantics</h3><p>The following is a variant of the toy-language from Assignment 6.</p><div><pre class="odoc-katex-math display">\begin{align*}
+\textcolor{blue}{\texttt{&lt;expr&gt;}} &amp;::= \textcolor{blue}{\texttt{&lt;int&gt;}} \\
+&amp;\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{true}} \\
+&amp;\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{false}} \\
+&amp;\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{+}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{red}{\texttt{)}} \\
+&amp;\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{&lt;}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{red}{\texttt{)}} \\
+&amp;\hspace{3mm}| \hspace{2.5mm} \textcolor{red}{\texttt{(}} \ \textcolor{red}{\texttt{?}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{blue}{\texttt{&lt;expr&gt;}} \ \textcolor{red}{\texttt{)}} \\
+\end{align*}
+</pre></div><p>Recall that values in small-step semantics must be part of the expression language itself. Here we take values in the big-step semantics to be integer and Boolean literals.</p><div><pre class="odoc-katex-math display">\frac
+{n \text{ is an integer literal}}
+{n \Downarrow n}
+\qquad
+\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 + v_2 = v}
+{\texttt{(} \ \texttt{+} \ e_1 \ e_2 \ \texttt{)} \Downarrow v}
+\qquad
+\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 &lt; v_2}
+{\texttt{(} \ \texttt{&lt;} \ e_1 \ e_2 \ \texttt{)} \Downarrow \texttt{true}}
+</pre></div><div><pre class="odoc-katex-math display">\frac
+{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad v_1 \geq v_2}
+{\texttt{(} \ \texttt{&lt;} \ e_1 \ e_2 \ \texttt{)} \Downarrow \texttt{false}}
+\qquad
+\frac
+{e_1 \Downarrow \texttt{true} \qquad e_2 \Downarrow v_2}
+{\texttt{(} \ \texttt{?} \ e_1 \ e_2 \ e_3 \ \texttt{)} \Downarrow v_2}
+\qquad
+\frac
+{e_1 \Downarrow \texttt{false} \qquad e_3 \Downarrow v_3}
+{\texttt{(} \ \texttt{?} \ e_1 \ e_2 \ e_3 \ \texttt{)} \Downarrow v_3}
+</pre></div><p>Write down the small-step semantics (<code class="odoc-katex-math">e \longrightarrow e'</code>) for this language so that it is equivalent to the big-step semantics given above. It should be the case that:</p><ul><li>If <code class="odoc-katex-math">e \Downarrow v</code> according to the big-step semantics above, then <code class="odoc-katex-math">e \longrightarrow^* v</code> according to the small-step semantics you give, where the reduction from <code class="odoc-katex-math">e</code> to <code class="odoc-katex-math">v</code> is unique.</li><li>Expressions are evaluated from left to right.</li><li>If a subexpression of <code class="odoc-katex-math">e</code> is not evaluated with respect to the big-step semantics, then it should not be evaluated in the small-step semantics either (<i>Hint.</i> This is important for if-expressions).</li></ul><p>In technical parlance, <code class="odoc-katex-math">\longrightarrow</code> should be an <i>adequate</i> model of <code class="odoc-katex-math">\Downarrow</code>. As a hint, one rule of this system is the following.</p><div><pre class="odoc-katex-math display">\frac
+{n \text{ is an integer literal} \qquad e \longrightarrow e'}
+{\texttt{(} \ \texttt{&lt;} \ n \ e \ \texttt{)}
+ \longrightarrow
+ \texttt{(} \ \texttt{&lt;} \ n \ e' \ \texttt{)}}
+</pre></div><p>The other rules will be similar.</p></div></body></html>
