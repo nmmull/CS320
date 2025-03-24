@@ -1,0 +1,72 @@
+{0 Lab 9: Operational Semantics Worksheet}
+
+The following is a small collection of exercises related to formal semantics.
+
+{1 Revisiting Boolean Expressions}
+
+Considering the following (ambiguous) grammar for (closed) Boolean
+expressions in Python.  Operators are given in order of increasing
+precedence along with their associativity in the following table:
+
+{@text[
+<expr> ::= <expr> and <expr>
+         | <expr> or <expr>
+	 | not <expr>
+	 | True
+	 | False
+]}
+
+{table
+  {tr
+    {th Operator}
+    {th Associativity}}
+  {tr
+    {td [or]}
+    {td left}}
+  {tr
+    {td [and]}
+    {td left}}
+  {tr
+    {td [not]}
+    {td N/A}}
+}
+
+Write down small-step and big-step semantics for Boolean expressions
+that capture standard behavior (operands of an operator should be
+evaluated from left to right).  Make sure to deal with {i
+short-circuiting}, e.g., the right operand of a conjunction should not
+be evaluated if the left operand evaluates to [False]. ({b Challenge.}
+Implement an evaluator for Boolean expressions in OCaml)
+
+{1 Substitution}
+
+Perform the following substitutions. In the case of capture-avoidance,
+you are free to choose whatever variable names you want which maintian
+{m \alpha}-equivalence.
+
+{ol
+{- {m [(\lambda x . x)/ y](\lambda x. \lambda x . y)}}
+{- {m [(\lambda x . x) / y](\lambda y. \lambda x. x)}}
+{- {m [(\lambda x . x) / f](\lambda y. \lambda x. f(yx))}}
+{- {m [(\lambda x . y) / z](\lambda x. \lambda y. z)}}
+{- {m [(\lambda z . z) / y][(\lambda x . y) / x](\lambda y. \lambda x. x)}}
+}
+
+{1 Revisiting S-Expressions}
+
+Use Menhir and OCamllex to build a parser for S-expressions which
+targets [string sexpr]. Recall the ADT definition of [sexpr]:
+
+{[
+type 'a sexpr = Atom of 'a | List of 'a sexpr list
+]}
+
+You should use the following regular expression for atoms in your
+lexer:
+
+{[
+let atom = [^ ' ' '\t' '\n' '\r' '(' ')']+
+]}
+
+This expression matches any nonempty sequence of non-whitespace
+non-parentheses characters.
