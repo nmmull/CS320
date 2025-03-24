@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>lab9 (Spring-2025.lab9)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.4"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../odoc.support/katex.min.css"/><script src="../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="index.html">Spring-2025</a> &#x00BB; lab9</nav><header class="odoc-preamble"><h1 id="lab-9:-operational-semantics-worksheet"><a href="#lab-9:-operational-semantics-worksheet" class="anchor"></a>Lab 9: Operational Semantics Worksheet</h1><p>The following is a small collection of exercises related to formal semantics.</p></header><nav class="odoc-toc"><ul><li><a href="#revisiting-boolean-expressions">Revisiting Boolean Expressions</a></li><li><a href="#substitution">Substitution</a></li><li><a href="#revisiting-s-expressions">Revisiting S-Expressions</a></li></ul></nav><div class="odoc-content"><h2 id="revisiting-boolean-expressions"><a href="#revisiting-boolean-expressions" class="anchor"></a>Revisiting Boolean Expressions</h2><p>Considering the following (ambiguous) grammar for (closed) Boolean expressions in Python. Operators are given in order of increasing precedence along with their associativity in the following table:</p><pre class="language-text"><code>&lt;expr&gt; ::= &lt;expr&gt; and &lt;expr&gt;
+         | &lt;expr&gt; or &lt;expr&gt;
+	 | not &lt;expr&gt;
+	 | True
+	 | False</code></pre><table class="odoc-table"><tr><th><p>Operator</p></th><th><p>Associativity</p></th></tr><tr><td><p><code>or</code></p></td><td><p>left</p></td></tr><tr><td><p><code>and</code></p></td><td><p>left</p></td></tr><tr><td><p><code>not</code></p></td><td><p>N/A</p></td></tr></table><p>Write down small-step and big-step semantics for Boolean expressions that capture standard behavior (operands of an operator should be evaluated from left to right). Make sure to deal with <i>short-circuiting</i>, e.g., the right operand of a conjunction should not be evaluated if the left operand evaluates to <code>False</code>. (<b>Challenge.</b> Implement an evaluator for Boolean expressions in OCaml)</p><h2 id="substitution"><a href="#substitution" class="anchor"></a>Substitution</h2><p>Perform the following substitutions. In the case of capture-avoidance, you are free to choose whatever variable names you want which maintian <code class="odoc-katex-math">\alpha</code>-equivalence.</p><ol><li><code class="odoc-katex-math">[(\lambda x . x)/ y](\lambda x. \lambda x . y)</code></li><li><code class="odoc-katex-math">[(\lambda x . x) / y](\lambda y. \lambda x. x)</code></li><li><code class="odoc-katex-math">[(\lambda x . x) / f](\lambda y. \lambda x. f(yx))</code></li><li><code class="odoc-katex-math">[(\lambda x . y) / z](\lambda x. \lambda y. z)</code></li><li><code class="odoc-katex-math">[(\lambda z . z) / y][(\lambda x . y) / x](\lambda y. \lambda x. x)</code></li></ol><h2 id="revisiting-s-expressions"><a href="#revisiting-s-expressions" class="anchor"></a>Revisiting S-Expressions</h2><p>Use Menhir and OCamllex to build a parser for S-expressions which targets <code>string sexpr</code>. Recall the ADT definition of <code>sexpr</code>:</p><pre class="language-ocaml"><code>type 'a sexpr = Atom of 'a | List of 'a sexpr list</code></pre><p>You should use the following regular expression for atoms in your lexer:</p><pre class="language-ocaml"><code>let atom = [^ ' ' '\t' '\n' '\r' '(' ')']+</code></pre><p>This expression matches any nonempty sequence of non-whitespace non-parentheses characters.</p></div></body></html>
