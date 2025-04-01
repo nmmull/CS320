@@ -1,0 +1,98 @@
+{0 Lab 9: Operational Semantics Worksheet}
+
+In this course we primarily focus on functional languages, but it's
+useful to get a sense of how imperative languages work as well.  This
+lab will give us a chance to look at a simple implementation of an
+imperative language. It will also be an exercise in reverse
+engineering.  Make sure to pull down the changes to the course repo to
+get access to the [lab10] starter code.
+
+{1 Reading the Lexer and Parser}
+
+Take a look at the the files [lib/lexer.mll] and
+[lib/parser.mly]. Given the code there, what is the grammar of the our
+programming language? ({i Hint.} It's a fragment of bash script. You
+may also be able to glean it from the semantics below).
+
+Based on the lexer, what are the allowed variable names and numbers?
+
+{1 Small-Step Semantics}
+
+Consider the following small-step semantics
+
+
+{math
+\frac{}
+{\langle \ \mathcal E \ , \ X\texttt{=}n\texttt{;}Q \ \rangle
+\longrightarrow
+\langle \ \mathcal E[x \mapsto n] \ , \ Q \ \rangle
+}
+\text{ (assign-num)}
+}
+
+{math
+\frac
+{(Y \mapsto n) \in \mathcal E \qquad n \text{ is a number}}
+{
+\langle \ \mathcal E \ , \ X\texttt{=\$}Y\texttt{;}Q \ \rangle
+\longrightarrow
+\langle \ \mathcal E[X \mapsto v] \ , \ Q \ \rangle
+}
+\text{ (assign-var)}
+}
+
+{math
+\frac
+{}
+{\langle \ \mathcal E \ , \ F\texttt{()\{}P\texttt{\};}Q \ \rangle
+\longrightarrow
+\langle \ \mathcal E[F \mapsto P] \ , \ Q \ \rangle
+}
+\text{ (fun-def)}
+}
+
+{math
+\frac
+{(F \mapsto P) \in \mathcal E \qquad P \text{ is a program}}
+{
+\langle \ \mathcal E \ , \ F\texttt{;}Q \ \rangle
+\longrightarrow
+\langle \ \mathcal E \ , \ P \ Q \ \rangle
+}
+\text{ (fun-call)}
+}
+
+Write a sequence of small-step reductions for the following program
+
+{@text[
+F(){Y=$X;};G(){X=0;};G;F;X=1;F;
+]}
+
+{1 Implementing Dynamic Scoping}
+
+As mentioned in lecture, dynamic scoping is a fair amount easier to
+implement than lexical scoping because function calls are list
+concatentations. In the file [lib/eval.ml] implement the function
+[eval_step] so that [eval_step (env, p)] is [Some (env', p')] if
+[(env, p)] reduces in a single step to [(env', p')] according to the
+above rules.  It should be [None] otherwise.
+
+If you finish this, you should be able to run the [interp] function
+and compare your solution to the previous problem with the output. (If
+you don't have time, the solution is included in
+[lib/lab10_solution.ml])
+
+Also note that all programs accepted by this interpreter are valid
+bash scripts. If you type the program into your terminal and then type
+[echo $X] for any variable [X] bound to a number, you should see the
+same value as what [X] is bound to in the final environment according
+to our interpreter.
+
+{1 Challenge: Big Step Semantics}
+
+It's often more natural to implement an interpreter with big-step
+semantics (this is why it's also called {i natural}
+semantics). However, langauges are often presented using small-step
+semantics because it's better for proving things about the language.
+Give an equivalent big-step semantics for the above rules and
+implement them.
