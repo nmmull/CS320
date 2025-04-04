@@ -1,0 +1,88 @@
+{0 Mini-Project 2: The Environment Model}
+
+For mini-project 2, you'll be building {i another} interpreter, this
+time for a small {b typed} subset of OCaml.  This will mean building a
+type checker {i and} an evaluator, along with what's called a {i
+desugaring} function.
+
+This mini-project is due on {b Thursday 4/17 by 8:00PM}. {i It cannot
+be dropped.} This is the landing page for the project, it doesn't
+contain any information about the project specification.  The details
+of the project are given in the file [assigns/interp2/spec.pdf].
+
+{1 One-Week Check-in}
+
+For the one-week check-in, you must submit:
+
+{ul
+
+{- An implementation of [desugar], as detailed in the mini-project
+specification. You should be able to leave your implementations of the
+other functions partial or empty {i as long as your code builds}.}
+
+{- Solutions to the written problems below.}
+
+}
+
+{i Note.} We will {b not} re-test parts of the mini-project from the
+one-week check-in.  To recieve full credit on the mini-project, you
+must successfully submit both the one-week check-in and the complete
+mini-project.
+
+{1 Written Problems}
+
+{2 Desugaring}
+
+{[
+let foo (x : int) (y : int) : int =
+  let bar (z : bool) : bool = z || x = y in
+  bar true
+
+let baz (x : unit) : int = foo 1 2
+
+let biz : int = baz ()
+]}
+
+Desugar the above program according to the desugaring rules given in
+the mini-project 2 specification (please use reasonable indentation
+to make it easier on our graders).
+
+{2 Closures}
+
+{[
+let x : int = 2 + 3 in
+let g : int -> int = fun (x : int) -> x + x in
+let f : int -> int = fun (y : int) -> g x in
+let x : int -> int = g in
+f
+]}
+
+Determine the closure which the above expression evaluates to
+according to the semantic rules given in the mini-project 2
+specification.
+
+{2 Semantic Derivation}
+
+{[
+let rec f : bool -> bool = fun (x : bool) -> x || f true in f false
+]}
+
+Let {m e} be the expression above. In the derivation of the judgment
+{m \langle \ \varnothing \ , \ e \ \rangle \ \Downarrow \top} (according
+to the semantics rules given in the mini-project 2 specification)
+there are {i two} places at which you need to derive a judgment of the
+form {m \langle \ \mathcal E \ , \ \texttt{x || f true} \ \rangle \Downarrow \top} for some dynamic environment {m \mathcal E}. Write
+down what that environment is in each of the two cases.  To be clear,
+you don't need to write down the entire derivation of {m \langle \ \varnothing \ , \ e \ \rangle \ \Downarrow \top}. You just need to
+write two judgments of the form:
+
+{math
+\begin{align*}
+\langle \ \mathcal E_1 \ , \ \texttt{x || f true} \ \rangle
+&\Downarrow \top \\
+\langle \ \mathcal E_2 \ , \ \texttt{x || f true} \ \rangle
+&\Downarrow \top
+\end{align*}
+}
+
+Both of which are derived {i within} a derivation of {m \langle \ \varnothing \ , \ e \ \rangle \ \Downarrow \top}.

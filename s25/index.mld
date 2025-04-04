@@ -226,7 +226,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 4/3}
     {td {{!page-topics.type_check_i}Type Checking I: The Simply-Typed Lambda Calculus}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}9.5}}
-    {td Mini-Project 2 (MP1 due)}
+    {td {{!interp2}Mini-Project 2} (MP1 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr
