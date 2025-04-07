@@ -1,5 +1,7 @@
 {0 CAS CS 320: Concepts of Programming Languages}
 
+{1 Introduction}
+
 CAS CS 320 is a course {e about} programming languages, particularly the {b design} and {b implementation} of programming languages.
 In this course, we take up the programming language as an {e object of formal study}.
 This course is {e not} about how to program, though the principles we cover are generally useful for writing and reasoning about programs.
@@ -12,7 +14,7 @@ In the second part of the course we {e implement} several interpreters for vario
 The topics covered include parsing, operational semantics, variable scope and binding, type checking and type inference.
 By the end of the course, you'll be able to execute some of the simpler programs we wrote in the first part of the course using your own interpreter.
 
-See the following links for more information.
+{1 Important Links}
 
 - {{:https://nmmull.github.io/pdfs/320-s25-syllabus.pdf}Syllabus}
 - {{:https://piazza.com/class/m5rfm3r6mqt2lf/}Piazza}
@@ -21,6 +23,8 @@ See the following links for more information.
 - {{!Specifications.Stdlib320}Course Standard Library}
 - {{:https://calendar.google.com/calendar/embed?src=c_f91e7ed5b2449fd9f700327e269eb875fb70b963a2c6af67b2da9569c7bf1dd6%40group.calendar.google.com&ctz=America%2FNew_York}Office Hours Calendar}
 - {{!page-topics}Full List of Topics}
+
+{1 Schedule}
 
 The following table contains a complete schedule for the semester. You can click on any of the topics, to see the corresponding reading, any assignment to see the assignment, and any lab to see the lab.
 {table
@@ -237,13 +241,13 @@ The following table contains a complete schedule for the semester. You can click
   }
   {tr
     {td Wed 4/9}
-    {td Week 11 Lab: Closures Worksheet}
+    {td {{!lab11}Lab 11: Closures Worksheet}}
     {td }
     {td }
   }
   {tr
     {td Thu 4/10}
-    {td {{!page-topics.type_check_iii}Type Checking III: Extended Example}}
+    {td {{!page-topics.type_check_iii}Type Checking III: Polymorphism}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}9.5}}
     {td (MP2 check-in due)}
   }
