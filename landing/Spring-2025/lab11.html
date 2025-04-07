@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>lab11 (Spring-2025.lab11)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 3.0.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../odoc.support/katex.min.css"/><script src="../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="../index.html">Index</a> &#x00BB; <a href="index.html">Spring-2025</a> &#x00BB; lab11</nav><header class="odoc-preamble"><h1 id="lab-11:-closures-worksheet"><a href="#lab-11:-closures-worksheet" class="anchor"></a>Lab 11: Closures Worksheet</h1><p>The purpose of this lab is to verify that we understand the necessity of closures for the implementation of the lexical scoping in the environment model. The following is a restatement of the <code class="odoc-katex-math">\lambda</code>-calculus<code class="odoc-katex-math">^+</code>, as seen in lecture.</p><div><pre class="odoc-katex-math display">\begin{align*}
+e &amp;::= x \ | \ \lambda x. e \ | \ e e \ | \ \texttt{let} \ x \ \texttt{=} \ e \ \texttt{in} \ e \\
+x &amp;::= \texttt{a} \ | \ \texttt{b} \ | \ \dots \ | \ \texttt{y} \ | \ \texttt{z}
+\end{align*}
+</pre></div><div><pre class="odoc-katex-math display">\begin{align*}
+\frac
+{(x, v) \in \mathcal E}
+{
+\langle \ \mathcal E \ , \ x \ \rangle \Downarrow \mathcal E(x)
+}
+\text{ (varEval)}
+\qquad
+\frac
+{}
+{\langle \ \mathcal E \ , \ \lambda x . e \ \rangle \Downarrow (\mathcal E, \lambda x . e) }
+\text{ (funEval)}
+\end{align*}
+</pre></div><div><pre class="odoc-katex-math display">\begin{align*}
+\frac
+{
+\langle \mathcal E \ , \ e_1 \ \rangle \Downarrow (\mathcal E', \lambda x . e) \qquad
+\langle \mathcal E \ , \ e_2 \ \rangle \Downarrow v_2 \qquad
+\langle \mathcal E'[x \mapsto v_2] \ , \ e \rangle \Downarrow v
+}
+{\langle \mathcal E \ , \ e_1 e_2 \ \rangle \Downarrow v}
+\text{ (appEval)}
+\end{align*}
+</pre></div></header><div class="odoc-tocs"><nav class="odoc-toc odoc-local-toc"><ul><li><a href="#desugaring">Desugaring</a><ul><li><a href="#part-1">Part 1</a></li><li><a href="#part-2">Part 2</a></li></ul></li><li><a href="#closures">Closures</a><ul><li><a href="#part-1_2">Part 1</a></li><li><a href="#part-2_2">Part 2</a></li></ul></li></ul></nav></div><div class="odoc-content"><h2 id="desugaring"><a href="#desugaring" class="anchor"></a>Desugaring</h2><h3 id="part-1"><a href="#part-1" class="anchor"></a>Part 1</h3><p>You'll notice that we didn't include the semantic rule for let-expressions. Write down the <code class="odoc-katex-math">\text{letEval}</code> rule based on your understanding of how let-expressions work.</p><h3 id="part-2"><a href="#part-2" class="anchor"></a>Part 2</h3><p>Describe how to represent an expression in the <code class="odoc-katex-math">\lambda</code>-calculus<code class="odoc-katex-math">^+</code> (with let-expressions) as an expression in the <code class="odoc-katex-math">\lambda</code>-calculus proper, i.e., with no let-expressions. The resulting expression should be equivalent with respect to the semantics. This means it must evaluate to the same value as it would have had we included the <code class="odoc-katex-math">\text{letEval}</code> rule and evaluated it directly.</p><h2 id="closures"><a href="#closures" class="anchor"></a>Closures</h2><p>Suppose we changed the <code class="odoc-katex-math">\text{appEval}</code> rule so that it doesn't use the environment contained in the closure:</p><div><pre class="odoc-katex-math display">\begin{align*}
+\frac
+{
+\langle \mathcal E \ , \ e_1 \ \rangle \Downarrow (\mathcal E', \lambda x . e) \qquad
+\langle \mathcal E \ , \ e_2 \ \rangle \Downarrow v_2 \qquad
+\langle \textcolor{red}{\mathcal E}[x \mapsto v_2] \ , \ e \rangle \Downarrow v
+}
+{\langle \mathcal E \ , \ e_1 e_2 \ \rangle \Downarrow v}
+\text{ (appEval*)}
+\end{align*}
+</pre></div><p>We've seen many examples of expressions which do not evaluate─or evaluate to the wrong value─if we use the <code class="odoc-katex-math">\text{appEval*}</code> rule. But all of these examples have depended on <i>shadowing</i>, i.e., the ability to reuse a name in a variable binding.</p><h3 id="part-1_2"><a href="#part-1_2" class="anchor"></a>Part 1</h3><p>Give an example of a <b>closed</b> expression in the <code class="odoc-katex-math">\lambda</code>-calculus<code class="odoc-katex-math">^+</code> that:</p><ul><li>does not use <i>any</i> shadowing (all bound variables are distinct from each other and from the free variables);</li><li>evaluates to the expected value when using the <code class="odoc-katex-math">\text{appEval}</code> rule;</li><li>fails to evaluate when using the <code class="odoc-katex-math">\text{appEval*}</code> rule;</li></ul><h3 id="part-2_2"><a href="#part-2_2" class="anchor"></a>Part 2</h3><p>Give an example of an expression in the <code class="odoc-katex-math">\lambda</code>-calculus<code class="odoc-katex-math">^+</code> that:</p><ul><li>does not use <i>any</i> shadowing (all bound variables are distinct from each other and from the free variables);</li><li>fails (expectedly) to evaluate when using the <code class="odoc-katex-math">\text{appEval}</code> rule;</li><li>evaluates to the (incorrect) value when using the <code class="odoc-katex-math">\text{appEval*}</code> rule;</li></ul></div></body></html>
