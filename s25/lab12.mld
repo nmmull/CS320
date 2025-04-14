@@ -56,3 +56,6 @@ in bar
 {[
 (fun g f y -> g y f) (fun x f y -> f (x + 1) (not y))
 ]}
+
+You can (and should) check your answers by putting these expressions
+through [utop].
