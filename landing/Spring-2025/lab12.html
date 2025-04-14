@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>lab12 (Spring-2025.lab12)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 3.0.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="../index.html">Index</a> &#x00BB; <a href="index.html">Spring-2025</a> &#x00BB; lab12</nav><header class="odoc-preamble"><h1 id="lab-12:-polymorphism-worksheet"><a href="#lab-12:-polymorphism-worksheet" class="anchor"></a>Lab 12: Polymorphism Worksheet</h1><p>The purpose of this lab is to verify that we inutitively understand polymorphism in OCaml. The following is a collection of OCaml expressions. The task is simple: determine the types of each of the following expressions <i>without</i> using a computer.</p><pre class="language-ocaml"><code>fun a b c -&gt; a (b c)</code></pre><pre class="language-ocaml"><code>fun a b c -&gt; a (b (1 + c))</code></pre><pre class="language-ocaml"><code>fun a b c -&gt; a (1 + b c)</code></pre><pre class="language-ocaml"><code>let rec g f x =
+  let rec h l =
+    match l with
+    | [] -&gt; x
+    | y :: l -&gt; f y (h l)
+  in h</code></pre><pre class="language-ocaml"><code>let f x a =
+  match x with
+  | _, 0, a -&gt; a 1
+  | a, 1, _ -&gt; a 0
+  | _ -&gt; if a then 1 else 0</code></pre><pre class="language-ocaml"><code>fun f -&gt; f (fun g -&gt; g (fun h -&gt; 0))</code></pre><pre class="language-ocaml"><code>let rec f g y x = if g x then y else f g (x - 1) y in f</code></pre><pre class="language-ocaml"><code>let foo f g x y = f x (x (f g y)) in foo</code></pre><pre class="language-ocaml"><code>let bar h x f =
+  match x with
+  | Ok a -&gt; a
+  | Error g -&gt; h (f g)
+in bar</code></pre><pre class="language-ocaml"><code>(fun g f y -&gt; g y f) (fun x f y -&gt; f (x + 1) (not y))</code></pre><p>You can (and should) check your answers by putting these expressions through <code>utop</code>.</p></header><div class="odoc-content"></div></body></html>
