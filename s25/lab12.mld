@@ -1,0 +1,58 @@
+{0 Lab 12: Polymorphism Worksheet}
+
+The purpose of this lab is to verify that we inutitively understand polymorphism in OCaml.
+The following is a collection of OCaml expressions.
+The task is simple: determine the types of each of the following expressions {i without} using a computer.
+
+{[
+fun a b c -> a (b c)
+]}
+
+{[
+fun a b c -> a (b (1 + c))
+]}
+
+{[
+fun a b c -> a (1 + b c)
+]}
+
+{[
+let rec g f x =
+  let rec h l =
+    match l with
+    | [] -> x
+    | y :: l -> f y (h l)
+  in h
+]}
+
+{[
+let f x a =
+  match x with
+  | _, 0, a -> a 1
+  | a, 1, _ -> a 0
+  | _ -> if a then 1 else 0
+]}
+
+{[
+fun f -> f (fun g -> g (fun h -> 0))
+]}
+
+{[
+let rec f g y x = if g x then y else f g (x - 1) y in f
+]}
+
+{[
+let foo f g x y = f x (x (f g y)) in foo
+]}
+
+{[
+let bar h x f =
+  match x with
+  | Ok a -> a
+  | Error g -> h (f g)
+in bar
+]}
+
+{[
+(fun g f y -> g y f) (fun x f y -> f (x + 1) (not y))
+]}
