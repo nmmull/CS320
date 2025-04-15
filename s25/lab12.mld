@@ -23,6 +23,7 @@ let rec g f x =
     | [] -> x
     | y :: l -> f y (h l)
   in h
+in g
 ]}
 
 {[
@@ -31,6 +32,7 @@ let f x a =
   | _, 0, a -> a 1
   | a, 1, _ -> a 0
   | _ -> if a then 1 else 0
+in f
 ]}
 
 {[
