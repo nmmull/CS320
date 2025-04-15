@@ -4,11 +4,13 @@
     match l with
     | [] -&gt; x
     | y :: l -&gt; f y (h l)
-  in h</code></pre><pre class="language-ocaml"><code>let f x a =
+  in h
+in g</code></pre><pre class="language-ocaml"><code>let f x a =
   match x with
   | _, 0, a -&gt; a 1
   | a, 1, _ -&gt; a 0
-  | _ -&gt; if a then 1 else 0</code></pre><pre class="language-ocaml"><code>fun f -&gt; f (fun g -&gt; g (fun h -&gt; 0))</code></pre><pre class="language-ocaml"><code>let rec f g y x = if g x then y else f g (x - 1) y in f</code></pre><pre class="language-ocaml"><code>let foo f g x y = f x (x (f g y)) in foo</code></pre><pre class="language-ocaml"><code>let bar h x f =
+  | _ -&gt; if a then 1 else 0
+in f</code></pre><pre class="language-ocaml"><code>fun f -&gt; f (fun g -&gt; g (fun h -&gt; 0))</code></pre><pre class="language-ocaml"><code>let rec f g y x = if g x then y else f g (x - 1) y in f</code></pre><pre class="language-ocaml"><code>let foo f g x y = f x (x (f g y)) in foo</code></pre><pre class="language-ocaml"><code>let bar h x f =
   match x with
   | Ok a -&gt; a
   | Error g -&gt; h (f g)
