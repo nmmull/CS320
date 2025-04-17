@@ -279,7 +279,7 @@ The following table contains a complete schedule for the semester. You can click
   }
   {tr
     {td Wed 4/23}
-    {td Lab 13: Logic Programming}
+    {td {b NO LAB}}
     {td }
     {td }
   }
@@ -310,8 +310,8 @@ The following table contains a complete schedule for the semester. You can click
   }
   {tr {td } {td } {td } {td }}
   {tr
-    {td TBD}
-    {td {b Final Exam}}
+    {td Tue 5/6}
+    {td {b Final Exam (3-5PM, 765 Comm. Ave.)}}
     {td }
     {td }
   }
