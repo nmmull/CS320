@@ -1,0 +1,58 @@
+{0 Mini-Project 3: Type Inference}
+
+It's our last interpreter, this time with parametric polymorphism and
+type inference.  Mini-project 3 is due on {b Thursday 5/1 by
+8:00PM}. {i It cannot be dropped.} This is the landing page for the
+project, it doesn't contain any information about the project
+specification.  The details of the project are given in the file
+[assigns/interp3/spec.pdf].
+
+{1 One-Week Check-in}
+
+For the one-week check-in, you must submit:
+
+{ul
+
+{- A completion of the given parser. This only requires updating the file [parser.mly].}
+{- An implementation of [principle_type], as detailed in the mini-project
+specification. You should be able to leave your implementations of the
+other functions partial or empty {i as long as your code builds}.}
+
+{- Solutions to the written problems below.}
+
+}
+
+{i Note.} We will {b not} re-test parts of the mini-project from the
+one-week check-in.  To recieve full credit on the mini-project, you
+must successfully submit both the one-week check-in and the complete
+mini-project.
+
+{1 Written Problems}
+
+{[
+fun x -> fun y -> fun z -> x (1 + y z)
+]}
+
+For each of the following problems, let {m e} denote the above expression.
+
+{2 Derivation}
+
+Determine the type {m \tau} and constraints {m \mathcal C} such that
+{m \cdot \vdash e : \tau \dashv \mathcal C} is derivable in the
+constraint-based inference system for mini-project 3. You must provide
+the derivation, and you should use the compact derivation notation we
+gave in lecture.
+
+{2 Unification}
+
+Let {m \mathcal C} denote the set of constraints determined in the
+previous part. Determine a most general unifier {m \mathcal S} for
+{m \mathcal C} using the algorithm we gave in lecture. Show your work.
+
+{2 Principle Type}
+
+Apply your unifier {m \mathcal S} from the previous part to {m \tau}
+(from the first part) and quantify over it's free variables. This is
+the {i principle type} of {m e}.  That is, in the notation from lecture, write
+down the type {m \forall \alpha_1, \dots, \alpha_k . \mathcal S \tau}
+where {m \mathsf{FV}(\mathcal S \tau) = \{\alpha_1, \dots, \alpha_k\}}.

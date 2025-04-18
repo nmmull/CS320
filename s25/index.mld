@@ -268,7 +268,7 @@ The following table contains a complete schedule for the semester. You can click
     {td Thu 4/17}
     {td {{!page-topics.type_inf_ii}Type Inference II: Unification}}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}9.6}}
-    {td Mini-Project 3 (MP2 due)}
+    {td {{!interp3}Mini-Project 3} (MP2 due)}
   }
   {tr {td } {td } {td } {td }}
   {tr
