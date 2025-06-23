@@ -1,0 +1,376 @@
+{0 Topics}
+
+This is a (fairly) complete list of the topics we'll cover in this course.
+It's not guaranteed to be exhaustive, and it's subject to change, but we'll do our best to keep this list up to date.
+
+{1:course_intro Course Introduction}
+
+- {b Topics:}
+{ul
+{- Describe what this course is about, how the course is structured, a rough outline of the topics}
+{- Introduce OCaml, how to work with [utop], how to write basic expressions}
+}
+
+- {b Reading:}
+{ul
+{- OCP 1.1: {{: https://cs3110.github.io/textbook/chapters/intro/past.html}The Past of OCaml}}
+{- OCP 1.2: {{: https://cs3110.github.io/textbook/chapters/intro/present.html}The Present of OCaml}}
+{- OCP 1.3: {{: https://cs3110.github.io/textbook/chapters/intro/future.html}Look to Your Future}}
+{- OCP 2.1: {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html}The OCaml Toplevel}}
+{- OCP 2.2: {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}Compiling OCaml Programs}}
+{- OCP 2.3: {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}Expressions}}
+}
+
+{1 Beginning Ocaml}
+
+{2:ocaml_intro_i The Basics}
+
+- {b Topics:}
+{ul
+{- Look at basic constructs we need to start writing interesting OCaml programs}
+{- Work through some example programs}
+{- Start looking at typing rules and semantics rules of a fragment of OCaml}
+{- Introduce the build tool dune}
+}
+
+- {b Reading:}
+{ul
+{- OCP 2.2: {{: https://cs3110.github.io/textbook/chapters/basics/compiling.html}Compiling OCaml Programs}}
+{- OCP 2.4: {{: https://cs3110.github.io/textbook/chapters/basics/functions.html}Functions}}
+{- OCP 2.6: {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}Printing}}
+{- OCP 2.7: {{: https://cs3110.github.io/textbook/chapters/basics/debugging.html}Debugging}}
+}
+
+{2:ocaml_intro_ii Unions and Products}
+
+- {b Topics:}
+{ul
+{- Look at how to organize data using simple variants, data-carrying variants, tuples, records}
+{- Introduced the notion of a {i pattern} ({i not} the same thing as an expression)}
+}
+
+- {b Reading:}
+{ul
+{- OCP 3.2: {{: https://cs3110.github.io/textbook/chapters/data/variants.html}Variants}}
+{- OCP 3.4: {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html}Records and Tuples}}
+{- OCP 3.9: {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}Algebraic Data Types} (only 3.9.1)}
+}
+
+{2:ocaml_intro_iii Lists, Tail Recursion}
+
+- {b Topics:}
+{ul
+{- Introduce lists, emphasizing that {b lists are immutable} and not the same as arrays}
+{- Talk about tail recursion, how to write tail recursive functions, why we might want to}
+}
+
+- {b Reading:}
+{ul
+{- OCP 3.1: {{: https://cs3110.github.io/textbook/chapters/data/lists.html}Lists}}
+{- OCP 3.5: {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}Advanced Pattern Matching}}
+{- OCP 3.7: {{: https://cs3110.github.io/textbook/chapters/data/options.html}Options}}
+{- OCP 3.8: {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}Association Lists}}
+}
+
+{1 Algebraic Data Types}
+
+{2:adt_i The Basics}
+
+- {b Topics:}
+{ul
+{- Introduce algebraic data types (ADTs) as a way of defining recursive and parameterized data types.}
+{- Cover many examples of ADTs}
+}
+
+- {b Reading:}
+{ul
+{- OCP 3.6: {{: https://cs3110.github.io/textbook/chapters/data/type_synonym.html}Type Synonyms} (not covered in lecture)}
+{- OCP 3.9: {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}Algebraic Data Types} (excluding 3.9.6)}
+{- OCP 3.11: {{: https://cs3110.github.io/textbook/chapters/data/trees.html}Example: Trees}}
+{- OCP 8.3: {{: https://cs3110.github.io/textbook/chapters/ds/rb.html}Red-Black Trees} (only 8.3.1: Binary Search Trees)}
+}
+
+{2:adt_ii Polymorphism}
+
+- {b Topics:}
+{ul
+{- Take a moment to discuss {i polymorphism} more formally, and how to use polymorphism to write more general programs}
+}
+
+{1 Higher Order Programming}
+
+{2:hop_i Maps and Filters}
+
+- {b Topics:}
+{ul
+{- Introduce the notion of higher-order functions, i.e., functions which take other functions as arguments}
+{- Cover the first two fundamental higher-order functions: [map] and [filter]}
+}
+
+- {b Reading:}
+{ul
+{- OCP 4.1: {{: https://cs3110.github.io/textbook/chapters/hop/higher_order.html}Higher-Order Functions}}
+{- OCP 4.2: {{: https://cs3110.github.io/textbook/chapters/hop/map.html}Map}}
+{- OCP 4.3: {{: https://cs3110.github.io/textbook/chapters/hop/filter.html}Filter}}
+{- OCP 4.7: {{: https://cs3110.github.io/textbook/chapters/hop/currying.html}Currying}}
+}
+
+{2:hop_ii Folds}
+
+- {b Topics}
+{ul
+{- Cover the last (and most complex) of the common higher-order functions: [fold_left] and [fold_right]}
+{- Look at how higher-order functions can be useful for more than lists.}
+}
+
+- {b Reading:}
+{ul
+{- OCP 4.4: {{: https://cs3110.github.io/textbook/chapters/hop/fold.html}Fold}}
+{- OCP 4.5: {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}Beyond Lists}}
+}
+
+{1 Intermediate OCaml}
+
+{2:inter_i Error Handling, Testing}
+
+- {b Topics}
+{ul
+{- Further discuss the use of Options and Results for error handling}
+{- {i (Advanced)} Briefly cover monads}
+{- Cover how to raise and catch exceptions}
+{- Talk a bit about OUnit and writing unit tests}
+}
+
+- {b Reading:}
+{ul
+{- OCP 3.3 {{: https://cs3110.github.io/textbook/chapters/data/ounit.html}Unit Testing with OUnit}}
+{- OCP 3.10 {{: https://cs3110.github.io/textbook/chapters/data/exceptions.html}Exceptions}}
+}
+
+{2:inter_ii Modules}
+
+- {b Topics:}
+{ul
+{- Introduce modules as a way of organizing OCaml code.}
+{- See at how modules can also be used to organize interfaces for data structures.}
+}
+
+- {b Reading:}
+{ul
+{- OCP 5.1: {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html}Module Systems}}
+{- OCP 5.2: {{: https://cs3110.github.io/textbook/chapters/modules/modules.html}Modules}}
+{- OCP 5.3: {{: https://cs3110.github.io/textbook/chapters/modules/toplevel.html}Modules and the Toplevel} (only 5.3.1, 5.3.2)}
+{- OCP 5.4: {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}Encapsulation} (excluding 5.4.3)}
+{- OCP 5.5: {{: https://cs3110.github.io/textbook/chapters/modules/functional_data_structures.html}Functional Data Structures} (only 5.6.2)}
+}
+
+{1 Parsing}
+
+{2:parse_i Formal Grammar}
+
+- {b Topics}
+{ul
+{- Introduce the second half of the course, including the full interpretation pipeline}
+{- Start at the beginning of the pipeline (i.e., parsing) with (E)BNF grammars}
+}
+
+- {b Reading:}
+{ul
+{- PL@BU 1: {{: https://nmmull.github.io/PL-at-BU/Intro/notes.html}The Interpretation Pipeline}}
+{- PL@BU 2: {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}Formal Grammar}}
+}
+
+{2:parse_ii Lexing, Parsing, Ambiguity}
+
+- {b Topics}
+{ul
+{- Look more carefully at the difference between lexing and parsing}
+{- Introduce he notion of grammatical ambiguity, and discuss how to avoid it}
+}
+
+- {b Reading:}
+{ul
+{- PL@BU 2: {{: https://nmmull.github.io/PL-at-BU/Formal-Grammar/notes.html}Formal Grammar}}
+}
+
+{2:parse_iii Lexer/Parser Generators}
+
+- {b Topics}
+{ul
+{- See how to use [ocamllex] and [menhir] to generate lexers and parsers for a grammar}
+{- In particular, show how to deal with ambiguity and precedence}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.2: {{: https://cs3110.github.io/textbook/chapters/interp/parsing.html}Parsing}}
+{- PL@BU 3: {{: https://nmmull.github.io/PL-at-BU/Parsing/notes.html}Parser Generators} (draft)}
+}
+
+{1 Formal Semantics}
+
+{2:sem_i Operational Semantics}
+
+- {b Topics}
+{ul
+{- Introduce operational semantics (both small-step and big-step) as a way of formally specifying the behavior of executing a programming language}
+{- Give some examples of derivations for various semantics}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.1: {{: https://cs3110.github.io/textbook/chapters/interp/calculator.html}Example: Calculator}}
+}
+
+{2:sem_ii The Substitution Model}
+
+- {b Topics}
+{ul
+{- Look the lambda calculus, its syntax and semantics}
+{- Discuss capture-avoiding substitution and well-scoped expressions}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.3: {{: https://cs3110.github.io/textbook/chapters/interp/substitution.html}Substitution Model}}
+}
+
+{2:sem_iii Variables, Scope, Closures}
+
+- {b Topics}
+{ul
+{- Discuss dynamic and lexical scoping, with an emphasis on how variable scoping is dealt with in OCaml}
+{- We consider how this connects to call-by-value semantics and closures}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.4: {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}Environment Model} (up to 9.4.2)}
+}
+
+{2:sem_iv Closures and the Environment Model}
+
+- {b Topics}
+{ul
+{- Further discuss closures as a way to better implement lexical scoping in functional programming languages}
+{- Introduce the environment model as a more efficient alternative to the substitution model}
+}
+
+- {b Reading:}
+{ul
+  {- OCP 9.4: {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}Environment Model}}
+}
+
+{1 Type Checking}
+
+{2:type_check_i The Simply-Typed Lambda Calculus}
+
+- {b Topics}
+{ul
+{- Add types to the lambda calculus}
+{- Discuss more formally the anatomy of a typing judgment and a typing derivation}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.5: {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}Type Checking}}
+}
+
+{2:type_check_ii Progress and Preservation}
+
+- {b Topics}
+{ul
+{- Discuss {e why} we do type checking}
+{- {e Prove} that well-typed programs are "good"}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.5: {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}Type Checking}}
+}
+
+{2:type_check_iii Extended Example}
+
+- {b Topics}
+{ul
+{- Give a live coding demonstration of an implementation of the STLC}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.5: {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}Type Checking}}
+}
+
+{1 Type Inference}
+
+{2:type_inf_i Hindley-Milner (Light)}
+
+- {b Topics:}
+{ul
+{- Introduce the system Hindley-Milner Light}
+{- Discuss core concepts of this system, including type order, mono/polytypes}
+{- Discuss let-polymorphism}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.6: {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}Type Inference}}
+}
+
+{2:type_inf_ii Unification}
+
+- {b Topics}
+{ul
+{- Discuss more generally the notion of unification}
+{- Look at its connection to type inference}
+{- Briefly see its connection to logic programming}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.6: {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}Type Inference}}
+}
+
+{2:type_inf_iii Constraint-Based Inference}
+
+- {b Topics}
+{ul
+{- Define a syntax-directed type system which uses unification to do type inference}
+{- Give examples derivations in this system}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.6: {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}Type Inference}}
+}
+
+{2:type_inf_iv Extended Example}
+
+- {b Topics}
+{ul
+{- Do a live-coding implementation of Hindley-Milner Light}
+}
+
+- {b Reading:}
+{ul
+{- OCP 9.6: {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}Type Inference}}
+}
+
+{1 Compilation}
+
+{2:comp_i Stack-Based Languages}
+
+- {b Topics}
+{ul
+{- Discuss stack-oriented languages in general}
+{- Introduce the syntax and semantics of a basic stack-oriented language with procedures}
+}
+
+{2:comp_ii Byte-Code Interpretation}
+
+- {b Topics}
+{ul
+{- Give a high-level introduction of compilation and its relation to interpretation}
+{- Work through some simple examples}
+{- Go through an example of building a simple byte-code interpreter}
+}

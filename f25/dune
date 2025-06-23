@@ -1,0 +1,13 @@
+(library
+ (name Specifications)
+ (public_name Fall-2025)
+ (libraries stdlib320)
+ (modules_without_implementation
+   stdlib320))
+
+
+(documentation
+  (package Fall-2025)
+  (mld_files
+   index
+   topics))

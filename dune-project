@@ -15,3 +15,7 @@
 (package
   (name Spring-2025)
   (depends ocaml dune stdlib320))
+
+(package
+  (name Fall-2025)
+  (depends ocaml dune stdlib320))
