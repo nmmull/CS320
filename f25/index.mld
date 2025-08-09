@@ -15,11 +15,10 @@ By the end of the course, you'll be able to execute some of the simpler programs
 {1 Important Links}
 
 - Syllabus
-- Piazza
-- Gradescope
+- {{: https://piazza.com/class/me3itvjkmj07ls/}Piazza}
+- {{: https://www.gradescope.com/courses/1077333}Gradescope}
 - Course Repository
 - Course Standard Library
-- Office Hours Calendar
 
 {1 Schedule}
 
@@ -386,3 +385,9 @@ By the end of the course, you'll be able to execute some of the simpler programs
     {td }
   }
 }
+
+{1 Calendar}
+
+{%html:
+  <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&mode=WEEK&showTz=0&showCalendars=0&showTitle=0&showDate=0&src=Y18yYzczYjQzZjY2MTMyZjI1NjUyMGYxODNkNmNjYzVmMjI0ODg2Mjk2MzdmNGJhNTNhNWI0ZTVlY2U2YzRmNGVmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23c0ca33" style="border:solid 1px #777" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
+%}
