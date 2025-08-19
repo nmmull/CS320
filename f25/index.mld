@@ -17,7 +17,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
 - Syllabus
 - {{: https://piazza.com/class/me3itvjkmj07ls/}Piazza}
 - {{: https://www.gradescope.com/courses/1077333}Gradescope}
-- Course Repository
+- {{: https://github.com/BU-CS320/cs320-fall-2025}Course Repository}
 - Course Standard Library
 
 {1 Schedule}
@@ -110,7 +110,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
 
   {tr
     {td 9/23}
-    {td Data I: Unions and Products}
+    {td Data I: Unions, Products, Algebraic Data Types}
     {td OCP
       {{: https://cs3110.github.io/textbook/chapters/data/variants.html}3.2},
       {{: https://cs3110.github.io/textbook/chapters/data/records_tuples.html}3.4},
@@ -126,10 +126,9 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 9/25}
-    {td Data II: Algebraic Data Types}
+    {td Data II: ADTs in practice}
     {td OCP
       {{: https://cs3110.github.io/textbook/chapters/data/type_synonym.html}3.6},
-      {{: https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html}3.9},
       {{: https://cs3110.github.io/textbook/chapters/data/trees.html}3.11},
       {{: https://cs3110.github.io/textbook/chapters/ds/rb.html}8.3}
     }
