@@ -14,7 +14,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
 
 {1 Important Links}
 
-- Syllabus
+- Course Manual
 - {{: https://piazza.com/class/me3itvjkmj07ls/}Piazza}
 - {{: https://www.gradescope.com/courses/1077333}Gradescope}
 - {{: https://github.com/BU-CS320/cs320-fall-2025}Course Repository}
@@ -43,7 +43,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 9/3}
-    {td Lab 1: Installation Party}
+    {td Week 1: Installation Party}
     {td }
     {td }
   }
@@ -69,7 +69,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 9/10}
-    {td Lab 2: OCaml Party}
+    {td Week 2}
     {td }
     {td }
   }
@@ -95,7 +95,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 9/17}
-    {td Lab 3: Recursion Classics}
+    {td Week 3: Quiz 1}
     {td }
     {td }
   }
@@ -120,7 +120,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 9/24}
-    {td Lab 4: TSV Reader}
+    {td Week 4}
     {td }
     {td }
   }
@@ -150,7 +150,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 10/1}
-    {td Lab 5: S-Expressions}
+    {td Week 5}
     {td }
     {td }
   }
@@ -177,7 +177,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 10/8}
-    {td Lab 5: When2meet}
+    {td Week 6: Quiz 2}
     {td }
     {td }
   }
@@ -204,7 +204,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 10/15}
-    {td Lab 7: Midterm Review}
+    {td Week 7: Midterm Review}
     {td }
     {td }
   }
@@ -225,7 +225,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 10/22}
-    {td Lab 6: Formal Grammar Worksheet}
+    {td Week 8}
     {td }
     {td }
   }
@@ -246,7 +246,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 10/29}
-    {td Lab 8: Parser Generators}
+    {td Week 9}
     {td }
     {td }
   }
@@ -267,7 +267,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 11/5}
-    {td Lab 9: Operational Semantics Worksheet}
+    {td Week 10: Quiz 3}
     {td }
     {td }
   }
@@ -288,7 +288,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 11/12}
-    {td Lab 10: An Imperative Language}
+    {td Week 11}
     {td }
     {td }
   }
@@ -309,7 +309,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 11/19}
-    {td Lab 11: Closures Worksheet}
+    {td Week 12}
     {td }
     {td }
   }
@@ -330,7 +330,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 11/26}
-    {td {b No Lab} (Thanksgiving Recess)}
+    {td {b No Week} (Thanksgiving Recess)}
     {td }
     {td }
   }
@@ -351,7 +351,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 12/3}
-    {td Lab 12: Type Inference Worksheet}
+    {td Week 14: Quiz 4}
     {td }
     {td }
   }
@@ -372,7 +372,7 @@ By the end of the course, you'll be able to execute some of the simpler programs
   }
   {tr
     {td 12/10}
-    {td Lab 15: Final Exam Review}
+    {td Week 15: Final Exam Review}
     {td }
     {td MP3 due}
   }
