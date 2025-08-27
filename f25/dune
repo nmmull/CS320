@@ -1,10 +1,6 @@
 (library
  (name Specifications)
- (public_name Fall-2025)
- (libraries stdlib320)
- (modules_without_implementation
-   stdlib320))
-
+ (public_name Fall-2025))
 
 (documentation
   (package Fall-2025)
