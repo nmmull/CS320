@@ -6,4 +6,5 @@
   (package Fall-2025)
   (mld_files
    index
-   topics))
+   topics
+   lab01))

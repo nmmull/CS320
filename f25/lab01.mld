@@ -1,0 +1,455 @@
+{0 Lab 1: Installation Party}
+
+There are several things we need to set up in order to work on the
+assignments and projects in this course.  The purpose of this lab is
+to walk you through this process.
+
+{b Important.} If you're running Windows, then you are {e required} to
+{{:https://learn.microsoft.com/en-us/windows/wsl/setup/environment}Set
+up a WSL development environment}.  If you're an advanced Windows user
+(and a bit brave) you can try a native install, but we will not help
+you troubleshoot.
+
+{1 Course Repository}
+
+We host the {{:https://github.com/BU-CS320/cs320-fall-2025}course
+repository} on GitHub.  You'll need to host a private mirror of this
+repository, in which you'll include your solutions to assignments and
+projects. {e This means you'll need a GitHub account.}  We'll assume
+familiarity with Git; see the
+{{:https://git-scm.com/docs/gittutorial}git tutorial} if you need a
+refresher.  When we release any course material (e.g., lecture slides,
+starter code) it will be made available in the course repository,
+which you'll then be able to merge into your private mirror.
+
+{2 Mirroring the Course Repository}
+
+{ol
+
+{- {b Create a GitHub account} if you haven't already.  You can use
+your personal GitHub account if you have one.  {i Note:} Some students
+have had issues setting using GitHub accounts with their BU email
+addresses, so I would generally recommend using a personal account.
+
+}
+
+{- {b Create a personal access token.} This collection of instructions
+assumes that you're using Git with HTTPS authentication.  If you want
+to use SSH then you can skip this step, but we will not help you
+troubleshoot.  Follow the GitHub Docs instructions on
+{{:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic}Creating
+a personal access token}.
+
+}
+
+{- {b Create a private repository} on GitHub called [cs320-fall-2025-private].
+This repository {e must be private} because it will contain your
+solutions to assignments and projects.  If you've never created a
+repository on GitHub, follow the GitHub Docs tutorial on
+{{:https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository}Creating
+a new repository}.
+
+}
+
+{- {b Mirror-push the course repository.}
+
+
+{ol
+
+{- Open a terminal and [cd] into the directory where you want to put
+your coursework for CS320, e.g., I would type something like:
+
+{@text[
+cd ~/Developer/Repositories
+]}
+
+}
+
+{- Clone the course repository:
+
+{@text[
+git clone https://github.com/BU-CS320/cs320-fall-2025.git
+]}
+
+}
+
+{- Mirror-push the course repository into your private repository:
+
+{@text[
+git -C ./cs320-fall-2025 push --mirror https://github.com/USERNAME/cs320-fall-2025-private.git
+]}
+
+replacing [USERNAME] with your GitHub username.
+
+}
+
+{- Clone your private repository:
+
+{@text[
+git clone https://github.com/USERNAME/cs320-fall-2025-private.git
+]}
+
+}
+
+{- Add the course repository as a remote for your private repository:
+
+{@text[
+git -C ./cs320-fall-2025-private remote add upstream https://github.com/BU-CS320/cs320-fall-2025.git
+]}
+
+}
+
+{- Remove the clone of the course repository:
+
+{@text[
+rm -rf cs320-fall-2025
+]}
+
+}
+
+}
+
+}
+
+}
+
+At this point you should have a directory called
+[cs320-fall-2025-private], in which you'll put your solutions to
+assignments and projects.
+
+{2 Syncing with the Course Repository}
+
+When materials are added to the course repository, you can easily
+merge them into your private repository. {b You should get in the
+habit of doing this frequently.} You should [cd] to the directory for
+your private repository. Make sure to first commit any uncommitted
+changes.  Then run the following commands.
+
+{@text[
+git fetch upstream
+git merge upstream/main main
+git push
+]}
+
+This will merge the updates to the course repository into your private
+repository both locally and on GitHub.  You should almost never need
+to resolve a merge after doing this, but if you do, take a look at the
+GitHub Docs instructions on
+{{:https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts}Addressing
+merge conflicts} for a refresher on how to do this.
+
+{1 OCaml}
+
+Next you need to set up your machine to be able to compile and run OCaml programs.
+
+{2 Installing Packages}
+
+{ol
+
+{- {b Install opam.} {{:https://opam.ocaml.org}opam} is a package
+manager for OCaml.  Follow the opam documentation instructions on
+{{:https://opam.ocaml.org/doc/Install.html}How to install opam} for your OS.  In short, use one of the following commands:
+
+{@text[
+# Homebrew (macOS)
+brew install opam
+
+# MacPorts (macOS)
+port install opam
+
+# Ubuntu
+apt install opam
+
+# Debian
+apt-get install opam
+
+# Arch Linux
+pacman -S opam
+]}
+
+and follow the associated instructions, e.g., make sure to run
+
+{@text[
+opam init
+]}
+
+after opam is installed.
+
+}
+
+{- {b Create a switch.} A switch keeps track of a particular set of
+packages you've installed.  We'll make a global switch intended to be
+used for this course.
+
+{@text[
+opam switch create cs320-f25 5.2.1
+opam switch cs320-f25
+eval $(opam env)
+]}
+
+{i Note.} Depending on the choices you made when installing opam, you
+may need to run [eval $(opam env)] every time you open a fresh
+terminal.
+
+}
+
+{- {b Clone the course standard library.} In the same place you put
+[cs320-fall-2025-private], run the following command:
+
+{@text[
+git clone https://github.com/nmmull/stdlib320.git
+]}
+
+You should now have a directory with [cs320-fall-2025] and [stdlib320]
+as subdirectories.  There is
+{{:https://nmmull.github.io/stdlib320/stdlib320/Stdlib320/index.html}documentation}
+for this library linked on the course webpage. We'll grade most assignments
+under the assumption that you only have access to this library.
+
+}
+
+{- {b Install the packages for this course.}  Run the following
+commands in the directory where your [cs320-fall-2025] and [stdlib320]
+live.  You can ignore any warnings associated with installing the
+course standard library.
+
+{@text[
+opam update
+opam install dune utop ounit2 menhir ocaml-lsp-server
+opam install stdlib320/.
+]}
+
+
+
+}
+
+}
+
+{2 Setting up VSCode}
+
+If you plan on using VSCode, you should also install the
+{{:https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform}OCaml
+Platform} from the Visual Studio Marketplace.  {i Note:} Setting up
+VSCode is optional.  We won't always use VSCode in live-coding demos.
+We'll do our best to troubleshoot any issues you run into, but it
+won't be a priority.
+
+{1 Assignment Workflow}
+
+Once everything is set up, working on an assignment will go roughly as
+follows.
+
+{ol
+
+{- Sync with the course repository to get access to the assignment
+(see the instructions above).
+
+}
+
+{- Sync the environment with the course switch [eval $(opam env)].
+
+}
+
+{- Fill in your solutions, make sure to commit your changes
+frequently.  {i Note:} You'll often have to create your own files
+which satisfy the specification of the assignment. You can verify that
+you've set everything up correctly if [dune build] doesn't show any
+errors when run in [assigns/assignX].
+
+}
+
+{- From within the assignment [lib] directory, run [dune build]
+frequently to check your code.  {i Note:} Per the instructions on using OCaml on VSCode, you can also
+use
+
+{@text[
+dune build --watch --terminal-persistence=clear-on-rebuild
+]}
+
+to rebuild every time you make a change to a file.  You may want to
+have this going in the built-in terminal of VSCode as you work.
+
+}
+
+
+{- When you get close to completing the assignment, from within the
+assignment directory, run [dune test] to test your code against a
+small test suite we've provided. This collection of tests will include
+some (but not all) tests used for grading.  {i Note:} The tests come in the form of
+{{:https://cs3110.github.io/textbook/chapters/basics/expressions.html?highlight=assert#assertions}assertions}.
+This means that {b if you fail an assertion, the following assertions
+will not be tested}.  You can comment out assertions in order to
+avoid testing them.
+
+}
+
+{- {i (Optional)} Add your own assertions to the file [tests/test_assignX.ml].
+
+}
+
+{- Push your work to your private repository and submit your
+assignment.  In Gradescope, you'll be prompted to choose a repository
+and a commit to submit.  After submitting, you should see a message
+which says that your assignment was accepted along with information
+about some (but not all) of the tests that were run.
+
+}
+
+}
+
+{1 Hello Dune}
+
+{{:https://dune.build}Dune} is a build tool for OCaml which we'll be
+using for the entirety of this course.  To finish up the lab, we'll
+create a simple project using dune.  This will primarily be in order
+to verify that everything is set up correctly.
+
+{ol
+
+{- {b Initialize a project.} Open up a terminal and [cd] to a place where you
+want to create a dummy project.  Then run
+
+{[
+eval $(opam env)
+dune init project hello_dune
+]}
+
+This will create a directory called [hello_dune], a skeleton project with the following file structure:
+
+{@text[
+.
+├── bin
+│   ├── dune
+│   └── main.ml
+├── dune-project
+├── hello_dune.opam
+├── lib
+│   └── dune
+└── test
+    ├── dune
+    └── test_hello_dune.ml
+]}
+
+You can ignore most of these files for now.  We'll only update the
+file [bin/main.ml].
+
+}
+
+{- {b Verify things work.} [cd] into the project you just made and run:
+
+{@text[
+dune build
+]}
+
+You should see no output (you may see a progress bar).
+Building a project verifies that there are no type errors in your
+code.
+
+Next, run:
+
+{@text[
+dune clean
+]}
+
+Building a project creates a lot of auxiliary files, and [dune clean]
+deletes them all.  {i Tip:} If you find that your project is not building and you think
+it should, run [dune clean] and then [dune build] again, particularly
+if you change a [dune] file or the [dune-project] file (we'll talk
+more about this later).
+
+}
+
+{- {b Write a program.} Open the file [bin/main.ml] in your favorite
+editor.  You should see the following:
+
+{[
+let () = print_endline "Hello, World!"
+]}
+
+Like with Python, there is no special "main" function for
+OCaml. Everything in [main.ml] (or any file that you've told dune is
+executable) is run.
+
+Replace the contents of [bin/main.ml] with
+
+{[
+let hello_message = "TODO"
+let () = print_endline hello_message
+]}
+
+making [TODO] into a phrase of your choosing.  Here we are making the
+message printed by the program into a variable. Finally, go back to
+the terminal and type:
+
+{@text[
+dune exec hello_dune
+]}
+
+You should see the message that you put in your program.
+
+}
+
+{- {b Use Utop.} Utop is an interface for OCaml's toplevel, like
+Python's REPL.  It's a standalone program, you can type in your terminal:
+
+{[
+utop
+]}
+
+and from there you can type in any OCaml expression followed by two
+semicolons [;;], which Utop will evaluate, e.g.:
+
+{[
+utop # 2 + 2;;
+- : int = 4
+]}
+
+When you're done, type [#quit] to leave Utop.
+
+It will be more common for us to use Utop via Dune so that it runs
+in a {e project aware} way.  Let's start by creating a file called
+[lib/hello_dune.ml] and in it write the line:
+
+{[
+let welcome = "TODO"
+]}
+
+replacing [TODO] with a welcome message of your choosing.  Then in
+your terminal (within the directory [hello_dune]) type:
+
+{[
+dune utop
+]}
+
+This will open Utop, but it will {e also} make available any code that
+you've written in the [lib] directory.  You can type:
+
+{[
+Hello_dune.welcome;;
+]}
+
+within Utop, and Utop will evaluate it to be the message you wrote.
+Note the capital 'H' here.  [Hello_dune] is a {i module} which is
+defined in the file [lib/hello_dune.ml] and in which the value
+[welcome] is defined.
+
+The last thing we'll do is use this value in our executable program.
+Go back to [bin/main.ml] and replace its content with:
+
+{[
+let () = print_endline Hello_dune.welcome
+]}
+
+The point: the code in [bin/main.ml] can refer to the [Hello_dune]
+module. This is how most of our dune projects will be structured;
+we'll put library code in the [lib] directory and executable code in
+the [bin] directory (hence, the names).
+
+}
+
+}
+
+And that's it for now, you've created a dune project.  For most
+assignments, the dune project will be given to you.  As we get further
+into the course, we'll look at more of the files that were generated
+above.

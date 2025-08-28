@@ -35,7 +35,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 9/3}
-    {td Week 1 Lab: Installation Party}
+    {td Week 1 Lab: {{!lab01} Installation Party}}
     {td }
     {td }
   }
