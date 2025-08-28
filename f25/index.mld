@@ -132,14 +132,8 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 9/30}
-    {td HOP I: Maps and Filters}
-    {td OCP
-      {{: https://cs3110.github.io/textbook/chapters/hop/higher_order.html}4.1},
-      {{: https://cs3110.github.io/textbook/chapters/hop/map.html}4.2},
-      {{: https://cs3110.github.io/textbook/chapters/hop/filter.html}4.3},
-      {{: https://cs3110.github.io/textbook/chapters/hop/pipelining.html}4.6},
-      {{: https://cs3110.github.io/textbook/chapters/hop/currying.html}4.7}
-    }
+    {td {b Quiz 1}}
+    {td }
     {td }
   }
   {tr
@@ -150,10 +144,13 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 10/2}
-    {td HOP II: Folds}
+    {td HOP I: Maps and Filters}
     {td OCP
-      {{: https://cs3110.github.io/textbook/chapters/hop/fold.html}4.4},
-      {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}4.5}
+      {{: https://cs3110.github.io/textbook/chapters/hop/higher_order.html}4.1},
+      {{: https://cs3110.github.io/textbook/chapters/hop/map.html}4.2},
+      {{: https://cs3110.github.io/textbook/chapters/hop/filter.html}4.3},
+      {{: https://cs3110.github.io/textbook/chapters/hop/pipelining.html}4.6},
+      {{: https://cs3110.github.io/textbook/chapters/hop/currying.html}4.7}
     }
     {td Assignment 5 (A4 due)}
   }
@@ -162,11 +159,10 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 10/7}
-    {td OCaml I: Error Handling, Testing}
+    {td HOP II: Folds}
     {td OCP
-      {{: https://cs3110.github.io/textbook/chapters/data/ounit.html}3.3},
-      {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7},
-      {{: https://cs3110.github.io/textbook/chapters/data/exceptions.html}3.10}
+      {{: https://cs3110.github.io/textbook/chapters/hop/fold.html}4.4},
+      {{: https://cs3110.github.io/textbook/chapters/hop/beyond_lists.html}4.5}
     }
     {td }
   }
@@ -178,14 +174,14 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 10/9}
-    {td OCaml II: Modules}
+    {td Intermediate OCaml}
     {td OCP
+      {{: https://cs3110.github.io/textbook/chapters/data/ounit.html}3.3},
+      {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7},
+      {{: https://cs3110.github.io/textbook/chapters/data/exceptions.html}3.10},
       {{: https://cs3110.github.io/textbook/chapters/modules/module_systems.html}5.1},
       {{: https://cs3110.github.io/textbook/chapters/modules/modules.html}5.2},
-      {{: https://cs3110.github.io/textbook/chapters/modules/toplevel.html}5.3},
-      {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}5.4},
-      {{: https://cs3110.github.io/textbook/chapters/modules/functional_data_structures.html}5.6},
-      {{: https://cs3110.github.io/textbook/chapters/modules/functors.html}5.9}
+      {{: https://cs3110.github.io/textbook/chapters/modules/encapsulation.html}5.4}
     }
     {td Practice Midterm (A5 due)}
   }
@@ -299,8 +295,8 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 11/18}
-    {td Types III: Polymorphism}
-    {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/typecheck.html}10.5}}
+    {td {b Quiz 2}}
+    {td }
     {td }
   }
   {tr
