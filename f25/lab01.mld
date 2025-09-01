@@ -200,11 +200,12 @@ terminal.
 git clone https://github.com/nmmull/stdlib320.git
 ]}
 
-You should now have a directory with [cs320-fall-2025] and [stdlib320]
-as subdirectories.  There is
+You should now have a directory with [cs320-fall-2025-private] and
+[stdlib320] as subdirectories.  There is
 {{:https://nmmull.github.io/stdlib320/stdlib320/Stdlib320/index.html}documentation}
-for this library linked on the course webpage. We'll grade most assignments
-under the assumption that you only have access to this library.
+for this library linked on the course webpage. We'll grade most
+assignments under the assumption that you only have access to this
+library.
 
 }
 
