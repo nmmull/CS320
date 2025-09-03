@@ -31,11 +31,11 @@ See the course manual and the schedule below for more details.
       {{: https://cs3110.github.io/textbook/chapters/basics/toplevel.html}2.1},
       {{: https://cs3110.github.io/textbook/chapters/basics/expressions.html}2.3}
     }
-    {td }
+    {td {{!Specifications.Assign0}Assignment 0}}
   }
   {tr
     {td 9/3}
-    {td Week 1 Lab: {{!lab01} Installation Party}}
+    {td Week 1 Lab: {{!lab01}Installation Party}}
     {td }
     {td }
   }
