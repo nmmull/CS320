@@ -210,7 +210,7 @@ library.
 }
 
 {- {b Install the packages for this course.}  Run the following
-commands in the directory where your [cs320-fall-2025] and [stdlib320]
+commands in the directory where your [cs320-fall-2025-private] and [stdlib320]
 live.  You can ignore any warnings associated with installing the
 course standard library.
 
