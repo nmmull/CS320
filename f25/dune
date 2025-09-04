@@ -2,7 +2,8 @@
  (name Specifications)
  (public_name Fall-2025)
  (modules_without_implementation
-  assign0))
+  assign0
+  assign1))
 
 (documentation
   (package Fall-2025)

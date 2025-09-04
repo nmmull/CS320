@@ -48,7 +48,7 @@ See the course manual and the schedule below for more details.
       {{: https://cs3110.github.io/textbook/chapters/basics/printing.html}2.6},
       {{: https://cs3110.github.io/textbook/chapters/basics/debugging.html}2.7}
     }
-    {td Assignment 1}
+    {td {{!Specifications.Assign1}Assignment 1}}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 2 ================ %}}}
