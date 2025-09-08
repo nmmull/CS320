@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>lab02 (Fall-2025.lab02)</title><meta charset="utf-8"/><link rel="stylesheet" href="../odoc.support/odoc.css"/><meta name="generator" content="odoc 3.1.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../odoc.support/katex.min.css"/><script src="../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="index.html">Up</a> – <a href="../index.html">Index</a> &#x00BB; <a href="index.html">Fall-2025</a> &#x00BB; lab02</nav><header class="odoc-preamble"><h1 id="lab-2:-thinking-recursively"><a href="#lab-2:-thinking-recursively" class="anchor"></a>Lab 2: Thinking Recursively</h1><p>Before we can start building more interesting OCaml programs, we have to get used to the &quot;functional&quot; way of thinking. In part, this means having a strong handle on recursion. I would recommend pair programming for this lab. Since there's nothing to turn in, it would be a good way to talk through how to approach each problem.</p></header><div class="odoc-tocs"><nav class="odoc-toc odoc-local-toc"><ul><li><a href="#setting-up-a-dune-project">Setting up a Dune Project</a></li><li><a href="#problems">Problems</a><ul><li><a href="#pythagorean-triples">Pythagorean Triples</a></li><li><a href="#ascii-art">ASCII Art</a></li><li><a href="#towers-of-hanoi-(extra-problem)">Towers of Hanoi (Extra Problem)</a></li></ul></li></ul></nav></div><div class="odoc-content"><h2 id="setting-up-a-dune-project"><a href="#setting-up-a-dune-project" class="anchor"></a>Setting up a Dune Project</h2><p>To practice, you're going to set up the Dune project for this lab.</p><ol><li><p>Run the following command to create a dune project in a directory called <code>lab02</code>:</p><pre class="language-text"><code>dune init project lab02</code></pre><p>The directory should have the following structure:</p><pre class="language-text"><code>.
+├── bin
+│   ├── dune
+│   └── main.ml
+├── dune-project
+├── lab02.opam
+├── lib
+│   └── dune
+└── test
+    ├── dune
+    └── test_lab02.ml</code></pre></li><li>Next you should create a file called <code>lib/lab02.ml</code>. You can put your solutions to this lab there.</li><li><p>Finally, you should update the file <code>test/dune</code> to look as follows:</p><pre class="language-ocaml"><code>(test
+ (name test_lab02)
+ (libraries lab02))</code></pre><p>This tells dune that the test suite should be able to refer to the functions you've written in <code>lib/lab02.ml</code>.</p></li></ol><h2 id="problems"><a href="#problems" class="anchor"></a>Problems</h2><p>You should put your implementation of each function in the file <code>lib/lab2.ml</code>. If you want to verify that your implmentation behaves as expected, you can run <code>dune utop</code> to open UTop. When referring to the functions you've written in Utop, you have to prefix them with <code>Lab2.</code>, e.g., if you write <code>let foo = 2</code> in <code>lib/lab2.ml</code>, then you can write <code>Lab2.foo</code> in UTop.</p><h3 id="pythagorean-triples"><a href="#pythagorean-triples" class="anchor"></a>Pythagorean Triples</h3><p>This problem is not so much about recursion as it is about understanding how to think about nested for-loops recursively.</p><p>A <i>Pythagorean triple</i> is a collection of three positive integers in nondecreasing order <code class="odoc-katex-math">(i, j, k)</code> such that <code class="odoc-katex-math">i^2 + j^2 = k^2</code>. Implement a function <code>print_triples</code> of type <code>int -&gt; unit</code> such that <code>print_triples n</code> prints all Pythagorean triples consisting of numbers which are at most <code>n</code>. Order doesn't matter, but there should be no repeats. For an added challenge, only print those triples which are not multiples of other triples.</p><h3 id="ascii-art"><a href="#ascii-art" class="anchor"></a>ASCII Art</h3><p>Write a function <code>print_hour_glass</code> of type <code>int -&gt; unit</code> such that <code>print_hour_glass n</code> prints an ASCII representation of an hour glass with <code>2 * n + 1</code> lines, e.g., <code>print_hour_glass 4</code> is</p><pre class="language-text"><code>*********
+ *******
+  *****
+   ***
+    *
+   ***
+  *****
+ *******
+*********</code></pre><p>The following function may be useful:</p><pre class="language-ocaml"><code>let repeat (n : int) (c : char) : string = String.init n (fun _ -&gt; c)</code></pre><h3 id="towers-of-hanoi-(extra-problem)"><a href="#towers-of-hanoi-(extra-problem)" class="anchor"></a>Towers of Hanoi (Extra Problem)</h3><p><a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of Hanoi</a> is a puzzle game consisting of disks of distinct sizes placed on one of three pegs in order of decreasing size (from top to bottom). The goal is to move a stack of disks on one peg (let's say the left) to another (let's say the right), with the restrictions (quoted from Wikipedia):</p><ol><li>only one disk may be moved at a time</li><li>each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod</li><li>no disk may be placed on top of a disk that is smaller than it</li></ol><p>See the Wikipedia page (linked above) for more information about the rules.</p><p>Implement a function <code>print_hanoi</code> of type <code>int -&gt; unit</code> so that <code>print_hanoi n</code> prints out the moves required to win towers of Hanoi with <code>n</code> disks.</p></div></body></html>
