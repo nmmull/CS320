@@ -10,4 +10,5 @@
   (mld_files
    index
    topics
-   lab01))
+   lab01
+   lab02))

@@ -1,0 +1,122 @@
+{0 Lab 2: Thinking Recursively}
+
+Before we can start building more interesting OCaml programs, we have
+to get used to the "functional" way of thinking.  In part, this means
+having a strong handle on recursion.  I would recommend pair
+programming for this lab.  Since there's nothing to turn in, it would
+be a good way to talk through how to approach each problem.
+
+{1 Setting up a Dune Project}
+
+To practice, you're going to set up the Dune project for this lab.
+
+{ol
+
+{- Run the following command to create a dune project in a directory
+called [lab02]:
+
+{@text[
+dune init project lab02
+]}
+
+The directory should have the following structure:
+
+{@text[
+.
+├── bin
+│   ├── dune
+│   └── main.ml
+├── dune-project
+├── lab02.opam
+├── lib
+│   └── dune
+└── test
+    ├── dune
+    └── test_lab02.ml
+]}
+}
+
+{- Next you should create a file called [lib/lab02.ml].  You can put
+your solutions to this lab there.
+}
+
+{- Finally, you should update the file [test/dune] to look as follows:
+
+{[
+(test
+ (name test_lab02)
+ (libraries lab02))
+]}
+
+This tells dune that the test suite should be able to refer to the
+functions you've written in [lib/lab02.ml].
+}
+}
+
+{1 Problems}
+
+You should put your implementation of each function in the file
+[lib/lab2.ml].  If you want to verify that your implmentation behaves
+as expected, you can run [dune utop] to open UTop.  When referring to the
+functions you've written in Utop, you have to prefix them with
+[Lab2.], e.g., if you write [let foo = 2] in [lib/lab2.ml], then you can
+write [Lab2.foo] in UTop.
+
+{2 Pythagorean Triples}
+
+This problem is not so much about recursion as it is about
+understanding how to think about nested for-loops recursively.
+
+A {i Pythagorean triple} is a collection of three positive integers in
+nondecreasing order {m (i, j, k)} such that {m i^2 + j^2 = k^2}.
+Implement a function [print_triples] of type [int -> unit] such that
+[print_triples n] prints all Pythagorean triples consisting of numbers
+which are at most [n].  Order doesn't matter, but there should be no
+repeats. For an added challenge, only print those triples which are
+not multiples of other triples.
+
+{2 ASCII Art}
+
+Write a function [print_hour_glass] of type [int -> unit] such that
+[print_hour_glass n] prints an ASCII representation of an hour glass with [2 * n
++ 1] lines, e.g., [print_hour_glass 4] is
+
+{@text[
+*********
+ *******
+  *****
+   ***
+    *
+   ***
+  *****
+ *******
+*********
+]}
+
+The following function may be useful:
+{[
+let repeat (n : int) (c : char) : string = String.init n (fun _ -> c)
+]}
+{2 Towers of Hanoi (Extra Problem)}
+
+{{:https://en.wikipedia.org/wiki/Tower_of_Hanoi}Towers of Hanoi} is a
+puzzle game consisting of disks of distinct sizes placed on one of
+three pegs in order of decreasing size (from top to bottom).  The goal
+is to move a stack of disks on one peg (let's say the left) to another
+(let's say the right), with the restrictions (quoted from Wikipedia):
+
+{ol
+{- only one disk may be moved at a time}
+
+{- each move consists of taking the upper disk from one of the stacks
+and placing it on top of another stack or on an empty rod}
+
+{- no disk may be placed on top of a disk that is smaller than it}
+}
+
+See the Wikipedia page (linked above) for more information about the
+rules.
+
+Implement a function [print_hanoi] of type [int -> unit] so that
+[print_hanoi n] prints out the moves required to win towers of Hanoi
+with [n] disks.
