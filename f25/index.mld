@@ -69,7 +69,7 @@ See the course manual and the schedule below for more details.
     {td 9/11}
     {td Basics III: Inference Rules}
     {td }
-    {td Assignment 2 (A1 due)}
+    {td {{!Specifications.Assign2}Assignment 2} (A1 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 3 ================ %}}}

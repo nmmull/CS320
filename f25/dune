@@ -1,9 +1,11 @@
 (library
  (name Specifications)
+ (libraries zarith)
  (public_name Fall-2025)
  (modules_without_implementation
   assign0
-  assign1))
+  assign1
+  assign2))
 
 (documentation
   (package Fall-2025)
