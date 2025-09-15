@@ -1,0 +1,94 @@
+{0 Lab 2: Practice with String}
+
+In this lab, we'll be getting some practice working with Strings.  We
+won't do this much in this course, but it's important to know how to
+do.  I would recommend pair programming for this lab.  Since there's
+nothing to turn in, it would be a good way to talk through how to
+approach each problem.
+
+{1 Setting up a Dune Project}
+
+{ol
+
+{- Run the following command to create a dune project in a directory
+called [lab03]:
+
+{@text[
+dune init project lab03
+]}
+
+}
+
+{- Create a file called [lib/lab03.ml] and put your solutions there.
+}
+
+}
+
+{1 OCaml Problem}
+
+Implement a function [drop_leading] of type [char -> string -> string]
+so that [drop_leading c s] is the result of removing all instances of
+[c] from the front of [s].  Also implement a function [drop_trailing]
+of type [char -> string -> string] so that [drop_trailing c s] is the
+result of removing all instances of [c] from the {i back} of [s].  You
+should use the function [String.get] and [String.sub] in your
+solution. See the [stdlib320] documentation for more details.
+
+{[
+let _ = assert (drop_leading 'a' "aaabbbaaa" = "bbbaaa")
+let _ = assert (drop_trailing 'a' "aaabbbaaa" = "aaabbb")
+]}
+
+{1 Derivation Problems}
+
+{2 Typing Derivation}
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\{ \code{x} : \code{int} \} \vdash \code{let y = 2 in x + y} : \code{int}
+}
+
+Write a typing derivation for the above typing judgment using the
+following rules.  Make sure to label each instance of a rule with its
+name, and to exclude side conditions from your derivation.
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\def\side#1{\textcolor{green}{#1}}
+\frac{\side{(x : \tau) \in \Gamma}}{\Gamma \vdash x : \tau} \text{(var)}
+\qquad
+\frac{\Gamma \vdash e_1 : \code{int} \qquad \Gamma \vdash e_2 : \code{int}}{\Gamma \vdash e_1 \code{ + } e_2 : \code{int}} \text{(add)}
+\qquad
+\frac
+{\Gamma \vdash e_1 : \tau_1 \qquad \Gamma, \code x : \tau_1 \vdash e_2 : \tau_2}
+{\Gamma \vdash \code{let x = } e_1 \code{ in } e_2 : \tau_2} \text{(let)}
+}
+
+{2 Evaluation Derivation}
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\code{let y = 2 in 3 + y} \Downarrow 5
+}
+
+Write an evaluation derivation for the above evaluation judgment using the
+following rules.  Make sure to label each instance of a rule with its
+name, and to exclude side conditions from your derivation.
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\def\side#1{\textcolor{green}{#1}}
+\frac
+{\side{\code{n} \text{ is an \code{int} literal for } n}}
+{\code{n} \Downarrow n}
+\text{(int)}
+\qquad
+\frac{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad \side{v_1 + v_2 = v}}
+{e_1 \code{ + } e_2 \Downarrow v} \text{(add-eval)}
+\qquad
+\frac
+{e_1 \Downarrow v_1 \qquad
+\side{e = [v_1 / x] e_2} \qquad
+e \Downarrow v}
+{\code{let x = } e_1 \code{ in } e_2 \Downarrow v} \text{(let-eval)}
+}
