@@ -76,13 +76,8 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 9/16}
-    {td Basics IV: Lists, Tail-Recursion}
-    {td OCP
-      {{: https://cs3110.github.io/textbook/chapters/data/lists.html}3.1},
-      {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}3.5},
-      {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7},
-      {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}3.8}
-    }
+    {td Basics IV: Derivations}
+    {td }
     {td }
   }
   {tr
@@ -93,8 +88,13 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 9/18}
-    {td Basics V: Derivations}
-    {td }
+    {td Basics V: Lists, Tail-Recursion}
+    {td OCP
+      {{: https://cs3110.github.io/textbook/chapters/data/lists.html}3.1},
+      {{: https://cs3110.github.io/textbook/chapters/data/pattern_matching_advanced.html}3.5},
+      {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7},
+      {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}3.8}
+    }
     {td Assignment 3 (A2 due)}
   }
 
