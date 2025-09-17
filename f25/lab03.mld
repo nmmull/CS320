@@ -55,6 +55,11 @@ name, and to exclude side conditions from your derivation.
 {math
 \def\code#1{\textcolor{purple}{\texttt{#1}}}
 \def\side#1{\textcolor{green}{#1}}
+\frac
+{\side{\code{n} \text{ is an \code{int} literal}}}
+{\Gamma \vdash \code{n} : \code{int}}
+\text{(int)}
+\qquad
 \frac{\side{(x : \tau) \in \Gamma}}{\Gamma \vdash x : \tau} \text{(var)}
 \qquad
 \frac{\Gamma \vdash e_1 : \code{int} \qquad \Gamma \vdash e_2 : \code{int}}{\Gamma \vdash e_1 \code{ + } e_2 : \code{int}} \text{(add)}
@@ -81,7 +86,7 @@ name, and to exclude side conditions from your derivation.
 \frac
 {\side{\code{n} \text{ is an \code{int} literal for } n}}
 {\code{n} \Downarrow n}
-\text{(int)}
+\text{(int-eval)}
 \qquad
 \frac{e_1 \Downarrow v_1 \qquad e_2 \Downarrow v_2 \qquad \side{v_1 + v_2 = v}}
 {e_1 \code{ + } e_2 \Downarrow v} \text{(add-eval)}
