@@ -42,7 +42,7 @@ val split_on_char : char -> string -> string list
    Implement the function [split_on_char] so that [split_on_char sep s] is the list of all (possibly empty) substrings of [s] that are delimited by the character [sep].
    If [s] is empty, the result is the singleton list [[""]] (this description is taken from the OCaml standard library documentation).
 
-   {b Note.} Working with strings in OCaml is different from working with lists (in a sense they might seem more familiar if you're coming from a language with arrays).  We cannot destruct lists. Rather we use the functions [String.get] and [String.sub] to access parts of the string.
+   {b Note.} Working with strings in OCaml is different from working with lists (in a sense they might seem more familiar if you're coming from a language with arrays).  We cannot destruct strings. Rather we use the functions [String.get] and [String.sub] to access parts of the string.
    See the {{:https://nmmull.github.io/stdlib320/stdlib320/Stdlib320/String/index.html}Standard library documentation on strings} for more details.
 
 *)
