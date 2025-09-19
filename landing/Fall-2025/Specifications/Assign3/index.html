@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Assign3 (Fall-2025.Specifications.Assign3)</title><meta charset="utf-8"/><link rel="stylesheet" href="../../../odoc.support/odoc.css"/><meta name="generator" content="odoc 3.1.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../../../odoc.support/katex.min.css"/><script src="../../../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="../index.html">Up</a> – <a href="../../../index.html">Index</a> &#x00BB; <a href="../../index.html">Fall-2025</a> &#x00BB; <a href="../index.html">Specifications</a> &#x00BB; Assign3</nav><header class="odoc-preamble"><h1>Module <code><span>Specifications.Assign3</span></code></h1><p>This assignment is due on <b>Thursday 9/26 by 8:00PM</b>. You should put all of your programming solutions in a file called <code>assign3/lib/assign3.ml</code>. See the file <code>test/test_assign3.ml</code> for example behavior of each function. You should put all your written solutions in a single pdf file.</p><p><b>Note.</b> All implementations in this assignment must be tail-recursive. We may have large test-cases which will fail for non-tail-recursive implementations.</p></header><div class="odoc-tocs"><nav class="odoc-toc odoc-local-toc"><ul><li><a href="#programming-(50%)">Programming (50%)</a><ul><li><a href="#unlimited-register-machines">Unlimited Register Machines</a></li><li><a href="#urm-programs">URM Programs</a></li></ul></li><li><a href="#written-(50%)">Written (50%)</a><ul><li><a href="#typing-derivation-(i)">Typing Derivation (I)</a></li><li><a href="#typing-derivation-(ii)">Typing Derivation (II)</a></li><li><a href="#urm-programs_2">URM programs</a></li></ul></li></ul></nav></div><div class="odoc-content"><h2 id="programming-(50%)"><a href="#programming-(50%)" class="anchor"></a>Programming (50%)</h2><h3 id="unlimited-register-machines"><a href="#unlimited-register-machines" class="anchor"></a>Unlimited Register Machines</h3><div class="odoc-spec"><div class="spec type anchored" id="type-registers"><a href="#type-registers" class="anchor"></a><code><span><span class="keyword">type</span> registers</span><span> = <span><span>(int * int)</span> list</span></span></code></div></div><p>An unlimited register machine (URM) is an abstract representation of an infinite collection of registers indexed by integers.</p><pre class="language-ocaml"><code>REGISTERS ... | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ...
+  INDICES      -4  -3  -2  -1   0   1   2   3   4</code></pre><p>Programmatically, we can represent a URM <code>rs</code> as an <i>association list</i>, i.e., a list of type <code>(int * int) list</code> where the pair <code>(i, j)</code> indicates <code>rs</code> has the value <code>j</code> in register <code>i</code>. Furthermore, we assume that if <code>(i, j)</code> is not a member of <code>rs</code> for any value <code>j</code>, then register <code>i</code> has the value <code>0</code>. For example, the list <code>[(-1, 5); (0, 4); (3, 1)]</code> represents the URM:</p><pre class="language-ocaml"><code>REGISTERS ... | 0 | 0 | 0 | 5 | 4 | 0 | 0 | 1 | 0 | ...
+  INDICES      -4  -3  -2  -1   0   1   2   3   4</code></pre><p>where all registers not pictured have the value <code>0</code>. In this part of the assignment, you'll be filling in an interface for working with URMs. In each of the following functions you must maintain the following invariants:</p><ul><li>the pairs in a URM representaion must be given in order of increasing index, e.g., <code>[(0, 1); (-5, 1)]</code> is an invalid URM representation, and instead should be <code>[(-5, 1); (0, 1)]</code>;</li><li>there is no pair of the form <code>(i, 0)</code>, e.g, <code>[(0, 5); (1, 0)]</code> is an invalid URM representation and instead should be <code>[(0, 5)]</code>;</li><li>an index should be mapped to at most one value, e.g., <code>[(0, 5), (0, 6)]</code> is an invalid URM representation.</li></ul><p><b>Hint:</b> There are quite a few functions, but many of them have the same logic. Try to avoiding rewriting this logic. Write a general function and reuse it.</p><div class="odoc-spec"><div class="spec value anchored" id="val-load"><a href="#val-load" class="anchor"></a><code><span><span class="keyword">val</span> load : <span><span>int list</span> <span class="arrow">&#45;&gt;</span></span> <a href="#type-registers">registers</a></span></code></div><div class="spec-doc"><p>Implement the function <code>load</code> so that <code>load l</code> is the URM in which the <code>i</code>th element of <code>l</code> (using 0-indexing) is put in register <code>i</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-lookup"><a href="#val-lookup" class="anchor"></a><code><span><span class="keyword">val</span> lookup : <span><a href="#type-registers">registers</a> <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> int</span></code></div><div class="spec-doc"><p>Implement the function <code>lookup</code> so that <code>lookup rs i</code> is the value in register <code>i</code> of <code>rs</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-incr"><a href="#val-incr" class="anchor"></a><code><span><span class="keyword">val</span> incr : <span><a href="#type-registers">registers</a> <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> <a href="#type-registers">registers</a></span></code></div><div class="spec-doc"><p>Implement the function <code>incr</code> so that <code>incr rs i</code> is the result of adding <code>1</code> to the value in register <code>i</code> of <code>rs</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-zero"><a href="#val-zero" class="anchor"></a><code><span><span class="keyword">val</span> zero : <span><a href="#type-registers">registers</a> <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> <a href="#type-registers">registers</a></span></code></div><div class="spec-doc"><p>Implement the function <code>zero</code> so that <code>zero rs i</code> is the result of setting the value in register <code>i</code> of <code>rs</code> to <code>0</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-transfer"><a href="#val-transfer" class="anchor"></a><code><span><span class="keyword">val</span> transfer : <span><a href="#type-registers">registers</a> <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> <a href="#type-registers">registers</a></span></code></div><div class="spec-doc"><p>Implement the function <code>transfer</code> so that <code>transfer rs i j</code> is the result of setting the value in register <code>i</code> of <code>rs</code> to be the value in register <code>j</code> of <code>rs</code> (the value in register <code>j</code> remains unchanged).</p></div></div><h3 id="urm-programs"><a href="#urm-programs" class="anchor"></a>URM Programs</h3><p>A URM program is a sequence of instructions of the following form:</p><ul><li><code>Z i</code> (zero the value in register <code>i</code>)</li><li><code>I i</code> (increment the value in register <code>i</code>)</li><li><code>T i j</code> (transfer the value in register <code>i</code> to register <code>j</code>)</li><li><code>J i j k</code> (jump to the <code>k</code>th instruction if the value in register <code>i</code> is equal to the value in register <code>j</code>)</li></ul><p>A URM program is whitespace agnostic, so you can write each instruction on its own line, or you can write multiple instructions on the same line. All instructions codes and indices must be separated by whitespace. Here is an example program:</p><pre class="language-text"><code>J  1   2   100
+   I 0     I 2
+   J 0 0 0</code></pre><p>We will represent a URM program as a <code>int list list</code> with the following correspondence for instructions:</p><ul><li><code>[0;i]</code> stands for <code>Z i</code>;</li><li><code>[1;i]</code> stands for <code>I i</code>;</li><li><code>[2;i;j]</code> stands for <code>T i j</code>;</li><li><code>[3;i;j;k]</code> stands for <code>J i j k</code>.</li></ul><p>The above program is represented by the following list:</p><pre class="language-ocaml"><code>[[3; 1; 2; 100]; [1; 0]; [1; 2]; [3; 0; 0; 0]]</code></pre><p>As with any programming language, we can give a formal semantics for the evaluation of URM programs. In this setting, a <i>configuration</i> is of the form</p><div><pre class="odoc-katex-math display">   \langle \ P \ , R \ , \ n \ \rangle
+   </pre></div><p>where <code class="odoc-katex-math">P</code> is a URM program, <code class="odoc-katex-math">R</code> is a URM, and <code class="odoc-katex-math">n</code> is a <i>program counter</i>. We use the program to keep track of what instruction to run. An evaluation judgment is of the form</p><div><pre class="odoc-katex-math display">   \langle \ P \ , R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P' \ , R' \ , \ n' \ \rangle
+   </pre></div><p>and expression that the configuration on the left-hand side <i>evaluates to</i> the configuration on the right-hand side.</p><div><pre class="odoc-katex-math display">   \frac
+   {\textcolor{green}{P[n] = \texttt{Z i}}}
+   {
+   \langle \ P \ , \ R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P \ , \ \texttt{zero} \ R \ \texttt{i}  \ , \ n + 1 \ \rangle
+   }
+   \text{(zero)}
+   </pre></div><div><pre class="odoc-katex-math display">   \frac
+   {\textcolor{green}{P[n] = \texttt{I i}}}
+   {
+   \langle \ P \ , \ R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P \ , \ \texttt{incr} \ R \ \texttt{i}  \ , \ n + 1 \ \rangle
+   }
+   \text{(incr)}
+   </pre></div><div><pre class="odoc-katex-math display">   \frac
+   {\textcolor{green}{P[n] = \texttt{T i j}}}
+   {
+   \langle \ P \ , \ R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ n + 1 \ \rangle
+   }
+   \text{(transfer)}
+   </pre></div><div><pre class="odoc-katex-math display">   \frac
+   {
+   \textcolor{green}{P[n] = \texttt{J i j k}}
+   \qquad
+   \textcolor{green}{\texttt{lookup} \ R \ \texttt{i} = \texttt{lookup} \ R \ \texttt{j}}
+   }
+   {
+   \langle \ P \ , \ R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ \texttt{k} \ \rangle
+   }
+   \text{(jump-eq)}
+   </pre></div><div><pre class="odoc-katex-math display">   \frac
+   {
+   \textcolor{green}{P[n] = \texttt{J i j k}}
+   \qquad
+   \textcolor{green}{\texttt{lookup} \ R \ \texttt{i} \neq \texttt{lookup} \ R \ \texttt{j}}
+   }
+   {
+   \langle \ P \ , \ R \ , \ n \ \rangle
+   \longrightarrow
+   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ n + 1 \ \rangle
+   }
+   \text{(jump-neq)}
+   </pre></div><p>Evaluating a program <code class="odoc-katex-math">P</code> on registers <code class="odoc-katex-math">R</code> means starting in the configuration <code class="odoc-katex-math">\langle \ P \ , \ R \ , \ 0 \ \rangle</code> applying the above rules until the program counter becomes as least the number of instructions in <code class="odoc-katex-math">P</code>.</p><p>For example, the above program has the following evaluation behavior on the URM <code>load [5;3]</code>:</p><pre class="language-text"><code>⟨   [J 1 2 100] I 0  I 2  J 0 0 0    ,   [(0, 5); (1, 3)]           ,   0   ⟩   ───► (jump-neq)
+⟨    J 1 2 100 [I 0] I 2  J 0 0 0    ,   [(0, 5); (1, 3)]           ,   1   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0 [I 2] J 0 0 0    ,   [(0, 6); (1, 3)]           ,   2   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0  I 2 [J 0 0 0]   ,   [(0, 6); (1, 3); (2, 1)]   ,   3   ⟩   ───► (jump-eq)
+⟨   [J 1 2 100] I 0  I 2  J 0 0 0    ,   [(0, 6); (1, 3); (2, 1)]   ,   0   ⟩   ───► (jump-neq)
+⟨    J 1 2 100 [I 0] I 2  J 0 0 0    ,   [(0, 6); (1, 3); (2, 1)]   ,   1   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0 [I 2] J 0 0 0    ,   [(0, 7); (1, 3); (2, 1)]   ,   2   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0  I 2 [J 0 0 0]   ,   [(0, 7); (1, 3); (2, 2)]   ,   3   ⟩   ───► (jump-eq)
+⟨   [J 1 2 100] I 0  I 2  J 0 0 0    ,   [(0, 7); (1, 3); (2, 2)]   ,   0   ⟩   ───► (jump-neq)
+⟨    J 1 2 100 [I 0] I 2  J 0 0 0    ,   [(0, 7); (1, 3); (2, 2)]   ,   1   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0 [I 2] J 0 0 0    ,   [(0, 8); (1, 3); (2, 2)]   ,   2   ⟩   ───► (incr)
+⟨    J 1 2 100  I 0  I 2 [J 0 0 0]   ,   [(0, 8); (1, 3); (2, 3)]   ,   3   ⟩   ───► (jump-eq)
+⟨   [J 1 2 100] I 0  I 2  J 0 0 0    ,   [(0, 8); (1, 3); (2, 3)]   ,   0   ⟩   ───► (jump-eq)
+⟨    J 1 2 100  I 0  I 2  J 0 0 0    ,   [(0, 8); (1, 3); (2, 3)]   ,   100 ⟩</code></pre><p>We've put square brackets in the program around the instruction that the program counter points to in order to make the behavior more clear. In this problem, you'll be implementing an interpreter for URM programs.</p><div class="odoc-spec"><div class="spec value anchored" id="val-sep_on_whitespace"><a href="#val-sep_on_whitespace" class="anchor"></a><code><span><span class="keyword">val</span> sep_on_whitespace : <span>string <span class="arrow">&#45;&gt;</span></span> <span>string list</span></span></code></div><div class="spec-doc"><p><code>sep_on_whitespace s</code> is the result of removing all whitespace in <code>s</code> and combining the contiugous non-whitespace characters in <code>s</code>. <i>This function is implemented for you.</i></p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-parse_urm"><a href="#val-parse_urm" class="anchor"></a><code><span><span class="keyword">val</span> parse_urm : <span><span>string list</span> <span class="arrow">&#45;&gt;</span></span> <span><span>int list</span> list</span></span></code></div><div class="spec-doc"><p>Implement the function <code>parse_urm</code> so that <code>parse_urm l</code> maps the ouput of <code>sep_on_whitespace s</code> to a URM program representation, given that <code>s</code> is a valid URM program. In particular, the behavior of the function is undefined if <code>s</code> does not represent a valid URM program.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-eval_urm"><a href="#val-eval_urm" class="anchor"></a><code><span><span class="keyword">val</span> eval_urm : <span><span><span>int list</span> list</span> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-registers">registers</a> <span class="arrow">&#45;&gt;</span></span> <a href="#type-registers">registers</a></span></code></div><div class="spec-doc"><p>Implement the function <code>eval_urm</code> so that <code>eval_urm prog rs</code> is the result of evaluating the program <code>prog</code> on the URM <code>rs</code> according to the above rules.</p></div></div><p><i>All remaining functions are implemented for you.</i></p><div class="odoc-spec"><div class="spec value anchored" id="val-interp_urm"><a href="#val-interp_urm" class="anchor"></a><code><span><span class="keyword">val</span> interp_urm : <span>string <span class="arrow">&#45;&gt;</span></span> <span><span>int list</span> <span class="arrow">&#45;&gt;</span></span> int</span></code></div><div class="spec-doc"><p><code>interp_urm s args</code> is the result of interpreting the URM program <code>s</code> on the URM after loading the values in <code>args</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-max_urm"><a href="#val-max_urm" class="anchor"></a><code><span><span class="keyword">val</span> max_urm : <span>int <span class="arrow">&#45;&gt;</span></span> <span>int <span class="arrow">&#45;&gt;</span></span> int</span></code></div><div class="spec-doc"><p><code>max_urm i j</code> is the maximum of <code>i</code> and <code>j</code>, implemented by intpreting a URM program.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-fibonacci_urm"><a href="#val-fibonacci_urm" class="anchor"></a><code><span><span class="keyword">val</span> fibonacci_urm : <span>int <span class="arrow">&#45;&gt;</span></span> int</span></code></div><div class="spec-doc"><p><code>fibonacci_urm i</code> is <code>i</code>th Fibonacci number, implemented by intpreting a URM program.</p></div></div><h2 id="written-(50%)"><a href="#written-(50%)" class="anchor"></a>Written (50%)</h2><h3 id="typing-derivation-(i)"><a href="#typing-derivation-(i)" class="anchor"></a>Typing Derivation (I)</h3><div><pre class="odoc-katex-math display">    \def\code#1{\textcolor{purple}{\texttt{#1}}}
+    \def\side#1{\textcolor{green}{#1}}
+    \{ \code{x} : \code{int} , \code{y} : \code{bool} \} \vdash \code{if y then [] else x :: []} : \code{int list}
+    </pre></div><p>Give a typing derivation of the above typing judgment using the following rules. Do not use any shorthands in your derivation.</p><div><pre class="odoc-katex-math display">    \def\code#1{\textcolor{purple}{\texttt{#1}}}
+    \def\side#1{\textcolor{green}{#1}}
+    \frac
+    {\side{(x : t) \in \Gamma}}
+    {\Gamma \vdash x : t}
+    \text{(var)}
+    \qquad
+    \frac
+    {
+    \Gamma \vdash e_1 : \code{bool}
+    \quad
+    \Gamma \vdash e_2 : \tau
+    \qquad
+    \Gamma \vdash e_3 : \tau
+    }
+    {\Gamma \vdash \code{if } e_1 \code{ then } e_2 \code{ else } e_3 : \tau}
+    \text{(if)}
+    \qquad
+    \frac{}
+    {\Gamma \vdash \code{[]} : \tau \code{ list}}
+    \text{(nil)}
+    \qquad
+    \frac
+    {
+    \Gamma \vdash e_1 : \tau
+    \quad
+    \Gamma \vdash e_2 : \tau \code{ list}
+    }
+    {\Gamma \vdash e_1 \code{ :: } e_2 : \tau \code{ list}}
+    \text{(cons)}
+    </pre></div><h3 id="typing-derivation-(ii)"><a href="#typing-derivation-(ii)" class="anchor"></a>Typing Derivation (II)</h3><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \Gamma \vdash \code{g (f (g 0))} : \tau
+   </pre></div><p>Determine a minimal context <code class="odoc-katex-math">\Gamma</code> and type <code class="odoc-katex-math">\tau</code> such that the above typing judgment is derivable, and then given a derivation. Minimal here means that if you remove a variable declaration from <code class="odoc-katex-math">\Gamma</code>, then the judgment is no longer derivable. You may use the following rules. Do not use any shorthands in your derivation.</p><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {\side{(x : t) \in \Gamma}}
+   {\Gamma \vdash x : t}
+   \text{(var)}
+   \qquad
+   \frac
+   {\side{n {\text{ is an int literal}}}}
+   {\Gamma \vdash n : \code{int}}
+   \text{(int)}
+   \qquad
+   \frac
+   {
+   \Gamma \vdash e_1 : \tau_2 \code{ -&gt; } \tau
+   \quad
+   \Gamma \vdash e_2 : \tau_2
+   }
+   {
+   \Gamma \vdash e_1 \ e_2 : \tau
+   }
+   \text{(app)}
+   </pre></div><p>Can there be more than one choice of <code class="odoc-katex-math">\Gamma</code> and <code class="odoc-katex-math">\tau</code>? Justify your answer and explain the relationship between <code class="odoc-katex-math">\Gamma</code> and <code class="odoc-katex-math">\tau</code>.</p><h3 id="urm-programs_2"><a href="#urm-programs_2" class="anchor"></a>URM programs</h3><p>The way that we formalize the semantic behavior of things like URM programs is by using the <i>transitive closure</i> of the evaluation judgment we defined above. This can be formalized by introduing the following two rules which over a new judgment of the form <code class="odoc-katex-math">C_1 \longrightarrow^\star C_2</code> where <code class="odoc-katex-math">C_1</code> and <code class="odoc-katex-math">C_2</code> are configurations as defined above:</p><div><pre class="odoc-katex-math display">   \frac{}
+   {C \longrightarrow^\star C}
+   \text{(refl)}
+   \qquad
+   \frac{
+   C_1 \longrightarrow C_2
+   \quad
+   C_2 \longrightarrow^\star C_3
+   }
+   {
+   C_1 \longrightarrow^\star C_3
+   }
+   \text{(trans)}
+   </pre></div><p>Write a derivation of the following judgment using these rules and the rules from the above section on URM programs.</p><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+
+   \langle \ \code{J 0 1 2 I 0 I 1} \ , \ \code{[(0, 5); (1, 5)]} \ , \ 0 \ \rangle \longrightarrow^\star
+   \langle \ \code{J 0 1 2 I 0 I 1} \ , \ \code{[(0, 5); (1, 6)]} \ , \ 3 \ \rangle
+   </pre></div><p>You can use <code class="odoc-katex-math">P</code> has shorthand for the program <code class="odoc-katex-math">\texttt{J 0 1 2 I 0 I 1}</code> but otherwise do not use any shorthands in your derivation.</p></div></body></html>
