@@ -95,7 +95,7 @@ See the course manual and the schedule below for more details.
       {{: https://cs3110.github.io/textbook/chapters/data/options.html}3.7},
       {{: https://cs3110.github.io/textbook/chapters/data/assoc_list.html}3.8}
     }
-    {td Assignment 3 (A2 due)}
+    {td {{!Specifications.Assign3}Assignment 3} (A2 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 4 ================ %}}}
