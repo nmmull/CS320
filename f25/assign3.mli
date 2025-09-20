@@ -81,7 +81,7 @@ val zero : registers -> int -> registers
 
 val transfer : registers -> int -> int -> registers
 (**
-   Implement the function [transfer] so that [transfer rs i j] is the result of setting the value in register [i] of [rs] to be the value in register [j] of [rs] (the value in register [j] remains unchanged).
+   Implement the function [transfer] so that [transfer rs i j] is the result of setting the value in register [j] of [rs] to be the value in register [i] of [rs] (the value in register [i] remains unchanged).
  *)
 
 (** {2 URM Programs} *)
