@@ -342,7 +342,7 @@ val fibonacci_urm : int -> int
    Justify your answer and explain the relationship between {m \Gamma} and {m \tau}.
  *)
 
-(** {2 URM programs} *)
+(** {2 URM Programs} *)
 
 (**
    The way that we formalize the semantic behavior of things like URM programs is by using the {i transitive closure} of the evaluation judgment we defined above.
