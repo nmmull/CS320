@@ -172,7 +172,7 @@ val transfer : registers -> int -> int -> registers
    {
    \langle \ P \ , \ R \ , \ n \ \rangle
    \longrightarrow
-   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ \texttt{k} \ \rangle
+   \langle \ P \ , \ R  \ , \ \texttt{k} \ \rangle
    }
    \text{(jump-eq)}
    }
@@ -187,7 +187,7 @@ val transfer : registers -> int -> int -> registers
    {
    \langle \ P \ , \ R \ , \ n \ \rangle
    \longrightarrow
-   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ n + 1 \ \rangle
+   \langle \ P \ , \ R  \ , \ n + 1 \ \rangle
    }
    \text{(jump-neq)}
    }
