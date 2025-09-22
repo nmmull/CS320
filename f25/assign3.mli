@@ -10,7 +10,7 @@
 
 (** {1 Programming (50%)} *)
 
-(* (\** {2 Reverse Append} *\) *)
+(* hmm (\** {2 Reverse Append} *\) *)
 
 (* val rev_append : 'a list -> 'a list -> 'a list *)
 (* (\** *)
