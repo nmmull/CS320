@@ -75,7 +75,7 @@ let fact n =
 
 We require in [repeat n times e1 from e2] that [n] is an [int] and the
 [e1] and [e2] have the same type.  Furthermore we require that [e1] is
-well-typed a context which {b includes a variable [acc] which is the
+well-typed with respect to a context that {b includes a variable [acc] which is the
 same type as that of [e1] and [e2]}. Finally, the resulting type
 should be that of [e1] and [e2].
 
