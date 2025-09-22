@@ -112,7 +112,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 9/24}
-    {td Week 4 Lab}
+    {td Week 4 Lab: {{!lab04}ADTs and Derivations}}
     {td }
     {td }
   }

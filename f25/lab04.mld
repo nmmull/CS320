@@ -1,0 +1,122 @@
+{0 Lab 4: ADTs and Derivations}
+
+In this lab, we'll practice working with algebraic data types.  I
+recommend pair programming; since there's nothing to turn in, it would
+be a good way to talk through how to approach each problem.
+
+As usual, use [dune init project lab04] to create a dune project for this lab.
+
+{1 OCaml Problem}
+
+Consider the following two algebraic data types.
+
+{[
+type int_or_string
+  = Int of int
+  | String of string
+
+type int_list_or_string_list
+  = IntList of int list
+  | StringList of string list
+]}
+
+The first represents either an [int] or a [string], and the second
+represents either an [int list] or a [string list].  Implement the
+function [convert] so that [convert l] is an [int_list_or_string_list
+list] in which adjacent [string] values and [int] values in [l] are grouped
+together.
+
+{[
+let l_in = [Int 2; Int 3; String "a"; String "b"; Int 4; String "c"]
+let l_out = [IntList [2;3]; StringList ["a";"b"]; IntList [4]; StringList ["c"]]
+let _ = assert (convert l_in = l_out);
+]}
+
+ *)
+
+{1 Derivation Problem}
+
+Suppose you're interested in adding a kind of functional for-loop into
+an OCaml-like language.  You decide on the syntax
+
+{[
+<expr> ::= repeat <expr> times <expr> from <expr>
+]}
+
+That is, if {m e_1}, {m e_2}, and {m e_3} are well-formed expressions, then so is
+
+{math
+\texttt{repeat} \ e_1 \ \texttt{times} \ e_2 \ \texttt{from} \ e_3
+}
+
+The hope is that you can write code like
+
+{[
+let fact n =
+  let loop =
+    repeat n times
+      let (i, m) = acc in
+      (i + 1, m * i)
+    from
+      (1, 1)
+  in let (_, out) = loop in out
+]}
+or even:
+{[
+let fact n =
+  let loop =
+    repeat n times
+      { i = acc.i + 1; out = acc.out * acc.i }
+    from
+      { i = 1; out = 1 }
+  in loop.out
+]}
+
+
+We require in [repeat n times e1 from e2] that [n] is an [int] and the
+[e1] and [e2] have the same type.  Furthermore we require that [e1] is
+well-typed a context which {b includes a variable [acc] which is the
+same type as that of [e1] and [e2]}. Finally, the resulting type
+should be that of [e1] and [e2].
+
+{b The Task.} Write this typing rule {b (repeat)} for this new language construct.
+Then determine a context {m \Gamma} and a type {m \tau} such that the
+following is derivable, and give a derivation.
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\Gamma \vdash \code{repeat n times match acc with | (i, m) -> (i + 1, m * i) from (1, 1)} : \tau
+}
+
+You should use the following rules in addition to the {b (repeat)} rule.
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\def\side#1{\textcolor{green}{#1}}
+\frac
+{\side{\code{n} \text{ is an \code{int} literal}}}
+{\Gamma \vdash \code{n} : \code{int}}
+\text{(int)}
+\qquad
+\frac{\side{(x : \tau) \in \Gamma}}{\Gamma \vdash x : \tau} \text{(var)}
+\qquad
+\frac{\Gamma \vdash e_1 : \code{int} \qquad \Gamma \vdash e_2 : \code{int}}{\Gamma \vdash e_1 \code{ + } e_2 : \code{int}} \text{(add)
+}
+\qquad
+\frac{\Gamma \vdash e_1 : \code{int} \qquad \Gamma \vdash e_2 : \code{int}}{\Gamma \vdash e_1 \code{ * } e_2 : \code{int}} \text{(mul)
+}
+}
+
+{math
+\def\code#1{\textcolor{purple}{\texttt{#1}}}
+\def\side#1{\textcolor{green}{#1}}
+\frac{\Gamma \vdash e_1 : \tau_1 \quad \Gamma \vdash e_2 : \tau_2}
+{\Gamma \vdash \code{( } e_1 \code{ , } e_2 \code{ )} : \tau_1 \code{ * } \tau_2}
+\text{(tuple)}
+\qquad
+\frac{\Gamma \vdash e_1 : \tau_1 \code{ * } \tau_2 \quad \Gamma, x : \tau_1, y : \tau_2 \vdash e_2 : \tau}
+{\Gamma \vdash \code{match } e_1 \code{ with | ( } x \code{ , } y \code{ ) -> } e_2 : \tau}
+\text{(tupleMatch)}
+}
+
+{b Challenge.} Write the semantic rules for this new language construct.
