@@ -57,7 +57,7 @@
    {
    \langle \ P \ , \ R \ , \ n \ \rangle
    \longrightarrow
-   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ \texttt{k} \ \rangle
+   \langle \ P \ , \ R  \ , \ \texttt{k} \ \rangle
    }
    \text{(jump-eq)}
    </pre></div><div><pre class="odoc-katex-math display">   \frac
@@ -69,7 +69,7 @@
    {
    \langle \ P \ , \ R \ , \ n \ \rangle
    \longrightarrow
-   \langle \ P \ , \ \texttt{transfer} \ R \ \texttt{i} \ \texttt{j}  \ , \ n + 1 \ \rangle
+   \langle \ P \ , \ R  \ , \ n + 1 \ \rangle
    }
    \text{(jump-neq)}
    </pre></div><p>Evaluating a program <code class="odoc-katex-math">P</code> on registers <code class="odoc-katex-math">R</code> means starting in the configuration <code class="odoc-katex-math">\langle \ P \ , \ R \ , \ 0 \ \rangle</code> applying the above rules until the program counter becomes as least the number of instructions in <code class="odoc-katex-math">P</code>.</p><p>For example, the above program has the following evaluation behavior on the URM <code>load [5;3]</code>:</p><pre class="language-text"><code>⟨   [J 1 2 100] I 0  I 2  J 0 0 0    ,   [(0, 5); (1, 3)]           ,   0   ⟩   ───► (jump-neq)
