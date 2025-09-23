@@ -68,7 +68,7 @@ See the course manual and the schedule below for more details.
   {tr
     {td 9/11}
     {td Basics III: Inference Rules}
-    {td }
+    {td COPL {{: https://nmmull.github.io/pdfs/copl-draft.pdf}2.1, A}}
     {td {{!Specifications.Assign2}Assignment 2} (A1 due)}
   }
 
@@ -77,7 +77,7 @@ See the course manual and the schedule below for more details.
   {tr
     {td 9/16}
     {td Basics IV: Derivations}
-    {td }
+    {td COPL {{: https://nmmull.github.io/pdfs/copl-draft.pdf}2.2, 2.3}}
     {td }
   }
   {tr
