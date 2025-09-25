@@ -125,7 +125,7 @@ See the course manual and the schedule below for more details.
       {{: https://cs3110.github.io/textbook/chapters/data/nats.html}3.12},
       {{: https://cs3110.github.io/textbook/chapters/ds/rb.html}8.3}
     }
-    {td Assignment 4 (A3 due)}
+    {td {{!Specifications.Assign4}Assignment 4} (A3 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 5 ================ %}}}
