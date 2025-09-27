@@ -1,0 +1,98 @@
+{0 Lab 5: Mutual Recursion and Options}
+
+In this lab, we'll practice mutual recursion and working with options.  I
+recommend pair programming for the OCaml problem; since there's nothing to turn in, it would
+be a good way to talk through how to approach it.
+
+As usual, use [dune init project lab05] to create a dune project for this lab.
+
+{1 OCaml Problem: Mutual Recursion}
+
+Consider the following ADT, which represents trees with nodes that either have 2 or 3 children.
+
+
+{[
+type 'a tree23 =
+  | Leaf
+  | Node2 of 'a * 'a tree23 * tree23
+  | Node3 of 'a * 'a tree23 * tree23 * tree23
+]}
+
+Suppose we wanted to further restrict the ADT so that nodes which are an even distance from the root have 2 children and nodes which are an odd distance from the root have 3 children (it's possible in the current version of the ADT to have nodes with 2 or 3 children anywhere in the tree).
+We can't do this with a single ADT, but we {i can} do it with multiple mutually recursive ADTs:
+
+{[
+type 'a tree23 =
+  | Leaf2
+  | Node2 of 'a * 'a tree32 * 'a tree32
+and 'a tree32 =
+  | Leaf3
+  | Node3 of 'a * 'a tree23 * 'a tree23 * 'a tree23
+]}
+
+Here we require the childen of a [Node2] to be [tree23]s and the children of [Node3] to be [tree32]s.
+Note the keyword [and], which we use to let OCaml know that we're making something mututally recursive.
+A simple example:
+
+{[
+let example : int tree23 =
+  Node2
+    ( 1
+    , Node3
+        ( 2
+        , Node2 (3, Leaf3, Leaf3)
+        , Node2 (4, Leaf3, Leaf3)
+        , Node2 (5, Leaf3, Leaf3)
+        )
+    , Node3
+        ( 6
+        , Node2 (7, Leaf3, Leaf3)
+        , Leaf2
+        , Leaf2
+        )
+    )
+]}
+
+Implement the functions [count] and [sum] for [tree23], where [count t] is the number of nodes in [t] and [sum t] is the sum of the (integer) values in [t].
+You'll need write these functions {i mutually recursively}, e.g., in order to count nodes in [tree23]s, you need to count nodes in [tree32]s, and vice versa.
+{b Hint:} You can use the keyword [and] for mutually recursive functions as well.
+
+{[
+let _ = assert (Lab05.count example = 7)
+let _ = assert (Lab05.sum example = 28)
+]}
+
+{1 Derivation Problem: Options}
+
+At this point, we've seen quite a few inference rules, even some more complex ones like the one for list matching.
+Here we want you to start thinking about how to write these yourself.
+We just learned about options, we'll go over the rules in lecture, but in in this lab let's try this out ourselves.
+We'll give you the syntax:
+{[
+<expr> ::= None
+<expr> ::= Some <expr>
+<expr> ::= match <expr> with | None -> <expr> | Some <var> -> <expr>
+]}
+In other words:
+
+- [None] is a well-formed expression.
+- If {m e_1} is a well-formed expression then so is [Some] {m e_1}.
+- If {m e_1}, {m e_2}, and {m e_3} are well-formed expressions, and {m x} is a variable, then [match] {m e_1} [with | None ->] {m e_2} [| Some] {m x} [->] {m e_2} is a well-formed expression.
+
+We'll also introduce new values:
+
+- {m \mathsf{None}} is a value.
+- {m \mathsf{Some}(v)} is a value for any value {m v}.
+
+{b The tasks:}
+
+- Write the typing rules for options.
+- Write the semantic rules for options.
+- Write a derivation of the following typing judgment:
+  {math \varnothing \vdash \texttt{fun x -> match x with | None -> 0 | Some y -> y} : \texttt{option int -> int}}
+  You'll also need the rules {b (var)}, {b (fun)} and {b (int)}.
+  Take a look at previous labs to remind yourself of these rules.
+- Write a derivation of the following semantic judgment:
+  {math \texttt{match Some 2 with | None -> 0 | Some y -> y} \Downarrow 2}
+  You'll also need the rules {b (int-eval)}.
+  Take a look at the previous labs to remind yourself of these rules.

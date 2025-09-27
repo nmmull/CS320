@@ -138,7 +138,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 10/1}
-    {td Week 5 Lab}
+    {td Week 5 Lab: {{!lab05}Mutual Recursion and Options}}
     {td }
     {td }
   }
