@@ -152,7 +152,7 @@ See the course manual and the schedule below for more details.
       {{: https://cs3110.github.io/textbook/chapters/hop/pipelining.html}4.6},
       {{: https://cs3110.github.io/textbook/chapters/hop/currying.html}4.7}
     }
-    {td Assignment 5 (A4 due)}
+    {td {{!Specifications.Assign5}Assignment 5} (A4 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 6 ================ %}}}

@@ -7,7 +7,8 @@
   assign1
   assign2
   assign3
-  assign4))
+  assign4
+  assign5))
 
 (documentation
   (package Fall-2025)
