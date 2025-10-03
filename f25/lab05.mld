@@ -77,7 +77,7 @@ In other words:
 
 - [None] is a well-formed expression.
 - If {m e_1} is a well-formed expression then so is [Some] {m e_1}.
-- If {m e_1}, {m e_2}, and {m e_3} are well-formed expressions, and {m x} is a variable, then [match] {m e_1} [with | None ->] {m e_2} [| Some] {m x} [->] {m e_2} is a well-formed expression.
+- If {m e_1}, {m e_2}, and {m e_3} are well-formed expressions, and {m x} is a variable, then [match] {m e_1} [with | None ->] {m e_2} [| Some] {m x} [->] {m e_3} is a well-formed expression.
 
 We'll also introduce new values:
 
