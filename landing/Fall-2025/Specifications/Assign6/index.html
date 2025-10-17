@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Assign6 (Fall-2025.Specifications.Assign6)</title><meta charset="utf-8"/><link rel="stylesheet" href="../../../odoc.support/odoc.css"/><meta name="generator" content="odoc 3.1.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="stylesheet" href="../../../odoc.support/katex.min.css"/><script src="../../../odoc.support/katex.min.js"></script><script>
+//<![CDATA[
+
+          document.addEventListener("DOMContentLoaded", function () {
+            var elements = Array.from(document.getElementsByClassName("odoc-katex-math"));
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+              var content = el.textContent;
+              var new_el = document.createElement("span");
+              new_el.setAttribute("class", "odoc-katex-math-rendered");
+              var display = el.classList.contains("display");
+              katex.render(content, new_el, { throwOnError: false, displayMode: display });
+              el.replaceWith(new_el);
+            }
+          });
+        
+//]]>
+</script></head><body class="odoc"><nav class="odoc-nav"><a href="../index.html">Up</a> – <a href="../../../index.html">Index</a> &#x00BB; <a href="../../index.html">Fall-2025</a> &#x00BB; <a href="../index.html">Specifications</a> &#x00BB; Assign6</nav><header class="odoc-preamble"><h1>Module <code><span>Specifications.Assign6</span></code></h1><p>This assignment is due on <b>Thursday 10/24 by 8:00PM</b>. You should put all of your programming solutions in a file called <code>assign6/lib/assign6.ml</code>. See the file <code>test/test_assign6.ml</code> for example behavior of each function. You should put all your written solutions in a single pdf file.</p></header><div class="odoc-tocs"><nav class="odoc-toc odoc-local-toc"><ul><li><a href="#programming-(90%)">Programming (90%)</a><ul><li><a href="#syntax">Syntax</a></li><li><a href="#typing">Typing</a></li><li><a href="#semantics">Semantics</a></li></ul></li><li><a href="#written-(10%)">Written (10%)</a><ul><li><a href="#partial-derivations">Partial Derivations</a></li></ul></li></ul></nav></div><div class="odoc-content"><h2 id="programming-(90%)"><a href="#programming-(90%)" class="anchor"></a>Programming (90%)</h2><p>This assignment is a miniature of the (mini-)projects you'll be doing is the second half of the course. We'll be building a tiny programming language. As we've said, a programming language has three components: syntax, typing, and semantics. These three parts correspond to parsing, type checking and evaluation, respectively.</p><h3 id="syntax"><a href="#syntax" class="anchor"></a>Syntax</h3><p>Here is the syntax of the language you'll be implementing.</p><pre class="language-text"><code>&lt;expr&gt; ::= True | False | &lt;int&gt; | &lt;var&gt;
+         | ( + &lt;expr&gt; &lt;expr&gt; )
+         | ( - &lt;expr&gt; &lt;expr&gt; )
+         | ( * &lt;expr&gt; &lt;expr&gt; )
+         | ( / &lt;expr&gt; &lt;expr&gt; )
+         | ( &lt;= &lt;expr&gt; &lt;expr&gt; )
+         | ( If &lt;expr&gt; &lt;expr&gt; &lt;expr&gt; )
+         | ( Let &lt;var&gt; &lt;expr&gt; &lt;expr&gt; )
+  &lt;ty&gt; ::= int | bool</code></pre><p>These syntax rules (formally called a <i>BNF Grammar</i>) tell us the following.</p><ul><li><code>True</code> is a well-formed expression.</li><li><code>False</code> is a well-formed expression.</li><li>Integer literals are well-formed expressions. We will take an integer literal be any string <code>s</code> such that <code>int_of_string_opt s</code> is not <code>None</code>.</li><li>A variable is a well-formed expression. <b>We require that variables are made up of all lower case letters.</b> See the function <code>is_valid_var</code> in the starter code.</li><li>If <code>e1</code> and <code>e2</code> are well-formed expression then so are <code>(+ e1 e2)</code>, <code>(- e1 e2)</code>, <code>( * e1 e2)</code>, <code>(/ e1 e2)</code>, and <code>(&lt;= e1 e2)</code>.</li><li>If <code>e1</code>, <code>e2</code>, and <code>e3</code> are well-formed expressions the so is <code>(If e1 e2 e3)</code>.</li><li>If <code>x</code> is a variable and <code>e1</code> and <code>e2</code> are well-formed expressions then so is <code>(Let x e1 e2</code>).</li></ul><p>Well-formed expressions are S-expressions with a subset of atoms that are meaningful in our language. Parsing an expression in this language should be nearly identical to what we did in Assignment 4. The result of parsing a well-formed expression should be an <code>expr</code> as defined below (formally, values of type <code>expr</code> are <i>abstract syntax trees</i> for expression in our language).</p><div class="odoc-spec"><div class="spec type anchored" id="type-expr"><a href="#type-expr" class="anchor"></a><code><span><span class="keyword">type</span> expr</span><span> = </span></code><ol><li id="type-expr.True" class="def variant constructor anchored"><a href="#type-expr.True" class="anchor"></a><code><span>| </span><span><span class="constructor">True</span></span></code></li><li id="type-expr.False" class="def variant constructor anchored"><a href="#type-expr.False" class="anchor"></a><code><span>| </span><span><span class="constructor">False</span></span></code></li><li id="type-expr.Int" class="def variant constructor anchored"><a href="#type-expr.Int" class="anchor"></a><code><span>| </span><span><span class="constructor">Int</span> <span class="keyword">of</span> int</span></code></li><li id="type-expr.Var" class="def variant constructor anchored"><a href="#type-expr.Var" class="anchor"></a><code><span>| </span><span><span class="constructor">Var</span> <span class="keyword">of</span> string</span></code></li><li id="type-expr.Add" class="def variant constructor anchored"><a href="#type-expr.Add" class="anchor"></a><code><span>| </span><span><span class="constructor">Add</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Sub" class="def variant constructor anchored"><a href="#type-expr.Sub" class="anchor"></a><code><span>| </span><span><span class="constructor">Sub</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Mul" class="def variant constructor anchored"><a href="#type-expr.Mul" class="anchor"></a><code><span>| </span><span><span class="constructor">Mul</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Div" class="def variant constructor anchored"><a href="#type-expr.Div" class="anchor"></a><code><span>| </span><span><span class="constructor">Div</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Lte" class="def variant constructor anchored"><a href="#type-expr.Lte" class="anchor"></a><code><span>| </span><span><span class="constructor">Lte</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.If" class="def variant constructor anchored"><a href="#type-expr.If" class="anchor"></a><code><span>| </span><span><span class="constructor">If</span> <span class="keyword">of</span> <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li><li id="type-expr.Let" class="def variant constructor anchored"><a href="#type-expr.Let" class="anchor"></a><code><span>| </span><span><span class="constructor">Let</span> <span class="keyword">of</span> string * <a href="#type-expr">expr</a> * <a href="#type-expr">expr</a></span></code></li></ol></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-parse"><a href="#val-parse" class="anchor"></a><code><span><span class="keyword">val</span> parse : <span>string <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-expr">expr</a> option</span></span></code></div><div class="spec-doc"><p>Implement the function <code>parse</code> so that <code>parse s</code> is <code>Some e</code> if <code>s</code> is a well-formed expression represented by <code>e</code>, and <code>None</code> otherwise. For example, parsing the expression</p><pre class="language-text"><code>  (Let x 2
+  (Let y (+ x x)
+  (Let z (- ( * y x) 1)
+  (Let q (If (&lt;= z 0) (- 0 z) z)
+  (/ q 3))))</code></pre><p>should result in <code>Some e</code> where <code>e</code> is</p><pre class="language-ocaml"><code>  Let (Var &quot;x&quot;, Int 2,
+  Let (Var &quot;y&quot;, Add (Var &quot;x&quot;, Var &quot;x&quot;),
+  Let (Var &quot;z&quot;, Sub (Mul (Var &quot;y&quot;, Var &quot;x&quot;), Int 1),
+  Let (Var &quot;q&quot;, If (Lte (Var &quot;z&quot;, Int 0), Sub (Int 0, Var &quot;z&quot;), Var &quot;z&quot;),
+  Div (Var &quot;q&quot;, Int 3)))))</code></pre><p>Note that this expression can be written in OCaml syntax as</p><pre class="language-ocaml"><code>  let x = 2 in
+  let y = x + x in
+  let z = x * y - 1 in
+  let q = if z &lt;= 0 then 0 - z else z in
+  q / 3</code></pre></div></div><h3 id="typing"><a href="#typing" class="anchor"></a>Typing</h3><p>Here are the typing rules of our language. In them we introduce two types: <code>int</code> and <code>bool</code>.</p><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {}
+   {\Gamma \vdash \code{True} : \code{bool}}
+   \text{(true)}
+   \qquad
+   \frac
+   {}
+   {\Gamma \vdash \code{False} : \code{bool}}
+   \text{(false)}
+   \qquad
+   \frac
+   {\side{n {\text{ is an int literal}}}}
+   {\Gamma \vdash n : \code{int}}
+   \text{(int)}
+   \qquad
+   \frac
+   {\side{(x : t) \in \Gamma}}
+   {\Gamma \vdash x : t}
+   \text{(var)}
+   </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {\Gamma \vdash e_1 : \code{int} \quad \Gamma \vdash e_2 : \code{int}}
+   {\Gamma \vdash \code{(} \ \code{+} \ e_1 \ e_2 \ \code{)} : \code{int}}
+   \text{(add)}
+   \qquad
+   \frac
+   {\Gamma \vdash e_1 : \code{int} \quad \Gamma \vdash e_2 : \code{int}}
+   {\Gamma \vdash \code{(} \ \code{-} \ e_1 \ e_2 \ \code{)} : \code{int}}
+   \text{(sub)}
+   \qquad
+   \frac
+   {\Gamma \vdash e_1 : \code{int} \quad \Gamma \vdash e_2 : \code{int}}
+   {\Gamma \vdash \code{(} \ \code{*} \ e_1 \ e_2 \ \code{)} : \code{int}}
+   \text{(mul)}
+   \qquad
+   \frac
+   {\Gamma \vdash e_1 : \code{int} \quad \Gamma \vdash e_2 : \code{int}}
+   {\Gamma \vdash \code{(} \ \code{/} \ e_1 \ e_2 \ \code{)} : \code{int}}
+   \text{(div)}
+   </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {\Gamma \vdash e_1 : \code{int} \quad \Gamma \vdash e_2 : \code{int}}
+   {\Gamma \vdash \code{(} \ \code{&lt;=} \ e_1 \ e_2 \ \code{)} : \code{bool}}
+   \text{(lte)}
+   \qquad
+   \frac
+   {\Gamma \vdash e_1 : \code{bool} \quad \Gamma \vdash e_2 : t \quad \Gamma \vdash e_3 : t}
+   {\Gamma \vdash \code{(} \ \code{If} \ e_1 \ e_2 \ e_3 \ \code{)} : t}
+   \text{(if)}
+   \qquad
+   \frac
+   {\Gamma \vdash e_1 : t_1 \quad \Gamma, x : t_1 \vdash e_2 : t_2}
+   {\Gamma \vdash \code{(} \ \code{Let} \ x \ e_1 \ e_2 \ \code{)} : t_2}
+   \text{(let)}
+   </pre></div><div class="odoc-spec"><div class="spec type anchored" id="type-ty"><a href="#type-ty" class="anchor"></a><code><span><span class="keyword">type</span> ty</span><span> = </span></code><ol><li id="type-ty.IntTy" class="def variant constructor anchored"><a href="#type-ty.IntTy" class="anchor"></a><code><span>| </span><span><span class="constructor">IntTy</span></span></code></li><li id="type-ty.BoolTy" class="def variant constructor anchored"><a href="#type-ty.BoolTy" class="anchor"></a><code><span>| </span><span><span class="constructor">BoolTy</span></span></code></li></ol></div><div class="spec-doc"><p>We represent types in our interpreter using the <code>ty</code> ADT.</p></div></div><div class="odoc-spec"><div class="spec type anchored" id="type-ctxt"><a href="#type-ctxt" class="anchor"></a><code><span><span class="keyword">type</span> ctxt</span><span> = <span><a href="#type-ty">ty</a> <span class="xref-unresolved">Stdlib</span>.Map.Make(<span class="xref-unresolved">Stdlib</span>.String).t</span></span></code></div><div class="spec-doc"><p>We represent contexts as maps (a.k.a. a dictionaries) defined using module functors (i.e., scary stuff we won't talk about in this course). The point is that a value of type <code>ctxt</code> is a map from variable names of type <code>string</code> to types of type <code>ty</code>. We provide a convenient interface for working with contexts below.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-empty_ctxt"><a href="#val-empty_ctxt" class="anchor"></a><code><span><span class="keyword">val</span> empty_ctxt : <a href="#type-ctxt">ctxt</a></span></code></div><div class="spec-doc"><p><code>empty_ctxt</code> is the empty context <code class="odoc-katex-math">\varnothing</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-add_binding"><a href="#val-add_binding" class="anchor"></a><code><span><span class="keyword">val</span> add_binding : <span>string <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ty">ty</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ctxt">ctxt</a> <span class="arrow">&#45;&gt;</span></span> <a href="#type-ctxt">ctxt</a></span></code></div><div class="spec-doc"><p><code>add_binding</code> <code class="odoc-katex-math">x \ \tau \ \Gamma</code> is the result of adding the binding <code class="odoc-katex-math">x : \tau</code> to <code class="odoc-katex-math">\Gamma</code>. This will be useful for implementing rules which have the context <code class="odoc-katex-math">\Gamma, x : \tau</code> in their premises.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-check_binding"><a href="#val-check_binding" class="anchor"></a><code><span><span class="keyword">val</span> check_binding : <span>string <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ctxt">ctxt</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ty">ty</a> option</span></span></code></div><div class="spec-doc"><p><code>check_binding</code> <code class="odoc-katex-math">x \ \Gamma</code> is <code>Some</code> <code class="odoc-katex-math">\tau</code> if <code class="odoc-katex-math">(x : \tau) \in \Gamma</code> and is <code>None</code> otherwise. This will be useful for implementing the (var) rule.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-type_of"><a href="#val-type_of" class="anchor"></a><code><span><span class="keyword">val</span> type_of : <span><a href="#type-ctxt">ctxt</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-expr">expr</a> <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-ty">ty</a> option</span></span></code></div><div class="spec-doc"><p>Implement the function <code>type_of</code> so that <code>type_of</code> <code class="odoc-katex-math">\Gamma \ e</code> is <code>Some</code> <code class="odoc-katex-math">\tau</code> if <code class="odoc-katex-math">e</code> is well-typed in <code class="odoc-katex-math">\Gamma</code> (i.e., if <code class="odoc-katex-math">\Gamma \vdash e : \tau</code> is derivable according to the above typing rules) and <code>None</code> otherwise. For example, the expression <code>e</code></p><pre class="language-text"><code>(Let x 2
+(Let y (+ x x)
+( * y y)))</code></pre><p>is well-typed in the empty context, and <code>type_of empty_ctxt e</code> is <code>Some IntTy</code>, where as the expression <code>e'</code></p><pre class="language-text"><code>(Let x 2
+(Let y (If x 1 -1)
+( * y y)))</code></pre><p>is not well-typed in the empty context (because <code>x</code> is being used as the condition of an <code>If</code>-expression) so <code>type_of empty_ctxt e'</code> is <code>None</code>.</p></div></div><h3 id="semantics"><a href="#semantics" class="anchor"></a>Semantics</h3><p>Here are the semantic rules of our language. In them we introduce two kinds of values: integer values and Boolean value (<code class="odoc-katex-math">\top</code> for truth and <code class="odoc-katex-math">\bot</code> for falsity).</p><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {}
+   {\code{True} \Downarrow \top}
+   \text{(trueEval)}
+   \qquad
+   \frac
+   {}
+   {\code{False} \Downarrow \bot}
+   \text{(falseEval)}
+   \qquad
+   \frac
+   {\side{n {\text{ is an int literal}}}}
+   {n \Downarrow n}
+   \text{(intEval)}
+   </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v = v_1 + v_2}}
+   {\code{(} \ \code{+} \ e_1 \ e_2 \ \code{)} \Downarrow v}
+   \text{(addEval)}
+   \qquad
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v = v_1 - v_2}}
+   {\code{(} \ \code{-} \ e_1 \ e_2 \ \code{)} \Downarrow v}
+   \text{(subEval)}
+   </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v = v_1v_2}}
+   {\code{(} \ \code{*} \ e_1 \ e_2 \ \code{)} \Downarrow v}
+   \text{(mulEval)}
+   \qquad
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v = v_1 / v_2}}
+   {\code{(} \ \code{/} \ e_1 \ e_2 \ \code{)} \Downarrow v}
+   \text{(divEval)}
+   </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v_1 \leq v_2}}
+   {\code{(} \ \code{&lt;=} \ e_1 \ e_2 \ \code{)} \Downarrow \top}
+   \text{(lteTrue)}
+                                                             \qquad
+   \frac
+   {e_1 \Downarrow v_1 \quad e_2 \Downarrow v_2 \quad \side{v_1 &gt; v_2}}
+   {\code{(} \ \code{&lt;=} \ e_1 \ e_2 \ \code{)} \Downarrow \bot}
+   \text{(lteFalse)}
+                                                             </pre></div><div><pre class="odoc-katex-math display">   \def\code#1{\textcolor{purple}{\texttt{#1}}}
+   \def\side#1{\textcolor{green}{#1}}
+   \frac
+   {e_1 \Downarrow \top \quad e_2 \Downarrow v_2}
+   {\code{(} \ \code{If} \ e_1 \ e_2 \ e_3 \ \code{)} \Downarrow v_2}
+   \text{(ifTrue)}
+   \qquad
+   \frac
+   {e_1 \Downarrow \bot \quad e_3 \Downarrow v_3}
+   {\code{(} \ \code{If} \ e_1 \ e_2 \ e_3 \ \code{)} \Downarrow v_3}
+   \text{(ifFalse)}
+   \qquad
+   \frac
+   {e_1 \Downarrow v_1 \quad \side{e = [v_1/x]e_2} \quad e \Downarrow v}
+   {\code{(} \ \code{Let} \ x \ e_1 \ e_2 \ \code{)} \Downarrow v}
+   \text{(let)}
+   </pre></div><div class="odoc-spec"><div class="spec type anchored" id="type-value"><a href="#type-value" class="anchor"></a><code><span><span class="keyword">type</span> value</span><span> = </span></code><ol><li id="type-value.IntV" class="def variant constructor anchored"><a href="#type-value.IntV" class="anchor"></a><code><span>| </span><span><span class="constructor">IntV</span> <span class="keyword">of</span> int</span></code></li><li id="type-value.BoolV" class="def variant constructor anchored"><a href="#type-value.BoolV" class="anchor"></a><code><span>| </span><span><span class="constructor">BoolV</span> <span class="keyword">of</span> bool</span></code></li></ol></div><div class="spec-doc"><p>We represent values with the <code>value</code> ADT.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-eval"><a href="#val-eval" class="anchor"></a><code><span><span class="keyword">val</span> eval : <span><a href="#type-expr">expr</a> <span class="arrow">&#45;&gt;</span></span> <a href="#type-value">value</a></span></code></div><div class="spec-doc"><p>Implement the function <code>eval</code> so that <code>eval</code> <code class="odoc-katex-math">e</code> is the result of evaluating <code class="odoc-katex-math">e</code>, i.e., it should be the value <code class="odoc-katex-math">v</code> such that <code class="odoc-katex-math">e \Downarrow v</code> is derivable. <i>The whole point, of all of this,</i> is that <code class="odoc-katex-math">e \Downarrow v</code> is <i>guaranteed</i> to be derivable if <code class="odoc-katex-math">e</code> is well-typed in the empty context, so we don't need to do any error handling here. These rules correspond to the rules for analogous OCaml syntax. For example, the expression <code>e</code></p><pre class="language-text"><code>(Let x 2
+(Let y (+ x x)
+( * y y)))</code></pre><p>is equivalent to the OCaml expression</p><pre class="language-ocaml"><code>  let x = 2 in
+  let y = x + x in
+  y * y</code></pre><p>So we expected <code>eval e</code> to be <code>IntV 16</code>. <i>Note:</i> When you write an evaluator, you will find that some branches of your match statements are not reachable. For example, when you evaluate an addition expression, you don't need to worry about the case that one of the operands evaluates to a Boolean value. Formally speaking, <code>eval</code> is <i>undefined</i> on these inputs, you can put whatever you want in these branches. Practically speaking, the &quot;correct&quot; thing to do according OCaml's spec is to use the expression <code>assert false</code> to indicate undefined branches.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-expr_of_value"><a href="#val-expr_of_value" class="anchor"></a><code><span><span class="keyword">val</span> expr_of_value : <span><a href="#type-value">value</a> <span class="arrow">&#45;&gt;</span></span> <a href="#type-expr">expr</a></span></code></div><div class="spec-doc"><p>One last thing. Our semantics depends on <i>substitution</i> which, as we've mentioned is a bit complicated. We'll be nice this time around and give you the implementation of substitution, but make sure you understand it, we'll be expecting you to implement it yourself later on (and we'll talk more about substitution in the coming weeks). One subtlety of substitution is that we define <code class="odoc-katex-math">[e_1 / x] e_2</code> (i.e., substituting <code class="odoc-katex-math">e_1</code> for <code class="odoc-katex-math">x</code> in <code class="odoc-katex-math">e_2</code>) so that <code class="odoc-katex-math">e_1</code> is an <i>expression</i>. But in the above rules, we substitute a <i>value</i> into an expression. Fortunately, values very easily reify to expressions.</p><p>Implement the function <code>expr_of_value</code> so that <code>expr_of_value v</code> is the expression representing <code>e</code>. You should use this function along with <code>subst</code> (given in the starter code) in your implementation of <code>eval</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-interp"><a href="#val-interp" class="anchor"></a><code><span><span class="keyword">val</span> interp : <span><span class="optlabel">?print</span>:bool <span class="arrow">&#45;&gt;</span></span> <span>string <span class="arrow">&#45;&gt;</span></span> <span><a href="#type-value">value</a> option</span></span></code></div><div class="spec-doc"><p><code>interp</code> puts together parsing, type checking, and evaluation. This has been implemented for you.</p></div></div><h2 id="written-(10%)"><a href="#written-(10%)" class="anchor"></a>Written (10%)</h2><h3 id="partial-derivations"><a href="#partial-derivations" class="anchor"></a>Partial Derivations</h3><p>Not all judgments are derivable, but it's often possible to write <em>partial</em> derivations of underivable judgments. These partial derivations can give us insight into why we get certain type errors when type-checking.</p><p>Formally, a typing derivation is <i>partial</i> if its leaves are not necessarily empty. A partial derivation is <i>maximal</i> if every leaf is empty (i.e., there are no judgments to derive) or is an axiom that is not derivable according to the rules of the system. For example:</p><pre class="language-text"><code>                    ───────────(int)
+    ∅ ⊢ 1 : bool    ∅ ⊢ 2 : int    ∅ ⊢ false : int
+    ──────────────────────────────────────────────(if)
+          ∅ ⊢ if 1 then 2 else false : int</code></pre><p>The expression <code>if 1 then 2 else false</code> is not well-typed in the empty context, but it can be given a maximal partial derivation, in which the second premise is an axiom which is derivable, where as the first and third premises are axioms which cannot be derived</p><p>Give maximal partial derivations of the following typing judgments.</p><div><pre class="odoc-katex-math display">    \varnothing \vdash \texttt{if true then 1 else false} : \texttt{int}
+    </pre></div><div><pre class="odoc-katex-math display">    \varnothing \vdash \texttt{if true then false else 1} : \texttt{bool}
+    </pre></div><div><pre class="odoc-katex-math display">    \varnothing \vdash \texttt{if true then false else x || 2} : \texttt{bool}
+    </pre></div><div><pre class="odoc-katex-math display">    \varnothing \vdash \texttt{if true then false else 2 || x} : \texttt{bool}
+    </pre></div><p>In addition, write down the type error that OCaml gives you when trying to type-check each expression (and think about what the type-error tells you about the order in which OCaml type-checks sub-expressions).</p></div></body></html>
