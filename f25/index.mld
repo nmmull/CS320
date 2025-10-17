@@ -204,7 +204,7 @@ See the course manual and the schedule below for more details.
     {td 10/16}
     {td {b Midterm}}
     {td }
-    {td Assignment 6}
+    {td {{!Specifications.Assign6}Assignment 6}}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 8 ================ %}}}
