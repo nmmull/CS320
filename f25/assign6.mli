@@ -75,11 +75,11 @@ val parse : string -> expr option
    ]}
    should result in [Some e] where [e] is
    {[
-     Let (Var "x", Int 2,
-     Let (Var "y", Add (Var "x", Var "x"),
-     Let (Var "z", Sub (Mul (Var "y", Var "x"), Int 1),
-     Let (Var "q", If (Lte (Var "z", Int 0), Sub (Int 0, Var "z"), Var "z"),
-     Div (Var "q", Int 3)))))
+     Let ("x", Int 2,
+     Let ("y", Add (Var "x", Var "x"),
+     Let ("z", Sub (Mul (Var "y", Var "x"), Int 1),
+     Let ("q", If (Lte (Var "z", Int 0), Sub (Int 0, Var "z"), Var "z"),
+     Div ("q", Int 3)))))
    ]}
    Note that this expression can be written in OCaml syntax as
    {[
