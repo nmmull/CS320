@@ -28,11 +28,11 @@
   (Let y (+ x x)
   (Let z (- ( * y x) 1)
   (Let q (If (&lt;= z 0) (- 0 z) z)
-  (/ q 3)))))</code></pre><p>should result in <code>Some e</code> where <code>e</code> is</p><pre class="language-ocaml"><code>  Let (Var &quot;x&quot;, Int 2,
-  Let (Var &quot;y&quot;, Add (Var &quot;x&quot;, Var &quot;x&quot;),
-  Let (Var &quot;z&quot;, Sub (Mul (Var &quot;y&quot;, Var &quot;x&quot;), Int 1),
-  Let (Var &quot;q&quot;, If (Lte (Var &quot;z&quot;, Int 0), Sub (Int 0, Var &quot;z&quot;), Var &quot;z&quot;),
-  Div (Var &quot;q&quot;, Int 3)))))</code></pre><p>Note that this expression can be written in OCaml syntax as</p><pre class="language-ocaml"><code>  let x = 2 in
+  (/ q 3)))))</code></pre><p>should result in <code>Some e</code> where <code>e</code> is</p><pre class="language-ocaml"><code>  Let (&quot;x&quot;, Int 2,
+  Let (&quot;y&quot;, Add (Var &quot;x&quot;, Var &quot;x&quot;),
+  Let (&quot;z&quot;, Sub (Mul (Var &quot;y&quot;, Var &quot;x&quot;), Int 1),
+  Let (&quot;q&quot;, If (Lte (Var &quot;z&quot;, Int 0), Sub (Int 0, Var &quot;z&quot;), Var &quot;z&quot;),
+  Div (&quot;q&quot;, Int 3)))))</code></pre><p>Note that this expression can be written in OCaml syntax as</p><pre class="language-ocaml"><code>  let x = 2 in
   let y = x + x in
   let z = x * y - 1 in
   let q = if z &lt;= 0 then 0 - z else z in
