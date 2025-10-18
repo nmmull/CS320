@@ -71,7 +71,7 @@ val parse : string -> expr option
      (Let y (+ x x)
      (Let z (- ( * y x) 1)
      (Let q (If (<= z 0) (- 0 z) z)
-     (/ q 3))))
+     (/ q 3)))))
    ]}
    should result in [Some e] where [e] is
    {[
