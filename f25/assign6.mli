@@ -1,4 +1,4 @@
-(** This assignment is due on {b Thursday 10/24 by 8:00PM}.
+(** This assignment is due on {b Thursday 10/23 by 8:00PM}.
     You should put all of your programming solutions in a file called [assign6/lib/assign6.ml].
     See the file [test/test_assign6.ml] for example behavior of each function.
     You should put all your written solutions in a single pdf file.
