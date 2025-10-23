@@ -1,0 +1,60 @@
+{0 Mini-Project 1: You First Interpreter}
+
+For mini-project 1, you'll be building an interpreter for a small
+{i untyped} subset of OCaml.  This will mean building a parser and an
+evaluator.  There will be no type checker for this project.
+
+This mini-project is due on {b Thursday 11/6 by 8:00PM}. {i It cannot
+be dropped.} This is the "landing page" for the project, it {i does
+not} contain any information about the project specification.  The details of the
+project are given in the file [assigns/interp1/spec.pdf].
+
+{1 One-Week Check-in}
+
+To verify you're making progressing the mini-projects, you will be
+required to submit part of the mini-project, along with some written
+problems, by {b Thursday 03/27 8:00PM}.
+
+This time around, you must submit:
+
+{ul
+
+{- An implementation of [parse], as detailed in the mini-project
+specification. You should be able to leave your implementations of the
+other functions partial or empty {i as long as your code builds}.}
+
+{- Solutions to the written problems below.}
+
+}
+
+{i Note.} We will {b not} re-test parts of the mini-project from the
+one-week check-in.  To recieve full credit on the mini-project, you
+must successfully submit both the one-week check-in and the complete
+mini-project.
+
+{1 Written Problems}
+
+Both of the problems below will consider the following grammar.
+
+{@text[
+<expr>  ::= let <var> = <expr> in <expr>
+          | <expr> + <expr1>
+          | <expr1>
+<expr1> ::= <num> | <var> | ( <expr> )
+<num>   ::= 1 | 2 | 3
+<var>   ::= x | y | z
+]}
+
+{2 Parse Tree}
+
+Draw a parse tree in the above grammar for the following sentence.
+
+{[
+1 + (let x = let y = 2 in y in x)
+]}
+
+{2 Ambiguity}
+
+Demonstrate that the above grammar is ambiguous.
+That is, give a sentence that has multiple parse trees in the above grammar.
+Also draw both parse trees.

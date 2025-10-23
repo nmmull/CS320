@@ -225,7 +225,7 @@ See the course manual and the schedule below for more details.
     {td 10/23}
     {td Parsing II: In Practice}
     {td }
-    {td Mini-Project 1 (A6 due)}
+    {td {{!interp1} Mini-Project 1} (A6 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 9 ================ %}}}
