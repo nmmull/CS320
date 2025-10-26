@@ -4,26 +4,27 @@ For mini-project 1, you'll be building an interpreter for a small
 {i untyped} subset of OCaml.  This will mean building a parser and an
 evaluator.  There will be no type checker for this project.
 
-This mini-project is due on {b Thursday 11/6 by 8:00PM}. {i It cannot
-be dropped.} This is the "landing page" for the project, it {i does
-not} contain any information about the project specification.  The details of the
+This mini-project is due on {%html: <s><b>Thursday 11/6
+8:00PM</b></s>%} {b Friday 11/7 8:00PM}. {i It cannot be dropped.}
+This is the "landing page" for the project, it {i does not} contain
+any information about the project specification.  The details of the
 project are given in the file [assigns/interp1/spec.pdf].
 
 {1 One-Week Check-in}
 
 To verify you're making progressing the mini-projects, you will be
 required to submit part of the mini-project, along with some written
-problems, by {b Thursday 03/27 8:00PM}.
+problems, by {%html: <s><b>Thursday 10/30 8:00PM</b></s>%} {b Monday 11/3 8:00PM}.
 
 This time around, you must submit:
 
 {ul
 
-{- An implementation of [parse], as detailed in the mini-project
+{- (20%) An implementation of [parse], as detailed in the mini-project
 specification. You should be able to leave your implementations of the
 other functions partial or empty {i as long as your code builds}.}
 
-{- Solutions to the written problems below.}
+{- (20%) Solutions to the written problems below.}
 
 }
 
