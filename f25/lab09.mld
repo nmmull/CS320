@@ -47,6 +47,5 @@ with the
 {{:https://docs.python.org/3/reference/expressions.html#boolean-operations}Python
 grammar for Boolean operators}.
 
-{b Challenge.} We just discussed parser generators in lecture. If you
-have time, build a parser for these expressions using [menhir] and
+{b Challenge.} Build a parser for these expressions using [menhir] and
 [ocamllex].
