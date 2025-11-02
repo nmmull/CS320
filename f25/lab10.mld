@@ -1,0 +1,51 @@
+{0 Lab 10: Operational Semantics Worksheet}
+
+{1 Boolean Expressions}
+
+Considering the following grammar for (closed) Boolean
+expressions in Python.  Operators are given in order of increasing
+precedence along with their associativity in the following table:
+
+{@text[
+<expr> ::= <expr> and <expr>
+         | <expr> or <expr>
+	 | not <expr>
+	 | True
+	 | False
+]}
+
+{table
+  {tr
+    {th Operator}
+    {th Associativity}}
+  {tr
+    {td [or]}
+    {td left}}
+  {tr
+    {td [and]}
+    {td left}}
+  {tr
+    {td [not]}
+    {td N/A}}
+}
+
+Write down small-step and big-step semantics for Boolean
+expressions. Make sure that operands of an operator are
+evaluated from left to right), and that you handle {i
+short-circuiting}, e.g., the right operand of a conjunction should not
+be evaluated if the left operand evaluates to [False]. ({b Challenge.}
+Implement an evaluator for Boolean expressions in OCaml)
+
+{1 Substitution}
+
+Perform the following substitutions. In the case of capture-avoidance,
+you are free to choose whatever variable names you want which maintian
+{m \alpha}-equivalence.
+
+{ol
+{- {m [(\lambda x . x)/ y](\lambda x. \lambda x . y)}}
+{- {m [(\lambda x . x) / y](\lambda y. \lambda x. x)}}
+{- {m [(\lambda x . x) / f](\lambda y. \lambda x. f(yx))}}
+{- {m [(\lambda x . y) / z](\lambda x. \lambda y. z)}}
+{- {m [(\lambda z . x) / y][(\lambda x . y) / z](\lambda y. \lambda x. zy)}}
+}

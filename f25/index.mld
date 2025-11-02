@@ -259,7 +259,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 11/5}
-    {td Week 10 Lab}
+    {td Week 10 Lab: {{!lab10}Operational Semantics Worksheet}}
     {td }
     {td }
   }
@@ -371,7 +371,7 @@ See the course manual and the schedule below for more details.
   {tr {td } {td } {td } {td }}
   {tr
     {td 12/18}
-    {td {b Final Exam} 3-5PM @ MOR 101}
+    {td {b Final Exam} 3-5PM \@ MOR 101}
     {td }
     {td }
   }
