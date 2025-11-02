@@ -211,7 +211,7 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 10/21}
-    {td Parsing I: In Theory}
+    {td Parsing I: Formal Grammar}
     {td }
     {td }
   }
@@ -223,7 +223,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 10/23}
-    {td Parsing II: In Practice}
+    {td Parsing II: Ambiguity}
     {td }
     {td {{!interp1} Mini-Project 1} (A6 due)}
   }
@@ -232,7 +232,7 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 10/28}
-    {td Semantics I: Operational Semantics}
+    {td Parsing III: Parser Generators}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/calculator.html}10.1}}
     {td }
   }
@@ -244,7 +244,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 10/30}
-    {td Semantics II: Substitution}
+    {td Semantics I: Operational Semantics}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/substitution.html}10.3}}
     {td MP1 Check-in due}
   }
@@ -253,7 +253,7 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 11/4}
-    {td Semantics III: Variables, Scope, Closures}
+    {td Semantics II: Substitution}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}10.4}}
     {td }
   }
@@ -265,7 +265,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 11/6}
-    {td Semantics IV: Environments}
+    {td Semantics III: Closures and Environments}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}10.4}}
     {td Mini-Project 2 (MP1 due)}
   }
