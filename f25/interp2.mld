@@ -16,7 +16,7 @@ For the one-week check-in, you must submit:
 
 {ul
 
-{- (20%) An implementation of [desugar], as detailed in the mini-project
+{- (10%) An implementation of [desugar], as detailed in the mini-project
 specification. You should be able to leave your implementations of the
 other functions partial or empty {i as long as your code builds}.}
 
