@@ -267,7 +267,7 @@ See the course manual and the schedule below for more details.
     {td 11/6}
     {td Semantics III: Closures and Environments}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/environment.html#lexical-vs-dynamic-scope}10.4}}
-    {td Mini-Project 2 (MP1 due)}
+    {td {{!interp2} Mini-Project 2} (MP1 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 11 ================ %}}}
