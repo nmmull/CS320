@@ -16,11 +16,11 @@ For the one-week check-in, you must submit:
 
 {ul
 
-{- An implementation of [desugar], as detailed in the mini-project
+{- (20%) An implementation of [desugar], as detailed in the mini-project
 specification. You should be able to leave your implementations of the
 other functions partial or empty {i as long as your code builds}.}
 
-{- Solutions to the written problems below.}
+{- (20%) Solutions to the written problems below.}
 
 }
 
@@ -69,10 +69,13 @@ Determine the closure which the above expression evaluates to
 according to the semantic rules given in the mini-project 2
 specification.
 
-{2 Derivations}
+{2 Semantic Derivations}
 
 {[
-let f : int -> int = let x : int = 2 in fun (y : int) -> x in f 1
+let f : int -> int =
+  let x : int = 2 in
+  fun (y : int) -> x
+in f 1
 ]}
 
 Let {m e_1} be defined as above.
