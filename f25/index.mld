@@ -280,7 +280,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 11/12}
-    {td Week 11 Lab}
+    {td Week 11 Lab: {{!lab11}Closures Worksheet}}
     {td }
     {td }
   }

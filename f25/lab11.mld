@@ -1,0 +1,89 @@
+{0 Lab 11: Closures Worksheet}
+
+The purpose of this lab is to verify that we understand the necessity of closures for the implementation of the lexical scoping in the environment model.
+The following is a restatement of the {m \lambda}-calculus{m ^+}, as seen in lecture.
+
+{math
+\begin{align*}
+e &::= x \ | \ \lambda x. e \ | \ e e \ | \ \texttt{let} \ x \ \texttt{=} \ e \ \texttt{in} \ e \\
+x &::= \texttt{a} \ | \ \texttt{b} \ | \ \dots \ | \ \texttt{y} \ | \ \texttt{z}
+\end{align*}
+}
+
+{math
+\begin{align*}
+\frac
+{(x, v) \in \mathcal E}
+{
+\langle \ \mathcal E \ , \ x \ \rangle \Downarrow \mathcal E(x)
+}
+\text{ (varEval)}
+\qquad
+\frac
+{}
+{\langle \ \mathcal E \ , \ \lambda x . e \ \rangle \Downarrow (\mathcal E, \lambda x . e) }
+\text{ (funEval)}
+\end{align*}
+}
+{math
+\begin{align*}
+\frac
+{
+\langle \mathcal E \ , \ e_1 \ \rangle \Downarrow (\mathcal E', \lambda x . e) \qquad
+\langle \mathcal E \ , \ e_2 \ \rangle \Downarrow v_2 \qquad
+\langle \mathcal E'[x \mapsto v_2] \ , \ e \rangle \Downarrow v
+}
+{\langle \mathcal E \ , \ e_1 e_2 \ \rangle \Downarrow v}
+\text{ (appEval)}
+\end{align*}
+}
+
+{1 Desugaring}
+
+
+{2 Part 1}
+
+You'll notice that we didn't include the semantic rule for let-expressions.
+Write down the {m \text{letEval}} rule based on your understanding of how let-expressions work.
+
+{2 Part 2}
+
+Describe how to represent an expression in the {m \lambda}-calculus{m ^+} (with let-expressions) as an expression in the {m \lambda}-calculus proper, i.e., with no let-expressions.
+The resulting expression should be equivalent with respect to the semantics.
+This means it must evaluate to the same value as it would have had we included the {m \text{letEval}} rule and evaluated it directly.
+
+{1 Closures}
+
+Suppose we changed the {m \text{appEval}} rule so that it doesn't use the environment contained in the closure:
+
+{math
+\begin{align*}
+\frac
+{
+\langle \mathcal E \ , \ e_1 \ \rangle \Downarrow (\mathcal E', \lambda x . e) \qquad
+\langle \mathcal E \ , \ e_2 \ \rangle \Downarrow v_2 \qquad
+\langle \textcolor{red}{\mathcal E}[x \mapsto v_2] \ , \ e \rangle \Downarrow v
+}
+{\langle \mathcal E \ , \ e_1 e_2 \ \rangle \Downarrow v}
+\text{ (appEval*)}
+\end{align*}
+}
+
+We've seen many examples of expressions which do not evaluate─or evaluate to the wrong value─if we use the {m \text{appEval*}} rule.
+But all of these examples have depended on {i shadowing}, i.e., the ability to reuse a name in a variable binding.
+
+{2 Part 1}
+
+Give an example of a {b closed} expression in the {m \lambda}-calculus{m ^+} that:
+
+- does not use {i any} shadowing (all bound variables are distinct from each other and from the free variables);
+- evaluates to the expected value when using the {m \text{appEval}} rule;
+- fails to evaluate when using the  {m \text{appEval*}} rule;
+
+{2 Part 2}
+
+Give an example of an expression in the {m \lambda}-calculus{m ^+} that:
+
+- does not use {i any} shadowing (all bound variables are distinct from each other and from the free variables);
+- fails (expectedly) to evaluate when using the {m \text{appEval}} rule;
+- evaluates to the (incorrect) value when using the {m \text{appEval*}} rule;
