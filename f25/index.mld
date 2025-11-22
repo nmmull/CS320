@@ -309,7 +309,7 @@ See the course manual and the schedule below for more details.
     {td 11/20}
     {td Inference I: Hindley-Milner (Light)}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}10.6}}
-    {td Mini-Project 3 (MP2 due)}
+    {td {{!interp3}Mini-Project 3} (MP2 due)}
   }
 
   {tr {td } {td } {td } {td {%comment: ================ WEEK 13 ================ %}}}
