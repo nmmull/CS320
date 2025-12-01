@@ -337,7 +337,7 @@ See the course manual and the schedule below for more details.
 
   {tr
     {td 12/2}
-    {td Inference III: Constraint-Based Inference}
+    {td Inference III: Principle Types}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}10.6}}
     {td }
   }
@@ -349,7 +349,7 @@ See the course manual and the schedule below for more details.
   }
   {tr
     {td 12/4}
-    {td Inference IV: Extended Example}
+    {td Inference IV: Specialization}
     {td OCP {{: https://cs3110.github.io/textbook/chapters/interp/inference.html}10.6}}
     {td MP3 Check-in due}
   }
