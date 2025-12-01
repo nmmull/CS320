@@ -1,0 +1,29 @@
+{0 Lab 12: Principle Types Worksheet}
+
+Consider the following expression, denoted in the following problems by {m e}.
+
+{[
+fun x -> fun y -> fun z -> x (1 + y z)
+]}
+
+{2 Derivation}
+
+Determine the type {m \tau} and constraints {m \mathcal C} such that
+{m \cdot \vdash e : \tau \dashv \mathcal C} is derivable in the
+constraint-based inference system for mini-project 3. You must provide
+the derivation, and you should use the compact derivation notation we
+gave in lecture.
+
+{2 Unification}
+
+Let {m \mathcal C} denote the set of constraints determined in the
+previous part. Determine a most general unifier {m \mathcal S} for
+{m \mathcal C} using the algorithm we gave in lecture. Show your work.
+
+{2 Principle Type}
+
+Apply your unifier {m \mathcal S} from the previous part to {m \tau}
+(from the first part) and quantify over it's free variables. This is
+the {i principle type} of {m e}.  That is, in the notation from lecture, write
+down the type {m \forall \alpha_1 \dots \forall \alpha_k . \mathcal S \tau}
+where {m \mathsf{FV}(\mathcal S \tau) = \{\alpha_1, \dots, \alpha_k\}}.
