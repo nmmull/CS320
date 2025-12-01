@@ -12,14 +12,15 @@ specification.  The details of the project are given in the file
 For the one-week check-in, you must submit:
 
 {ul
-
-{- A completion of the given parser. This only requires updating the file [parser.mly].}
-{- An implementation of [principle_type], as detailed in the mini-project
-specification. You should be able to leave your implementations of the
-other functions partial or empty {i as long as your code builds}.}
-
-{- Solutions to the written problems below.}
-
+  {- (%10) {b Programming}
+     {ul
+       {- A completion of the given parser. This only requires updating the file [parser.mly].}
+       {- An implementation of [principle_type], as detailed in the mini-project specification.
+          You should be able to leave your implementations of the other functions partial or empty {i as long as your code builds}.
+       }
+     }
+  }
+  {- (%30) Solutions to the written problems below.}
 }
 
 {i Note.} We will {b not} re-test parts of the mini-project from the
